@@ -68,12 +68,29 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
   };
 }
 
-export async function loadGapRankings() {
-  const filePath = path.join(process.cwd(), "data", "gap_rankings_2025.json");
+async function readJsonFromCandidates<T>(fileNames: string[]) {
+  const candidatePaths = fileNames.map((fileName) =>
+    path.join(process.cwd(), fileName),
+  );
 
+  for (const filePath of candidatePaths) {
+    try {
+      const fileContents = await readFile(filePath, "utf8");
+      return JSON.parse(fileContents) as T;
+    } catch {
+      continue;
+    }
+  }
+
+  throw new Error(`Unable to load JSON from any candidate path: ${candidatePaths.join(", ")}`);
+}
+
+export async function loadGapRankings() {
   try {
-    const fileContents = await readFile(filePath, "utf8");
-    const parsed = JSON.parse(fileContents);
+    const parsed = await readJsonFromCandidates<unknown>([
+      "data/gap_rankings_2025.json",
+      "../data/gap_rankings_2025.json",
+    ]);
 
     if (!Array.isArray(parsed)) {
       return [];
@@ -88,10 +105,11 @@ export async function loadGapRankings() {
 }
 
 export async function loadMapData() {
-  const filePath = path.join(process.cwd(), "data", "map_data.json");
   try {
-    const fileContents = await readFile(filePath, "utf8");
-    return JSON.parse(fileContents);
+    return await readJsonFromCandidates<unknown[]>([
+      "data/map_data.json",
+      "../data/map_data.json",
+    ]);
   } catch (e) {
     console.error("Error loading map data:", e);
     return [];
