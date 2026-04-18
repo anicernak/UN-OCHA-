@@ -2,7 +2,11 @@
 
 import { useId, useMemo, useState } from "react";
 
-import type { GapRankingRecord } from "@/lib/gap-rankings";
+import type {
+  GapRankingCatalog,
+  GapRankingSelection,
+} from "@/lib/gap-rankings";
+import { getSelectionKey } from "@/lib/gap-rankings";
 
 const DEFAULT_THRESHOLD = 5_000_000;
 
@@ -33,18 +37,43 @@ function formatPercent(value: number) {
 }
 
 type RankingsTableProps = {
-  rankings: GapRankingRecord[];
+  catalog: GapRankingCatalog;
 };
 
-export function RankingsTable({ rankings }: RankingsTableProps) {
+export function RankingsTable({ catalog }: RankingsTableProps) {
   const thresholdId = useId();
+  const categoryId = useId();
+  const temporalId = useId();
   const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD);
+  const [selectedCategory, setSelectedCategory] = useState(
+    catalog.categories[0] ?? "ALL",
+  );
+  const [includeTemporalFactor, setIncludeTemporalFactor] =
+    useState<GapRankingSelection["includeTemporalFactor"]>("Yes");
+
+  const selectedRankings = useMemo(() => {
+    const preferredSelection = getSelectionKey({
+      crisisCategory: selectedCategory,
+      includeTemporalFactor,
+    });
+
+    return (
+      catalog.rankingsBySelection[preferredSelection] ??
+      catalog.rankingsBySelection[
+        getSelectionKey({
+          crisisCategory: selectedCategory,
+          includeTemporalFactor: "No",
+        })
+      ] ??
+      []
+    );
+  }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory]);
 
   const filteredRankings = useMemo(() => {
-    return rankings
+    return selectedRankings
       .filter((row) => row.gapScore >= threshold)
       .sort((a, b) => b.gapScore - a.gapScore);
-  }, [rankings, threshold]);
+  }, [selectedRankings, threshold]);
 
   return (
     <section className="rounded-[2rem] border border-stone-900/10 bg-stone-50/90 p-6 shadow-[0_24px_80px_rgba(72,50,22,0.08)] backdrop-blur sm:p-8">
@@ -60,6 +89,51 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
             This keeps the table focused on countries with the highest estimated
             number of people left uncovered instead of rendering every country.
           </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="grid gap-2">
+            <span className="text-sm font-medium text-stone-800">
+              Crisis category
+            </span>
+            <select
+              id={categoryId}
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.currentTarget.value)}
+              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
+            >
+              {catalog.categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <span className="text-sm text-stone-600">
+              Showing rankings for <strong>{selectedCategory}</strong>.
+            </span>
+          </label>
+
+          <label className="grid gap-2">
+            <span className="text-sm font-medium text-stone-800">
+              Include temporal factor
+            </span>
+            <select
+              id={temporalId}
+              value={includeTemporalFactor}
+              onChange={(event) =>
+                setIncludeTemporalFactor(
+                  event.currentTarget.value as GapRankingSelection["includeTemporalFactor"],
+                )
+              }
+              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
+            >
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <span className="text-sm text-stone-600">
+              Temporal adjustment is currently <strong>{includeTemporalFactor}</strong>.
+            </span>
+          </label>
         </div>
 
         <div className="grid gap-4">
@@ -91,7 +165,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
 
       {filteredRankings.length === 0 ? (
         <div className="py-12 text-center text-stone-600">
-          No countries match the current threshold.
+          No countries match the current category, temporal setting, and threshold.
         </div>
       ) : (
         <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-stone-900/10">

@@ -1,9 +1,9 @@
 import { RankingsTable } from "@/components/rankings-table";
-import { loadGapRankings, loadMapData } from "@/lib/gap-rankings";
+import { loadGapRankingsCatalog, loadMapData } from "@/lib/gap-rankings";
 import WorldMap from "@/components/WorldMap";
 
 export default async function Home() {
-  const rankings = await loadGapRankings();
+  const rankingsCatalog = await loadGapRankingsCatalog();
   const mapData = await loadMapData();
 
   return (
@@ -45,7 +45,7 @@ export default async function Home() {
           <WorldMap data={mapData} />
         </section>
 
-        <RankingsTable rankings={rankings} />
+        <RankingsTable catalog={rankingsCatalog} />
       </div>
     </main>
   );

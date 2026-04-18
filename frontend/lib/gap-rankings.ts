@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 export type GapRankingRecord = {
@@ -9,6 +9,17 @@ export type GapRankingRecord = {
   funding: number;
   coverageRatio: number;
   gapScore: number;
+};
+
+export type GapRankingSelection = {
+  crisisCategory: string;
+  includeTemporalFactor: "Yes" | "No";
+};
+
+export type GapRankingCatalog = {
+  categories: string[];
+  selections: GapRankingSelection[];
+  rankingsBySelection: Record<string, GapRankingRecord[]>;
 };
 
 export type MapDataRecord = {
@@ -110,6 +121,42 @@ function normalizeMapRow(row: RawMapDataRecord): MapDataRecord | null {
   };
 }
 
+function normalizeCategoryToken(value: string) {
+  return value.trim().toUpperCase();
+}
+
+function getSelectionKey(selection: GapRankingSelection) {
+  return `${normalizeCategoryToken(selection.crisisCategory)}::${selection.includeTemporalFactor}`;
+}
+
+function parseRankingFileName(fileName: string): GapRankingSelection | null {
+  if (!fileName.startsWith("gap_rankings_") || !fileName.endsWith(".json")) {
+    return null;
+  }
+
+  const baseName = fileName.slice(0, -".json".length);
+
+  if (baseName.endsWith("_with_temporal")) {
+    return {
+      crisisCategory: normalizeCategoryToken(
+        baseName.slice("gap_rankings_".length, -"_with_temporal".length),
+      ),
+      includeTemporalFactor: "Yes",
+    };
+  }
+
+  if (baseName.endsWith("_no_temporal")) {
+    return {
+      crisisCategory: normalizeCategoryToken(
+        baseName.slice("gap_rankings_".length, -"_no_temporal".length),
+      ),
+      includeTemporalFactor: "No",
+    };
+  }
+
+  return null;
+}
+
 async function readJsonFromCandidates<T>(fileNames: string[]) {
   const candidatePaths = fileNames.map((fileName) =>
     path.join(process.cwd(), fileName),
@@ -145,6 +192,76 @@ export async function loadGapRankings() {
     return [];
   }
 }
+
+export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
+  const directoryCandidates = [
+    path.join(process.cwd(), "data/rankings"),
+    path.join(process.cwd(), "../data/rankings"),
+  ];
+
+  for (const directoryPath of directoryCandidates) {
+    try {
+      const fileNames = await readdir(directoryPath);
+      const jsonFiles = fileNames.filter((fileName) => fileName.endsWith(".json"));
+      const rankingsBySelection: Record<string, GapRankingRecord[]> = {};
+      const categories = new Set<string>();
+      const selections: GapRankingSelection[] = [];
+
+      for (const fileName of jsonFiles) {
+        const selection = parseRankingFileName(fileName);
+
+        if (!selection) {
+          continue;
+        }
+
+        const filePath = path.join(directoryPath, fileName);
+        const parsed = JSON.parse(await readFile(filePath, "utf8")) as unknown;
+
+        if (!Array.isArray(parsed)) {
+          continue;
+        }
+
+        const records = parsed
+          .map((row) => normalizeRow(row as RawGapRankingRecord))
+          .filter((row): row is GapRankingRecord => row !== null);
+
+        categories.add(selection.crisisCategory);
+        selections.push(selection);
+        rankingsBySelection[getSelectionKey(selection)] = records;
+      }
+
+      if (selections.length > 0) {
+        return {
+          categories: Array.from(categories).sort((a, b) => a.localeCompare(b)),
+          selections: selections.sort((a, b) =>
+            getSelectionKey(a).localeCompare(getSelectionKey(b)),
+          ),
+          rankingsBySelection,
+        };
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  const fallbackRankings = await loadGapRankings();
+
+  return {
+    categories: ["ALL"],
+    selections: [
+      { crisisCategory: "ALL", includeTemporalFactor: "No" },
+      { crisisCategory: "ALL", includeTemporalFactor: "Yes" },
+    ],
+    rankingsBySelection: {
+      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "No" })]:
+        fallbackRankings,
+      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "Yes" })]:
+        fallbackRankings,
+    },
+  };
+}
+
+export { getSelectionKey };
 
 export async function loadMapData() {
   try {
