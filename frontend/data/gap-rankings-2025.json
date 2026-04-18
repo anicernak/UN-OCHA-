@@ -1,0 +1,42 @@
+[
+  {
+    "iso3": "SDN",
+    "people_in_need": 24800000,
+    "requirements": 2700000000,
+    "funding": 890000000,
+    "coverage_ratio": 0.3296,
+    "gap_score": 16625920
+  },
+  {
+    "iso3": "AFG",
+    "people_in_need": 23100000,
+    "requirements": 3100000000,
+    "funding": 1240000000,
+    "coverage_ratio": 0.4,
+    "gap_score": 13860000
+  },
+  {
+    "iso3": "COD",
+    "people_in_need": 25600000,
+    "requirements": 2550000000,
+    "funding": 1040000000,
+    "coverage_ratio": 0.4078,
+    "gap_score": 15160320
+  },
+  {
+    "iso3": "SYR",
+    "people_in_need": 16500000,
+    "requirements": 1800000000,
+    "funding": 720000000,
+    "coverage_ratio": 0.4,
+    "gap_score": 9900000
+  },
+  {
+    "iso3": "HTI",
+    "people_in_need": 5600000,
+    "requirements": 680000000,
+    "funding": 190000000,
+    "coverage_ratio": 0.2794,
+    "gap_score": 4035360
+  }
+]
