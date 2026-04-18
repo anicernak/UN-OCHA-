@@ -11,6 +11,14 @@ export type GapRankingRecord = {
   gapScore: number;
 };
 
+export type MapDataRecord = {
+  iso3: string;
+  country: string;
+  overlooked_score: number;
+  severity: number;
+  population_in_need: number;
+};
+
 type RawGapRankingRecord = {
   iso3?: unknown;
   country_name?: unknown;
@@ -19,6 +27,14 @@ type RawGapRankingRecord = {
   funding?: unknown;
   coverage_ratio?: unknown;
   gap_score?: unknown;
+};
+
+type RawMapDataRecord = {
+  iso3?: unknown;
+  country?: unknown;
+  overlooked_score?: unknown;
+  severity?: unknown;
+  population_in_need?: unknown;
 };
 
 function toNumber(value: unknown) {
@@ -68,6 +84,32 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
   };
 }
 
+function normalizeMapRow(row: RawMapDataRecord): MapDataRecord | null {
+  const iso3 = typeof row.iso3 === "string" ? row.iso3.trim().toUpperCase() : "";
+  const country = typeof row.country === "string" ? row.country.trim() : "";
+  const overlookedScore = toNumber(row.overlooked_score);
+  const severity = toNumber(row.severity);
+  const populationInNeed = toNumber(row.population_in_need);
+
+  if (
+    !iso3 ||
+    !country ||
+    overlookedScore === null ||
+    severity === null ||
+    populationInNeed === null
+  ) {
+    return null;
+  }
+
+  return {
+    iso3,
+    country,
+    overlooked_score: overlookedScore,
+    severity,
+    population_in_need: populationInNeed,
+  };
+}
+
 async function readJsonFromCandidates<T>(fileNames: string[]) {
   const candidatePaths = fileNames.map((fileName) =>
     path.join(process.cwd(), fileName),
@@ -106,10 +148,18 @@ export async function loadGapRankings() {
 
 export async function loadMapData() {
   try {
-    return await readJsonFromCandidates<unknown[]>([
+    const parsed = await readJsonFromCandidates<unknown>([
       "data/map_data.json",
       "../data/map_data.json",
     ]);
+
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    return parsed
+      .map((row) => normalizeMapRow(row as RawMapDataRecord))
+      .filter((row): row is MapDataRecord => row !== null);
   } catch (e) {
     console.error("Error loading map data:", e);
     return [];

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
+import type { MapDataRecord } from '@/lib/gap-rankings';
 
 // High-quality GeoJSON URL
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";
@@ -12,16 +13,8 @@ const colorScale = scaleLinear<string, string>()
   .domain([0, 40, 75]) 
   .range(["#22c55e", "#eab308", "#ef4444"]);
 
-interface MapData {
-  iso3: string;
-  country: string;
-  overlooked_score: number;
-  severity: number;
-  population_in_need: number;
-}
-
 interface WorldMapProps {
-  data: MapData[];
+  data: MapDataRecord[];
 }
 
 export default function WorldMap({ data }: WorldMapProps) {
