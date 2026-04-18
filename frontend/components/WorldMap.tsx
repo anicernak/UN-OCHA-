@@ -8,7 +8,7 @@ import { scaleLinear } from 'd3-scale';
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";
 
 // Color scale: Green (Safe) -> Yellow -> Red (Overlooked)
-const colorScale = scaleLinear<string>()
+const colorScale = scaleLinear<string, string>()
   .domain([0, 40, 75]) 
   .range(["#22c55e", "#eab308", "#ef4444"]);
 
