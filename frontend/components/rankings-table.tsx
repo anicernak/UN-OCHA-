@@ -5,7 +5,6 @@ import { useId, useMemo, useState } from "react";
 import type { GapRankingRecord } from "@/lib/gap-rankings";
 
 const DEFAULT_THRESHOLD = 5_000_000;
-const DEFAULT_ROW_LIMIT = 15;
 
 function formatCompactNumber(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -39,16 +38,13 @@ type RankingsTableProps = {
 
 export function RankingsTable({ rankings }: RankingsTableProps) {
   const thresholdId = useId();
-  const rowLimitId = useId();
   const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD);
-  const [rowLimit, setRowLimit] = useState(DEFAULT_ROW_LIMIT);
 
   const filteredRankings = useMemo(() => {
     return rankings
       .filter((row) => row.gapScore >= threshold)
-      .sort((a, b) => b.gapScore - a.gapScore)
-      .slice(0, rowLimit);
-  }, [rankings, rowLimit, threshold]);
+      .sort((a, b) => b.gapScore - a.gapScore);
+  }, [rankings, threshold]);
 
   return (
     <section className="rounded-[2rem] border border-stone-900/10 bg-stone-50/90 p-6 shadow-[0_24px_80px_rgba(72,50,22,0.08)] backdrop-blur sm:p-8">
@@ -66,7 +62,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-stone-800">
               Minimum gap score (USD)
@@ -87,27 +83,10 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
               <strong>{formatCurrency(threshold)}</strong>.
             </span>
           </label>
-
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-800">
-              Max rows to display
-            </span>
-            <input
-              id={rowLimitId}
-              type="number"
-              min={1}
-              max={100}
-              value={rowLimit}
-              onChange={(event) =>
-                setRowLimit(Math.max(1, Number(event.currentTarget.value) || 1))
-              }
-              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
-            />
-            <span className="text-sm text-stone-600">
-              Filtered result count: <strong>{filteredRankings.length}</strong>
-            </span>
-          </label>
         </div>
+        <p className="text-sm text-stone-600">
+          Filtered result count: <strong>{filteredRankings.length}</strong>
+        </p>
       </div>
 
       {filteredRankings.length === 0 ? (
