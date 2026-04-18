@@ -3,6 +3,7 @@ import path from "node:path";
 
 export type GapRankingRecord = {
   iso3: string;
+  countryName: string;
   peopleInNeed: number;
   requirements: number;
   funding: number;
@@ -12,6 +13,7 @@ export type GapRankingRecord = {
 
 type RawGapRankingRecord = {
   iso3?: unknown;
+  country_name?: unknown;
   people_in_need?: unknown;
   requirements?: unknown;
   funding?: unknown;
@@ -36,6 +38,7 @@ function toNumber(value: unknown) {
 
 function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
   const iso3 = typeof row.iso3 === "string" ? row.iso3.trim().toUpperCase() : "";
+  const countryName = typeof row.country_name === "string" ? row.country_name.trim() : "";
   const peopleInNeed = toNumber(row.people_in_need);
   const requirements = toNumber(row.requirements);
   const funding = toNumber(row.funding);
@@ -44,6 +47,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
 
   if (
     !iso3 ||
+    !countryName ||
     peopleInNeed === null ||
     requirements === null ||
     funding === null ||
@@ -55,6 +59,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
 
   return {
     iso3,
+    countryName,
     peopleInNeed,
     requirements,
     funding,

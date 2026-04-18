@@ -118,6 +118,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
               <thead className="bg-stone-900 text-xs uppercase tracking-[0.2em] text-stone-200">
                 <tr>
                   <th className="px-4 py-4 font-medium">Rank</th>
+                  <th className="px-4 py-4 font-medium">Country Name</th>
                   <th className="px-4 py-4 font-medium">ISO3</th>
                   <th className="px-4 py-4 font-medium">People In Need</th>
                   <th className="px-4 py-4 font-medium">Requirements</th>
@@ -135,6 +136,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
                     <td className="px-4 py-4 font-medium text-stone-500">
                       {index + 1}
                     </td>
+                    <td className="px-4 py-4 font-medium">{row.countryName}</td>
                     <td className="px-4 py-4 font-semibold">{row.iso3}</td>
                     <td className="px-4 py-4">
                       {formatCompactNumber(row.peopleInNeed)}
