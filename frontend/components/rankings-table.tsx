@@ -8,25 +8,28 @@ const DEFAULT_THRESHOLD = 5_000_000;
 const DEFAULT_ROW_LIMIT = 15;
 
 function formatCompactNumber(value: number) {
-  return new Intl.NumberFormat("en", {
+  return new Intl.NumberFormat("en-US", {
     notation: "compact",
     maximumFractionDigits: 1,
+    minimumFractionDigits: 0,
   }).format(value);
 }
 
 function formatCurrency(value: number) {
-  return new Intl.NumberFormat("en", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     notation: "compact",
     maximumFractionDigits: 1,
+    minimumFractionDigits: 0,
   }).format(value);
 }
 
 function formatPercent(value: number) {
-  return new Intl.NumberFormat("en", {
+  return new Intl.NumberFormat("en-US", {
     style: "percent",
     maximumFractionDigits: 1,
+    minimumFractionDigits: 0,
   }).format(value);
 }
 
