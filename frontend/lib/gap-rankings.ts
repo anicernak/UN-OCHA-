@@ -69,7 +69,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
 }
 
 export async function loadGapRankings() {
-  const filePath = path.join(process.cwd(), "data", "gap-rankings-2025.json");
+  const filePath = path.join(process.cwd(), "data", "gap_rankings_2025.json");
 
   try {
     const fileContents = await readFile(filePath, "utf8");
