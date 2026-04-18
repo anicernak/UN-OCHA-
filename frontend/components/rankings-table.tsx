@@ -54,18 +54,18 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
             MVP filter
           </p>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Show only countries above your chosen gap threshold
+            Show only countries above your chosen uncovered-people threshold
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-stone-700 sm:text-base">
-            This keeps the table focused on the highest-priority gaps instead of
-            rendering every country.
+            This keeps the table focused on countries with the highest estimated
+            number of people left uncovered instead of rendering every country.
           </p>
         </div>
 
         <div className="grid gap-4">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-stone-800">
-              Minimum gap score (USD)
+              Minimum uncovered people
             </span>
             <input
               id={thresholdId}
@@ -79,8 +79,8 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
               className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
             />
             <span className="text-sm text-stone-600">
-              Currently showing countries with a gap score of at least{" "}
-              <strong>{formatCurrency(threshold)}</strong>.
+              Currently showing countries with an estimated uncovered population
+              of at least <strong>{formatCompactNumber(threshold)}</strong>.
             </span>
           </label>
         </div>
@@ -106,7 +106,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
                   <th className="px-4 py-4 font-medium">Requirements</th>
                   <th className="px-4 py-4 font-medium">Funding</th>
                   <th className="px-4 py-4 font-medium">Coverage</th>
-                  <th className="px-4 py-4 font-medium">Gap Score</th>
+                  <th className="px-4 py-4 font-medium">Uncovered People</th>
                 </tr>
               </thead>
               <tbody>
@@ -133,7 +133,7 @@ export function RankingsTable({ rankings }: RankingsTableProps) {
                       {formatPercent(row.coverageRatio)}
                     </td>
                     <td className="px-4 py-4 font-semibold text-amber-900">
-                      {formatCurrency(row.gapScore)}
+                      {formatCompactNumber(row.gapScore)}
                     </td>
                   </tr>
                 ))}
