@@ -69,7 +69,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
 }
 
 export async function loadGapRankings() {
-  const filePath = path.join(process.cwd(), "..", "data", "gap_rankings_2025.json");
+  const filePath = path.join(process.cwd(), "data", "gap-rankings-2025.json");
 
   try {
     const fileContents = await readFile(filePath, "utf8");
@@ -83,6 +83,17 @@ export async function loadGapRankings() {
       .map((row) => normalizeRow(row as RawGapRankingRecord))
       .filter((row): row is GapRankingRecord => row !== null);
   } catch {
+    return [];
+  }
+}
+
+export async function loadMapData() {
+  const filePath = path.join(process.cwd(), "data", "map_data.json");
+  try {
+    const fileContents = await readFile(filePath, "utf8");
+    return JSON.parse(fileContents);
+  } catch (e) {
+    console.error("Error loading map data:", e);
     return [];
   }
 }

@@ -1,8 +1,10 @@
 import { RankingsTable } from "@/components/rankings-table";
-import { loadGapRankings } from "@/lib/gap-rankings";
+import { loadGapRankings, loadMapData } from "@/lib/gap-rankings";
+import WorldMap from "@/components/WorldMap";
 
 export default async function Home() {
   const rankings = await loadGapRankings();
+  const mapData = await loadMapData();
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f6f1e7_0%,#efe7d8_35%,#e2d3be_100%)] px-6 py-10 text-stone-950 sm:px-10 lg:px-16">
@@ -13,31 +15,34 @@ export default async function Home() {
               Humanitarian Funding Gap
             </p>
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Country rankings for 2025 funding shortfalls
+              Global Overlooked Crisis Index
             </h1>
             <p className="max-w-2xl text-base leading-7 text-stone-700 sm:text-lg">
-              Start with your Databricks export, then let users filter the table
-              by a minimum gap threshold so the interface only shows material
-              cases.
+              Visualizing the mismatch between humanitarian need and funding. 
+              Darker red areas indicate crises where the gap is most acute.
             </p>
           </div>
 
           <div className="grid gap-4 rounded-[1.5rem] bg-stone-900 px-5 py-6 text-stone-50">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone-400">
-                Rows loaded
+                Data Points
               </p>
-              <p className="mt-2 text-4xl font-semibold">{rankings.length}</p>
+              <p className="mt-2 text-4xl font-semibold">{mapData.length}</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone-400">
-                Current source
+                Source
               </p>
               <p className="mt-2 text-sm leading-6 text-stone-200">
-                Root data folder: gap_rankings_2025.json
+                Integrated OCHA + FTS Data
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="w-full">
+          <WorldMap data={mapData} />
         </section>
 
         <RankingsTable rankings={rankings} />
