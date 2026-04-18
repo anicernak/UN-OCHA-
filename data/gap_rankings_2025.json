@@ -1,6 +1,7 @@
 [
   {
     "iso3":"SDN",
+    "country_name":"Sudan",
     "people_in_need":30440770,
     "requirements":4162518656.0,
     "funding":1770232060,
@@ -9,6 +10,7 @@
   },
   {
     "iso3":"COD",
+    "country_name":"Democratic Republic of the Congo",
     "people_in_need":21241767,
     "requirements":2538016151.0,
     "funding":797415042,
@@ -17,6 +19,7 @@
   },
   {
     "iso3":"AFG",
+    "country_name":"Afghanistan",
     "people_in_need":22887726,
     "requirements":2416811546.0,
     "funding":1154426288,
@@ -25,6 +28,7 @@
   },
   {
     "iso3":"YEM",
+    "country_name":"Yemen",
     "people_in_need":19540217,
     "requirements":2478772922.0,
     "funding":1384559671,
@@ -33,6 +37,7 @@
   },
   {
     "iso3":"COL",
+    "country_name":"Colombia",
     "people_in_need":9053352,
     "requirements":809539590.0,
     "funding":231936658,
@@ -41,6 +46,7 @@
   },
   {
     "iso3":"VEN",
+    "country_name":"Venezuela",
     "people_in_need":7943720,
     "requirements":606497714.0,
     "funding":143911895,
@@ -49,6 +55,7 @@
   },
   {
     "iso3":"NGA",
+    "country_name":"Nigeria",
     "people_in_need":7847048,
     "requirements":910246471.0,
     "funding":324189433,
@@ -57,6 +64,7 @@
   },
   {
     "iso3":"MLI",
+    "country_name":"Mali",
     "people_in_need":6431534,
     "requirements":771314315.0,
     "funding":244494817,
@@ -65,6 +73,7 @@
   },
   {
     "iso3":"SSD",
+    "country_name":"South Sudan",
     "people_in_need":9290088,
     "requirements":1694778653.0,
     "funding":917826590,
@@ -73,6 +82,7 @@
   },
   {
     "iso3":"TCD",
+    "country_name":"Chad",
     "people_in_need":7049226,
     "requirements":1454258243.0,
     "funding":579851381,
@@ -81,6 +91,7 @@
   },
   {
     "iso3":"HTI",
+    "country_name":"Haiti",
     "people_in_need":5986456,
     "requirements":908159989.0,
     "funding":303204493,
@@ -89,6 +100,7 @@
   },
   {
     "iso3":"SOM",
+    "country_name":"Somalia",
     "people_in_need":5979741,
     "requirements":1430543255.0,
     "funding":530480862,
@@ -97,6 +109,7 @@
   },
   {
     "iso3":"UKR",
+    "country_name":"Ukraine",
     "people_in_need":12708866,
     "requirements":2633534010.0,
     "funding":1872723652,
@@ -105,6 +118,7 @@
   },
   {
     "iso3":"BFA",
+    "country_name":"Burkina Faso",
     "people_in_need":5915136,
     "requirements":792565236.0,
     "funding":338563009,
@@ -113,6 +127,7 @@
   },
   {
     "iso3":"CMR",
+    "country_name":"Cameroon",
     "people_in_need":3322058,
     "requirements":359298328.0,
     "funding":113951363,
@@ -121,6 +136,7 @@
   },
   {
     "iso3":"NER",
+    "country_name":"Niger",
     "people_in_need":2580329,
     "requirements":603027582.0,
     "funding":251802743,
@@ -129,6 +145,7 @@
   },
   {
     "iso3":"HND",
+    "country_name":"Honduras",
     "people_in_need":1640224,
     "requirements":138491372.0,
     "funding":28315487,
@@ -137,6 +154,7 @@
   },
   {
     "iso3":"CAF",
+    "country_name":"Central African Republic",
     "people_in_need":2440338,
     "requirements":326056578.0,
     "funding":154783670,
@@ -145,6 +163,7 @@
   },
   {
     "iso3":"MMR",
+    "country_name":"Myanmar",
     "people_in_need":1957173,
     "requirements":1412961603.0,
     "funding":518131403,
@@ -153,6 +172,7 @@
   },
   {
     "iso3":"GTM",
+    "country_name":"Guatemala",
     "people_in_need":2163953,
     "requirements":100563396.0,
     "funding":43065791,
@@ -161,6 +181,7 @@
   },
   {
     "iso3":"MOZ",
+    "country_name":"Mozambique",
     "people_in_need":1305029,
     "requirements":682722983.0,
     "funding":220790886,
@@ -169,6 +190,7 @@
   },
   {
     "iso3":"SLV",
+    "country_name":"El Salvador",
     "people_in_need":818700,
     "requirements":66923449.0,
     "funding":21594106,
