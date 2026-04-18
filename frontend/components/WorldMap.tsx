@@ -49,8 +49,8 @@ export default function WorldMap({ data }: WorldMapProps) {
       <ComposableMap projectionConfig={{ scale: 145 }}>
         <ZoomableGroup center={[20, 0]} zoom={1}>
           <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              geographies.map((geo) => {
+            {({ geographies }: { geographies: any[] }) =>
+              geographies.map((geo: any) => {
                 const countryData = data.find((d) => d.iso3 === geo.properties.ISO_A3 || d.iso3 === geo.properties.ISO_A3_EH);
                 const score = countryData ? countryData.overlooked_score : null;
                 
