@@ -1,10 +1,8 @@
-import { RankingsTable } from "@/components/rankings-table";
-import { loadGapRankingsCatalog, loadMapData } from "@/lib/gap-rankings";
-import WorldMap from "@/components/WorldMap";
+import { RankingsDashboard } from "@/components/rankings-dashboard";
+import { loadGapRankingsCatalog } from "@/lib/gap-rankings";
 
 export default async function Home() {
   const rankingsCatalog = await loadGapRankingsCatalog();
-  const mapData = await loadMapData();
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f6f1e7_0%,#efe7d8_35%,#e2d3be_100%)] px-6 py-10 text-stone-950 sm:px-10 lg:px-16">
@@ -28,7 +26,9 @@ export default async function Home() {
               <p className="text-xs uppercase tracking-[0.25em] text-stone-400">
                 Data Points
               </p>
-              <p className="mt-2 text-4xl font-semibold">{mapData.length}</p>
+              <p className="mt-2 text-4xl font-semibold">
+                {rankingsCatalog.categories.length}
+              </p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone-400">
@@ -41,11 +41,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="w-full">
-          <WorldMap data={mapData} />
-        </section>
-
-        <RankingsTable catalog={rankingsCatalog} />
+        <RankingsDashboard catalog={rankingsCatalog} />
       </div>
     </main>
   );

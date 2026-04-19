@@ -1,14 +1,11 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useId } from "react";
 
 import type {
-  GapRankingCatalog,
+  GapRankingRecord,
   GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
-import { getSelectionKey } from "@/lib/gap-rankings-shared";
-
-const DEFAULT_THRESHOLD = 5_000_000;
 
 function formatCompactNumber(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -47,43 +44,31 @@ function getRankingRowKey(
 }
 
 type RankingsTableProps = {
-  catalog: GapRankingCatalog;
+  categories: string[];
+  selectedCategory: string;
+  onSelectedCategoryChange: (value: string) => void;
+  includeTemporalFactor: GapRankingSelection["includeTemporalFactor"];
+  onIncludeTemporalFactorChange: (
+    value: GapRankingSelection["includeTemporalFactor"],
+  ) => void;
+  threshold: number;
+  onThresholdChange: (value: number) => void;
+  rankings: GapRankingRecord[];
 };
 
-export function RankingsTable({ catalog }: RankingsTableProps) {
+export function RankingsTable({
+  categories,
+  selectedCategory,
+  onSelectedCategoryChange,
+  includeTemporalFactor,
+  onIncludeTemporalFactorChange,
+  threshold,
+  onThresholdChange,
+  rankings,
+}: RankingsTableProps) {
   const thresholdId = useId();
   const categoryId = useId();
   const temporalId = useId();
-  const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD);
-  const [selectedCategory, setSelectedCategory] = useState(
-    catalog.categories[0] ?? "ALL",
-  );
-  const [includeTemporalFactor, setIncludeTemporalFactor] =
-    useState<GapRankingSelection["includeTemporalFactor"]>("Yes");
-
-  const selectedRankings = useMemo(() => {
-    const preferredSelection = getSelectionKey({
-      crisisCategory: selectedCategory,
-      includeTemporalFactor,
-    });
-
-    return (
-      catalog.rankingsBySelection[preferredSelection] ??
-      catalog.rankingsBySelection[
-        getSelectionKey({
-          crisisCategory: selectedCategory,
-          includeTemporalFactor: "No",
-        })
-      ] ??
-      []
-    );
-  }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory]);
-
-  const filteredRankings = useMemo(() => {
-    return selectedRankings
-      .filter((row) => row.gapScore >= threshold)
-      .sort((a, b) => b.gapScore - a.gapScore);
-  }, [selectedRankings, threshold]);
 
   return (
     <section className="rounded-[2rem] border border-stone-900/10 bg-stone-50/90 p-6 shadow-[0_24px_80px_rgba(72,50,22,0.08)] backdrop-blur sm:p-8">
@@ -109,10 +94,10 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
             <select
               id={categoryId}
               value={selectedCategory}
-              onChange={(event) => setSelectedCategory(event.currentTarget.value)}
+              onChange={(event) => onSelectedCategoryChange(event.currentTarget.value)}
               className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
             >
-              {catalog.categories.map((category) => (
+              {categories.map((category) => (
                 <option key={category} value={category}>
                   {category}
                 </option>
@@ -131,7 +116,7 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
               id={temporalId}
               value={includeTemporalFactor}
               onChange={(event) =>
-                setIncludeTemporalFactor(
+                onIncludeTemporalFactorChange(
                   event.currentTarget.value as GapRankingSelection["includeTemporalFactor"],
                 )
               }
@@ -158,7 +143,7 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
               step={100000}
               value={threshold}
               onChange={(event) =>
-                setThreshold(Number(event.currentTarget.value) || 0)
+                onThresholdChange(Number(event.currentTarget.value) || 0)
               }
               className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
             />
@@ -169,11 +154,11 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
           </label>
         </div>
         <p className="text-sm text-stone-600">
-          Filtered result count: <strong>{filteredRankings.length}</strong>
+          Filtered result count: <strong>{rankings.length}</strong>
         </p>
       </div>
 
-      {filteredRankings.length === 0 ? (
+      {rankings.length === 0 ? (
         <div className="py-12 text-center text-stone-600">
           No countries match the current category, temporal setting, and threshold.
         </div>
@@ -194,7 +179,7 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
                 </tr>
               </thead>
               <tbody>
-                {filteredRankings.map((row, index) => (
+                {rankings.map((row, index) => (
                   <tr
                     key={getRankingRowKey(
                       row.iso3,
