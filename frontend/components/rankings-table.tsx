@@ -36,6 +36,16 @@ function formatPercent(value: number) {
   }).format(value);
 }
 
+function getRankingRowKey(
+  iso3: string,
+  countryName: string,
+  peopleInNeed: number,
+  gapScore: number,
+  index: number,
+) {
+  return `${iso3}-${countryName}-${peopleInNeed}-${gapScore}-${index}`;
+}
+
 type RankingsTableProps = {
   catalog: GapRankingCatalog;
 };
@@ -186,7 +196,13 @@ export function RankingsTable({ catalog }: RankingsTableProps) {
               <tbody>
                 {filteredRankings.map((row, index) => (
                   <tr
-                    key={row.iso3}
+                    key={getRankingRowKey(
+                      row.iso3,
+                      row.countryName,
+                      row.peopleInNeed,
+                      row.gapScore,
+                      index,
+                    )}
                     className="border-t border-stone-200 text-sm text-stone-800"
                   >
                     <td className="px-4 py-4 font-medium text-stone-500">

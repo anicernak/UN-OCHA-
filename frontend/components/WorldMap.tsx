@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
-import type { MapDataRecord } from '@/lib/gap-rankings';
+import type { MapDataRecord } from '@/lib/gap-rankings-shared';
 
 // High-quality GeoJSON URL
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";

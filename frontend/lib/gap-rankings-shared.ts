@@ -19,6 +19,14 @@ export type GapRankingCatalog = {
   rankingsBySelection: Record<string, GapRankingRecord[]>;
 };
 
+export type MapDataRecord = {
+  iso3: string;
+  country: string;
+  overlooked_score: number;
+  severity: number;
+  population_in_need: number;
+};
+
 function normalizeCategoryToken(value: string) {
   return value.trim().toUpperCase();
 }

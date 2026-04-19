@@ -7,16 +7,9 @@ import {
   type GapRankingCatalog,
   type GapRankingRecord,
   type GapRankingSelection,
+  type MapDataRecord,
   getSelectionKey,
 } from "@/lib/gap-rankings-shared";
-
-export type MapDataRecord = {
-  iso3: string;
-  country: string;
-  overlooked_score: number;
-  severity: number;
-  population_in_need: number;
-};
 
 type RawGapRankingRecord = {
   iso3?: unknown;
