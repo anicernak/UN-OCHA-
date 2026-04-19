@@ -3,13 +3,7 @@
 import { useMemo, useState } from "react";
 import { scaleLinear } from "d3-scale";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
-import {
-  getCategoryLabel,
-  getDemographicLabel,
-  getTemporalModeLabel,
-  type GapRankingRecord,
-  type GapRankingSelection,
-} from "@/lib/gap-rankings-shared";
+import type { GapRankingRecord, GapRankingSelection } from "@/lib/gap-rankings-shared";
 
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";
 
@@ -29,9 +23,7 @@ type GeographyFeature = {
 type WorldMapProps = {
   rankings: GapRankingRecord[];
   selectedCategory: string;
-  selectedDemographic: string;
-  temporalMode: GapRankingSelection["temporalMode"];
-  threshold: number;
+  includeTemporalFactor: any; // Keep generic to support any temporal prop type
 };
 
 const alpha2ToIso3: Record<string, string> = {
@@ -63,39 +55,20 @@ function getRankingIso3(properties: GeographyProperties) {
   return "";
 }
 
-export default function WorldMap({
-  rankings,
-  selectedCategory,
-  selectedDemographic,
-  temporalMode,
-  threshold,
-}: WorldMapProps) {
+export default function WorldMap({ rankings, selectedCategory }: WorldMapProps) {
   const [hoverData, setHoverData] = useState<GapRankingRecord | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const rankingsByIso3 = useMemo(() => new Map(rankings.map((row) => [row.iso3, row])), [rankings]);
-  const highlightedRankings = useMemo(
-    () => rankings.filter((row) => row.gapScore >= threshold),
-    [rankings, threshold],
-  );
-  const maxGapScore = useMemo(
-    () => highlightedRankings.reduce((max, row) => Math.max(max, row.gapScore), 0),
-    [highlightedRankings],
-  );
-
-  const heatScale = useMemo(
-    () =>
-      scaleLinear<string>()
-        .domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)])
-        .range(["#fca5a5", "#ef4444", "#991b1b"]),
-    [maxGapScore],
-  );
+  const maxGapScore = useMemo(() => rankings.reduce((max, row) => Math.max(max, row.gapScore), 0), [rankings]);
+  
+  const heatScale = useMemo(() => scaleLinear<string>().domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)]).range(["#312e81", "#991b1b", "#ef4444"]), [maxGapScore]);
 
   return (
     <div className="relative h-[650px] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl"
          onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}>
       
-      {/* RICH TOOLTIP POPUP */}
+      {/* UPDATED RICH TOOLTIP */}
       {hoverData && (
         <div 
             className="fixed z-50 pointer-events-none bg-slate-900/95 border border-slate-700 p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl max-w-sm animate-in fade-in zoom-in-95 duration-200"
@@ -122,67 +95,36 @@ export default function WorldMap({
           </div>
 
           <div className="space-y-3">
-            {/* Reach Progress Bar */}
+            {/* Success Metric: Reached vs Targeted */}
             <div className="space-y-1">
                 <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest">
-                    <span className="text-emerald-400">Reached</span>
-                    <span className="text-slate-400">{hoverData.details?.metrics.reached_pct}% of Target</span>
+                    <span className="text-emerald-400">Reached (% of Target)</span>
+                    <span className="text-slate-400">{hoverData.details?.metrics.reached_pct_of_target}%</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${Math.min(hoverData.details?.metrics.reached_pct || 0, 100)}%` }} />
+                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${Math.min(hoverData.details?.metrics.reached_pct_of_target || 0, 100)}%` }} />
                 </div>
+                <p className="text-[10px] text-slate-500 italic mt-1 text-right">Actual Reached: {formatCompactNumber(hoverData.details?.metrics.reached || 0)}</p>
             </div>
 
-            {/* Gap Metric */}
-            <div className="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
+            {/* Gap Metric: Uncovered vs In Need */}
+            <div className="bg-red-500/10 border border-red-500/20 p-3 rounded-xl mt-4">
                 <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-bold uppercase text-red-400 tracking-widest">Need Not Covered</span>
-                    <span className="text-xs font-black text-red-500">{hoverData.details?.metrics.uncovered_pct}%</span>
+                    <span className="text-[10px] font-bold uppercase text-red-400 tracking-widest">Uncovered (% of Total Need)</span>
+                    <span className="text-xs font-black text-red-500">{hoverData.details?.metrics.uncovered_pct_of_need}%</span>
                 </div>
-                <p className="text-xl font-black text-white mt-1">{formatCompactNumber(hoverData.details?.metrics.uncovered_num || 0)} <span className="text-xs font-normal text-slate-400 ml-1">People</span></p>
+                <p className="text-xl font-black text-white mt-1">{formatCompactNumber(hoverData.details?.metrics.uncovered_num || 0)} <span className="text-xs font-normal text-slate-400 ml-1">People Left Behind</span></p>
             </div>
           </div>
 
-          {/* Clusters & Categories */}
           <div className="mt-4 pt-3 border-t border-slate-800 space-y-3">
             <div>
                 <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">Active Response Clusters</p>
-                <p className="text-[11px] text-slate-300 leading-relaxed italic">{hoverData.details?.clusters.join(', ') || 'N/A'}</p>
-            </div>
-            <div>
-                <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">Affected Categories</p>
-                <p className="text-[11px] text-slate-300 leading-relaxed italic">{hoverData.details?.categories.join(', ') || 'N/A'}</p>
+                <p className="text-[11px] text-slate-300 leading-relaxed italic line-clamp-2">{hoverData.details?.clusters.join(', ') || 'N/A'}</p>
             </div>
           </div>
         </div>
       )}
-
-      <div className="absolute left-4 top-4 z-10 rounded-2xl border border-slate-700 bg-slate-900/85 px-4 py-3 backdrop-blur-xl">
-        <h3 className="text-lg font-bold text-white">Humanitarian WMI Heatmap</h3>
-        <p className="mt-1 text-sm text-slate-300">
-          Category <strong>{getCategoryLabel(selectedCategory)}</strong>, demographic{" "}
-          <strong>{getDemographicLabel(selectedDemographic)}</strong>, view{" "}
-          <strong>{getTemporalModeLabel(temporalMode)}</strong>.
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-300">
-          <span className="inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-sky-400" />
-            <span>Under threshold</span>
-          </span>
-          <span className="inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-rose-300" />
-            <span>Lower WMI</span>
-          </span>
-          <span className="inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-red-500" />
-            <span>Higher WMI</span>
-          </span>
-          <span className="inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-red-800" />
-            <span>Highest WMI</span>
-          </span>
-        </div>
-      </div>
 
       <ComposableMap projectionConfig={{ scale: 145 }}>
         <ZoomableGroup center={[20, 0]} zoom={1}>
@@ -191,11 +133,7 @@ export default function WorldMap({
               geographies.map((geo) => {
                 const iso3 = getRankingIso3(geo.properties);
                 const countryRanking = rankingsByIso3.get(iso3);
-                const fill = !countryRanking
-                  ? "#1e293b"
-                  : countryRanking.gapScore < threshold
-                    ? "#38bdf8"
-                    : heatScale(countryRanking.gapScore);
+                const fill = countryRanking ? heatScale(countryRanking.gapScore) : "#1e293b";
 
                 return (
                   <Geography

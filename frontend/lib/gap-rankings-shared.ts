@@ -14,11 +14,10 @@ export type GapRankingRecord = {
     metrics: {
         total_population: number;
         targeted: number;
-        affected: number;
         reached: number;
-        reached_pct: number;
+        reached_pct_of_target: number;
         uncovered_num: number;
-        uncovered_pct: number;
+        uncovered_pct_of_need: number;
     }
   }
 };

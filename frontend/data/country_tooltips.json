@@ -13,7 +13,6 @@
       "Earthquake"
     ],
     "clusters": [
-      "ALL",
       "CSS",
       "EDU",
       "FSC",
@@ -78,14 +77,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 518432435,
-      "in_need": 1829601505,
-      "targeted": 787656142,
-      "affected": 0,
+      "total_population": 46024352,
+      "in_need": 22887726,
+      "targeted": 16790412,
       "reached": 18100000,
-      "reached_pct": 2.3,
-      "uncovered_num": 1811501505,
-      "uncovered_pct": 99.0
+      "reached_pct_of_target": 107.8,
+      "uncovered_num": 4787726,
+      "uncovered_pct_of_need": 20.9
     }
   },
   "AGO": {
@@ -101,11 +99,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "BDI": {
@@ -123,11 +120,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "BEN": {
@@ -143,11 +139,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "BFA": {
@@ -161,7 +156,6 @@
       "Floods"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -191,14 +185,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 171184033,
-      "in_need": 221484949,
-      "targeted": 105272733,
-      "affected": 0,
+      "total_population": 23449865,
+      "in_need": 5915136,
+      "targeted": 3672506,
       "reached": 1800000,
-      "reached_pct": 1.7,
-      "uncovered_num": 219684949,
-      "uncovered_pct": 99.2
+      "reached_pct_of_target": 49.0,
+      "uncovered_num": 4115136,
+      "uncovered_pct_of_need": 69.6
     }
   },
   "BGD": {
@@ -217,11 +210,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "BRA": {
@@ -236,11 +228,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "CAF": {
@@ -252,7 +243,6 @@
       "Floods"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -277,14 +267,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 26480630,
-      "in_need": 67595320,
-      "targeted": 39870518,
-      "affected": 0,
+      "total_population": 5296124,
+      "in_need": 2440338,
+      "targeted": 1772631,
       "reached": 720000,
-      "reached_pct": 1.8,
-      "uncovered_num": 66875320,
-      "uncovered_pct": 98.9
+      "reached_pct_of_target": 40.6,
+      "uncovered_num": 1720338,
+      "uncovered_pct_of_need": 70.5
     }
   },
   "CHL": {
@@ -299,11 +288,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "CIV": {
@@ -318,11 +306,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "CMR": {
@@ -335,7 +322,6 @@
       "International Displacement"
     ],
     "clusters": [
-      "ALL",
       "CSS",
       "EDU",
       "FSC",
@@ -361,13 +347,12 @@
     ],
     "metrics": {
       "total_population": 29400000,
-      "in_need": 201858835,
-      "targeted": 112998741,
-      "affected": 0,
+      "in_need": 3322058,
+      "targeted": 2100146,
       "reached": 800000,
-      "reached_pct": 0.7,
-      "uncovered_num": 201058835,
-      "uncovered_pct": 99.6
+      "reached_pct_of_target": 38.1,
+      "uncovered_num": 2522058,
+      "uncovered_pct_of_need": 75.9
     }
   },
   "COD": {
@@ -381,7 +366,6 @@
       "economic crisis"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -406,14 +390,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 824663419,
-      "in_need": 915901388,
-      "targeted": 423180067,
-      "affected": 425713890,
+      "total_population": 117808862,
+      "in_need": 21241767,
+      "targeted": 10988449,
       "reached": 9100000,
-      "reached_pct": 2.2,
-      "uncovered_num": 906801388,
-      "uncovered_pct": 99.0
+      "reached_pct_of_target": 82.8,
+      "uncovered_num": 12141767,
+      "uncovered_pct_of_need": 57.2
     }
   },
   "COL": {
@@ -428,7 +411,6 @@
       "Floods"
     ],
     "clusters": [
-      "ALL",
       "EDU",
       "ERY",
       "FSC",
@@ -449,14 +431,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 262773404,
-      "in_need": 168414509,
-      "targeted": 22709227,
-      "affected": 0,
+      "total_population": 53110609,
+      "in_need": 9053352,
+      "targeted": 1991880,
       "reached": 890000,
-      "reached_pct": 3.9,
-      "uncovered_num": 167524509,
-      "uncovered_pct": 99.5
+      "reached_pct_of_target": 44.7,
+      "uncovered_num": 8163352,
+      "uncovered_pct_of_need": 90.2
     }
   },
   "CRI": {
@@ -471,11 +452,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "CUB": {
@@ -493,11 +473,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "DJI": {
@@ -514,11 +493,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "DOM": {
@@ -533,11 +511,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "DZA": {
@@ -552,11 +529,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ECU": {
@@ -574,11 +550,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "EGY": {
@@ -593,11 +568,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ERI": {
@@ -614,11 +588,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ESP": {
@@ -633,11 +606,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ETH": {
@@ -659,11 +631,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "GRC": {
@@ -678,11 +649,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "GTM": {
@@ -695,7 +665,6 @@
       "drier conditions"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -723,13 +692,12 @@
     ],
     "metrics": {
       "total_population": 18400000,
-      "in_need": 45292585,
-      "targeted": 15045767,
-      "affected": 0,
+      "in_need": 2163953,
+      "targeted": 1226168,
       "reached": 275000,
-      "reached_pct": 1.8,
-      "uncovered_num": 45017585,
-      "uncovered_pct": 99.4
+      "reached_pct_of_target": 22.4,
+      "uncovered_num": 1888953,
+      "uncovered_pct_of_need": 87.3
     }
   },
   "HND": {
@@ -742,7 +710,6 @@
       "Violence"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -765,14 +732,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 36716071,
-      "in_need": 37876501,
-      "targeted": 14967306,
-      "affected": 0,
+      "total_population": 10800000,
+      "in_need": 1640224,
+      "targeted": 796974,
       "reached": 132000,
-      "reached_pct": 0.9,
-      "uncovered_num": 37744501,
-      "uncovered_pct": 99.7
+      "reached_pct_of_target": 16.6,
+      "uncovered_num": 1508224,
+      "uncovered_pct_of_need": 92.0
     }
   },
   "HTI": {
@@ -788,7 +754,6 @@
       "drier conditions"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -816,14 +781,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 65304786,
-      "in_need": 209004120,
-      "targeted": 110409837,
-      "affected": 0,
+      "total_population": 11899555,
+      "in_need": 5986456,
+      "targeted": 3941924,
       "reached": 2200000,
-      "reached_pct": 2.0,
-      "uncovered_num": 206804120,
-      "uncovered_pct": 98.9
+      "reached_pct_of_target": 55.8,
+      "uncovered_num": 3786456,
+      "uncovered_pct_of_need": 63.3
     }
   },
   "IDN": {
@@ -841,11 +805,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "IND": {
@@ -861,11 +824,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "IRN": {
@@ -884,11 +846,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "IRQ": {
@@ -906,11 +867,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ITA": {
@@ -925,11 +885,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "JAM": {
@@ -945,11 +904,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "JOR": {
@@ -964,11 +922,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "KEN": {
@@ -985,11 +942,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "KHM": {
@@ -1005,11 +961,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "LBN": {
@@ -1027,11 +982,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "LBY": {
@@ -1046,11 +1000,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "LKA": {
@@ -1065,11 +1018,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "LSO": {
@@ -1085,11 +1037,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MAR": {
@@ -1105,11 +1056,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MDG": {
@@ -1125,11 +1075,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MEX": {
@@ -1144,11 +1093,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MLI": {
@@ -1163,7 +1111,6 @@
       "economic crisis"
     ],
     "clusters": [
-      "ALL",
       "EDU",
       "FSC",
       "HEA",
@@ -1190,14 +1137,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 115672703,
-      "in_need": 145370528,
-      "targeted": 99387171,
-      "affected": 0,
+      "total_population": 23134540,
+      "in_need": 6431534,
+      "targeted": 4709012,
       "reached": 1800000,
-      "reached_pct": 1.8,
-      "uncovered_num": 143570528,
-      "uncovered_pct": 98.8
+      "reached_pct_of_target": 38.2,
+      "uncovered_num": 4631534,
+      "uncovered_pct_of_need": 72.0
     }
   },
   "MMR": {
@@ -1212,7 +1158,6 @@
       "Floods"
     ],
     "clusters": [
-      "ALL",
       "CSS",
       "EDU",
       "FSC",
@@ -1239,14 +1184,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 680831216,
-      "in_need": 1199500984,
-      "targeted": 305884851,
-      "affected": 0,
+      "total_population": 57008150,
+      "in_need": 19902649,
+      "targeted": 5525241,
       "reached": 1000000,
-      "reached_pct": 0.3,
-      "uncovered_num": 1198500984,
-      "uncovered_pct": 99.9
+      "reached_pct_of_target": 18.1,
+      "uncovered_num": 18902649,
+      "uncovered_pct_of_need": 95.0
     }
   },
   "MOZ": {
@@ -1260,7 +1204,6 @@
       "drier conditions"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -1319,14 +1262,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 39838164,
-      "in_need": 37789917,
-      "targeted": 26207610,
-      "affected": 2469082,
+      "total_population": 34900000,
+      "in_need": 1305029,
+      "targeted": 1097096,
       "reached": 1105000,
-      "reached_pct": 4.2,
-      "uncovered_num": 36684917,
-      "uncovered_pct": 97.1
+      "reached_pct_of_target": 100.7,
+      "uncovered_num": 200029,
+      "uncovered_pct_of_need": 15.3
     }
   },
   "MRT": {
@@ -1344,11 +1286,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MWI": {
@@ -1368,11 +1309,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "MYS": {
@@ -1387,11 +1327,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "NAM": {
@@ -1407,11 +1346,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "NER": {
@@ -1425,7 +1363,6 @@
       "Floods"
     ],
     "clusters": [
-      "ALL",
       "EDU",
       "FSC",
       "HEA",
@@ -1449,13 +1386,12 @@
     ],
     "metrics": {
       "total_population": 27522775,
-      "in_need": 52133591,
-      "targeted": 38292512,
-      "affected": 0,
+      "in_need": 2580329,
+      "targeted": 2132111,
       "reached": 844290,
-      "reached_pct": 2.2,
-      "uncovered_num": 51289301,
-      "uncovered_pct": 98.4
+      "reached_pct_of_target": 39.6,
+      "uncovered_num": 1736039,
+      "uncovered_pct_of_need": 67.3
     }
   },
   "NGA": {
@@ -1470,7 +1406,6 @@
       "economic crisis"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -1511,13 +1446,12 @@
     ],
     "metrics": {
       "total_population": 229200000,
-      "in_need": 234175308,
-      "targeted": 119269027,
-      "affected": 16028952,
+      "in_need": 7847048,
+      "targeted": 3584107,
       "reached": 1600000,
-      "reached_pct": 1.3,
-      "uncovered_num": 232575308,
-      "uncovered_pct": 99.3
+      "reached_pct_of_target": 44.6,
+      "uncovered_num": 6247048,
+      "uncovered_pct_of_need": 79.6
     }
   },
   "PAK": {
@@ -1537,11 +1471,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "PAN": {
@@ -1556,11 +1489,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "PER": {
@@ -1575,11 +1507,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "PHL": {
@@ -1597,11 +1528,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "PSE": {
@@ -1617,11 +1547,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "RWA": {
@@ -1636,11 +1565,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "SDN": {
@@ -1654,7 +1582,6 @@
       "economic crisis"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -1683,14 +1610,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 436144911,
-      "in_need": 1624238594,
-      "targeted": 766069335,
-      "affected": 0,
+      "total_population": 46790687,
+      "in_need": 30440770,
+      "targeted": 20934770,
       "reached": 20900000,
-      "reached_pct": 2.7,
-      "uncovered_num": 1603338594,
-      "uncovered_pct": 98.7
+      "reached_pct_of_target": 99.8,
+      "uncovered_num": 9540770,
+      "uncovered_pct_of_need": 31.3
     }
   },
   "SLV": {
@@ -1701,7 +1627,6 @@
       "economic crisis"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -1724,14 +1649,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 19101938,
-      "in_need": 21040587,
-      "targeted": 5381847,
-      "affected": 0,
+      "total_population": 6400000,
+      "in_need": 818700,
+      "targeted": 407500,
       "reached": 41000,
-      "reached_pct": 0.8,
-      "uncovered_num": 20999587,
-      "uncovered_pct": 99.8
+      "reached_pct_of_target": 10.1,
+      "uncovered_num": 777700,
+      "uncovered_pct_of_need": 95.0
     }
   },
   "SOM": {
@@ -1741,7 +1665,6 @@
       "International Displacement"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -1764,13 +1687,12 @@
     ],
     "metrics": {
       "total_population": 19300000,
-      "in_need": 141650172,
-      "targeted": 89222654,
-      "affected": 0,
+      "in_need": 5979741,
+      "targeted": 4571657,
       "reached": 2700000,
-      "reached_pct": 3.0,
-      "uncovered_num": 138950172,
-      "uncovered_pct": 98.1
+      "reached_pct_of_target": 59.1,
+      "uncovered_num": 3279741,
+      "uncovered_pct_of_need": 54.8
     }
   },
   "SSD": {
@@ -1780,7 +1702,6 @@
       "International Displacement"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -1832,14 +1753,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 67212774,
-      "in_need": 281905475,
-      "targeted": 122372563,
-      "affected": 56448743,
+      "total_population": 13442554,
+      "in_need": 9290088,
+      "targeted": 5386982,
       "reached": 3900000,
-      "reached_pct": 3.2,
-      "uncovered_num": 278005475,
-      "uncovered_pct": 98.6
+      "reached_pct_of_target": 72.4,
+      "uncovered_num": 5390088,
+      "uncovered_pct_of_need": 58.0
     }
   },
   "SWZ": {
@@ -1855,11 +1775,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "SYR": {
@@ -1879,11 +1798,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "TCD": {
@@ -1893,7 +1811,6 @@
       "International Displacement"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "EDU",
       "FSC",
@@ -1911,14 +1828,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 77494670,
-      "in_need": 110090207,
-      "targeted": 73303473,
-      "affected": 0,
+      "total_population": 19373666,
+      "in_need": 7049226,
+      "targeted": 5475571,
       "reached": 2000000,
-      "reached_pct": 2.7,
-      "uncovered_num": 108090207,
-      "uncovered_pct": 98.2
+      "reached_pct_of_target": 36.5,
+      "uncovered_num": 5049226,
+      "uncovered_pct_of_need": 71.6
     }
   },
   "TGO": {
@@ -1934,11 +1850,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "THA": {
@@ -1957,11 +1872,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "TTO": {
@@ -1976,11 +1890,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "TUN": {
@@ -1995,11 +1908,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "TUR": {
@@ -2015,11 +1927,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "TZA": {
@@ -2037,11 +1948,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "UGA": {
@@ -2056,11 +1966,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "UKR": {
@@ -2071,7 +1980,6 @@
       "Violence"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -2092,14 +2000,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 228543245,
-      "in_need": 523559204,
-      "targeted": 220114203,
-      "affected": 113823703,
+      "total_population": 35765386,
+      "in_need": 12708866,
+      "targeted": 6016366,
       "reached": 4800000,
-      "reached_pct": 2.2,
-      "uncovered_num": 518759204,
-      "uncovered_pct": 99.1
+      "reached_pct_of_target": 79.8,
+      "uncovered_num": 7908866,
+      "uncovered_pct_of_need": 62.2
     }
   },
   "VEN": {
@@ -2112,7 +2019,6 @@
       "Violence"
     ],
     "clusters": [
-      "ALL",
       "CSS",
       "EDU",
       "FSC",
@@ -2128,14 +2034,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 81450439,
-      "in_need": 117424346,
-      "targeted": 55670313,
-      "affected": 0,
+      "total_population": 27112332,
+      "in_need": 7943720,
+      "targeted": 5125664,
       "reached": 2000000,
-      "reached_pct": 3.6,
-      "uncovered_num": 115424346,
-      "uncovered_pct": 98.3
+      "reached_pct_of_target": 39.0,
+      "uncovered_num": 5943720,
+      "uncovered_pct_of_need": 74.8
     }
   },
   "YEM": {
@@ -2145,7 +2050,6 @@
       "International Displacement"
     ],
     "clusters": [
-      "ALL",
       "CCM",
       "CSS",
       "EDU",
@@ -2171,14 +2075,13 @@
       "total"
     ],
     "metrics": {
-      "total_population": 174395090,
-      "in_need": 748340877,
-      "targeted": 332851234,
-      "affected": 0,
+      "total_population": 34879018,
+      "in_need": 19540217,
+      "targeted": 10527030,
       "reached": 5300000,
-      "reached_pct": 1.6,
-      "uncovered_num": 743040877,
-      "uncovered_pct": 99.3
+      "reached_pct_of_target": 50.3,
+      "uncovered_num": 14240217,
+      "uncovered_pct_of_need": 72.9
     }
   },
   "ZMB": {
@@ -2194,11 +2097,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   },
   "ZWE": {
@@ -2216,11 +2118,10 @@
       "total_population": 0,
       "in_need": 0,
       "targeted": 0,
-      "affected": 0,
       "reached": 0,
-      "reached_pct": 0,
+      "reached_pct_of_target": 0,
       "uncovered_num": 0,
-      "uncovered_pct": 0
+      "uncovered_pct_of_need": 0
     }
   }
 }
