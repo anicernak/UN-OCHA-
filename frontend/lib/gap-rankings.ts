@@ -203,7 +203,30 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
   const directoryCandidates = [
     path.join(process.cwd(), "data/rankings"),
     path.join(process.cwd(), "../data/rankings"),
+    "data/rankings",
   ];
+
+  // Load rich tooltip info
+  let tooltips: Record<string, any> = {};
+  try {
+    // Try multiple paths for the tooltip file
+    const tooltipPaths = [
+        path.join(process.cwd(), "data", "country_tooltips.json"),
+        path.join(process.cwd(), "..", "data", "country_tooltips.json"),
+        "data/country_tooltips.json"
+    ];
+    
+    for (const p of tooltipPaths) {
+        try {
+            const data = await readFile(p, "utf8");
+            tooltips = JSON.parse(data);
+            console.log(`Loaded tooltips from ${p}`);
+            break;
+        } catch { continue; }
+    }
+  } catch(e) {
+    console.warn("Could not load rich tooltips", e);
+  }
 
   for (const directoryPath of directoryCandidates) {
     try {
@@ -232,6 +255,27 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
           .map((row) => normalizeRow(row as RawGapRankingRecord))
           .filter((row): row is GapRankingRecord => row !== null),
         );
+
+        // MERGE RICH TOOLTIP DATA
+        records.forEach(r => {
+            const extra = tooltips[r.iso3.toUpperCase()];
+            if (extra) {
+                r.details = {
+                    drivers: extra.drivers || [],
+                    clusters: extra.clusters || [],
+                    categories: extra.population_categories || [],
+                    metrics: extra.metrics || {
+                        total_population: 0,
+                        targeted: 0,
+                        affected: 0,
+                        reached: 0,
+                        reached_pct: 0,
+                        uncovered_num: 0,
+                        uncovered_pct: 0
+                    }
+                };
+            }
+        });
 
         categories.add(selection.crisisCategory);
         selections.push(selection);

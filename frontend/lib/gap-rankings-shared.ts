@@ -6,6 +6,20 @@ export type GapRankingRecord = {
   funding: number;
   coverageRatio: number;
   gapScore: number;
+  details?: {
+    drivers: string[];
+    clusters: string[];
+    categories: string[];
+    metrics: {
+        total_population: number;
+        targeted: number;
+        affected: number;
+        reached: number;
+        reached_pct: number;
+        uncovered_num: number;
+        uncovered_pct: number;
+    }
+  }
 };
 
 export type GapRankingSelection = {
