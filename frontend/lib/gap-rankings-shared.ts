@@ -26,10 +26,12 @@ export type GapRankingRecord = {
 export type GapRankingSelection = {
   crisisCategory: string;
   includeTemporalFactor: "Yes" | "No";
+  demographicCategory: string;
 };
 
 export type GapRankingCatalog = {
   categories: string[];
+  demographicCategories: string[];
   selections: GapRankingSelection[];
   rankingsBySelection: Record<string, GapRankingRecord[]>;
 };
@@ -64,14 +66,29 @@ export const CATEGORY_LABELS: Record<string, string> = {
   WSH: "Water, Sanitation and Hygiene",
 };
 
+export const DEMOGRAPHIC_LABELS: Record<string, string> = {
+  ALL: "All people",
+  CHILDREN: "Children",
+  WOMEN: "Women",
+  MEN: "Men",
+};
+
 function normalizeCategoryToken(value: string) {
   return value.trim().toUpperCase();
 }
 
 export function getSelectionKey(selection: GapRankingSelection) {
-  return `${normalizeCategoryToken(selection.crisisCategory)}::${selection.includeTemporalFactor}`;
+  return [
+    normalizeCategoryToken(selection.crisisCategory),
+    selection.includeTemporalFactor,
+    normalizeCategoryToken(selection.demographicCategory),
+  ].join("::");
 }
 
 export function getCategoryLabel(categoryCode: string) {
   return CATEGORY_LABELS[normalizeCategoryToken(categoryCode)] ?? categoryCode;
+}
+
+export function getDemographicLabel(demographicCode: string) {
+  return DEMOGRAPHIC_LABELS[normalizeCategoryToken(demographicCode)] ?? demographicCode;
 }

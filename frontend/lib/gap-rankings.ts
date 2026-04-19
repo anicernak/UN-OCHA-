@@ -177,30 +177,51 @@ function dedupeRankingRecords(records: GapRankingRecord[]) {
   return Array.from(recordsByIso3.values());
 }
 
+function scoreRecords(records: GapRankingRecord[]) {
+  return records.reduce(
+    (score, record) => score + (record.reachRatio !== null ? 1 : 0),
+    0,
+  );
+}
+
 function parseRankingFileName(fileName: string): GapRankingSelection | null {
   if (!fileName.startsWith("gap_rankings_") || !fileName.endsWith(".json")) {
     return null;
   }
 
   const baseName = fileName.slice(0, -".json".length);
+  const demographicSuffixes = ["_all", "_children", "_women", "_men"] as const;
 
-  if (baseName.endsWith("_with_temporal")) {
-      return {
-      crisisCategory: baseName
+  let nameWithoutDemographic = baseName;
+  let demographicCategory = "ALL";
+
+  for (const suffix of demographicSuffixes) {
+    if (baseName.endsWith(suffix)) {
+      nameWithoutDemographic = baseName.slice(0, -suffix.length);
+      demographicCategory = suffix.slice(1).toUpperCase();
+      break;
+    }
+  }
+
+  if (nameWithoutDemographic.endsWith("_with_temporal")) {
+    return {
+      crisisCategory: nameWithoutDemographic
         .slice("gap_rankings_".length, -"_with_temporal".length)
         .trim()
         .toUpperCase(),
       includeTemporalFactor: "Yes",
+      demographicCategory,
     };
   }
 
-  if (baseName.endsWith("_no_temporal")) {
+  if (nameWithoutDemographic.endsWith("_no_temporal")) {
     return {
-      crisisCategory: baseName
+      crisisCategory: nameWithoutDemographic
         .slice("gap_rankings_".length, -"_no_temporal".length)
         .trim()
         .toUpperCase(),
       includeTemporalFactor: "No",
+      demographicCategory,
     };
   }
 
@@ -280,6 +301,7 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
       const jsonFiles = fileNames.filter((fileName) => fileName.endsWith(".json"));
       const rankingsBySelection: Record<string, GapRankingRecord[]> = {};
       const categories = new Set<string>();
+      const demographicCategories = new Set<string>();
       const selections: GapRankingSelection[] = [];
 
       for (const fileName of jsonFiles) {
@@ -318,13 +340,28 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
         });
 
         categories.add(selection.crisisCategory);
-        selections.push(selection);
-        rankingsBySelection[getSelectionKey(selection)] = records;
+        demographicCategories.add(selection.demographicCategory);
+
+        const selectionKey = getSelectionKey(selection);
+        const existingRecords = rankingsBySelection[selectionKey];
+
+        if (!existingRecords) {
+          selections.push(selection);
+          rankingsBySelection[selectionKey] = records;
+          continue;
+        }
+
+        if (scoreRecords(records) > scoreRecords(existingRecords)) {
+          rankingsBySelection[selectionKey] = records;
+        }
       }
 
       if (selections.length > 0) {
         return {
           categories: Array.from(categories).sort((a, b) => a.localeCompare(b)),
+          demographicCategories: Array.from(demographicCategories).sort((a, b) =>
+            a.localeCompare(b),
+          ),
           selections: selections.sort((a, b) =>
             getSelectionKey(a).localeCompare(getSelectionKey(b)),
           ),
@@ -340,14 +377,15 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
 
   return {
     categories: ["ALL"],
+    demographicCategories: ["ALL"],
     selections: [
-      { crisisCategory: "ALL", includeTemporalFactor: "No" },
-      { crisisCategory: "ALL", includeTemporalFactor: "Yes" },
+      { crisisCategory: "ALL", includeTemporalFactor: "No", demographicCategory: "ALL" },
+      { crisisCategory: "ALL", includeTemporalFactor: "Yes", demographicCategory: "ALL" },
     ],
     rankingsBySelection: {
-      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "No" })]:
+      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "No", demographicCategory: "ALL" })]:
         fallbackRankings,
-      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "Yes" })]:
+      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "Yes", demographicCategory: "ALL" })]:
         fallbackRankings,
     },
   };

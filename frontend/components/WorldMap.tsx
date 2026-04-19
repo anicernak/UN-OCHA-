@@ -5,6 +5,7 @@ import { scaleLinear } from "d3-scale";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import {
   getCategoryLabel,
+  getDemographicLabel,
   type GapRankingRecord,
   type GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
@@ -27,6 +28,7 @@ type GeographyFeature = {
 type WorldMapProps = {
   rankings: GapRankingRecord[];
   selectedCategory: string;
+  selectedDemographic: string;
   includeTemporalFactor: GapRankingSelection["includeTemporalFactor"];
 };
 
@@ -59,7 +61,12 @@ function getRankingIso3(properties: GeographyProperties) {
   return "";
 }
 
-export default function WorldMap({ rankings, selectedCategory, includeTemporalFactor }: WorldMapProps) {
+export default function WorldMap({
+  rankings,
+  selectedCategory,
+  selectedDemographic,
+  includeTemporalFactor,
+}: WorldMapProps) {
   const [hoverData, setHoverData] = useState<GapRankingRecord | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -137,7 +144,8 @@ export default function WorldMap({ rankings, selectedCategory, includeTemporalFa
       <div className="absolute left-4 top-4 z-10 rounded-2xl border border-slate-700 bg-slate-900/85 px-4 py-3 backdrop-blur-xl">
         <h3 className="text-lg font-bold text-white">Humanitarian WMI Heatmap</h3>
         <p className="mt-1 text-sm text-slate-300">
-          Category <strong>{getCategoryLabel(selectedCategory)}</strong> with temporal factor{" "}
+          Category <strong>{getCategoryLabel(selectedCategory)}</strong>, demographic{" "}
+          <strong>{getDemographicLabel(selectedDemographic)}</strong>, with temporal factor{" "}
           <strong>{includeTemporalFactor}</strong>.
         </p>
       </div>

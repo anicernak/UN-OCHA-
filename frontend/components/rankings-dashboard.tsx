@@ -8,7 +8,11 @@ import type {
   GapRankingCatalog,
   GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
-import { getCategoryLabel, getSelectionKey } from "@/lib/gap-rankings-shared";
+import {
+  getCategoryLabel,
+  getDemographicLabel,
+  getSelectionKey,
+} from "@/lib/gap-rankings-shared";
 import { AlertCircle, Info } from "lucide-react";
 
 const DEFAULT_THRESHOLD = 0;
@@ -63,17 +67,22 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
   const [selectedCategory, setSelectedCategory] = useState(
     catalog.categories[0] ?? "ALL",
   );
+  const [selectedDemographic, setSelectedDemographic] = useState(
+    catalog.demographicCategories[0] ?? "ALL",
+  );
   const [includeTemporalFactor, setIncludeTemporalFactor] =
     useState<GapRankingSelection["includeTemporalFactor"]>("Yes");
 
   const thresholdId = useId();
   const categoryId = useId();
+  const demographicId = useId();
   const temporalId = useId();
 
   const selectedRankings = useMemo(() => {
     const preferredSelection = getSelectionKey({
       crisisCategory: selectedCategory,
       includeTemporalFactor,
+      demographicCategory: selectedDemographic,
     });
 
     return (
@@ -82,11 +91,19 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
         getSelectionKey({
           crisisCategory: selectedCategory,
           includeTemporalFactor: "No",
+          demographicCategory: selectedDemographic,
+        })
+      ] ??
+      catalog.rankingsBySelection[
+        getSelectionKey({
+          crisisCategory: selectedCategory,
+          includeTemporalFactor,
+          demographicCategory: "ALL",
         })
       ] ??
       []
     );
-  }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory]);
+  }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory, selectedDemographic]);
 
   const maxWmi = useMemo(() => {
     return selectedRankings.reduce((max, row) => Math.max(max, row.gapScore), 0);
@@ -134,7 +151,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <div className="space-y-2">
               <div className="flex items-center">
                 <span className="text-sm font-semibold text-slate-300">
@@ -157,6 +174,33 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                 {catalog.categories.map((category) => (
                   <option key={category} value={category}>
                     {getCategoryLabel(category)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <span className="text-sm font-semibold text-slate-300">
+                    Demographic category
+                </span>
+                <FilterInfo 
+                    title="Demographic Category Logic"
+                    description="Switches the ranking between overall population and demographic-specific humanitarian need."
+                    math="Display = { Crisis rows | Demographic == Selection }"
+                    assumptions="Demographic splits depend on the available HNO structure and may differ from overall totals."
+                    dataSource="HNO demographic disaggregation exported to ranking files."
+                />
+              </div>
+              <select
+                id={demographicId}
+                value={selectedDemographic}
+                onChange={(event) => setSelectedDemographic(event.currentTarget.value)}
+                className="w-full rounded-xl bg-slate-800 border border-slate-700 p-3 text-white outline-none focus:ring-2 ring-indigo-500 transition"
+              >
+                {catalog.demographicCategories.map((demographic) => (
+                  <option key={demographic} value={demographic}>
+                    {getDemographicLabel(demographic)}
                   </option>
                 ))}
               </select>
@@ -228,6 +272,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
         <WorldMap
           rankings={filteredRankings}
           selectedCategory={selectedCategory}
+          selectedDemographic={selectedDemographic}
           includeTemporalFactor={includeTemporalFactor}
         />
       </section>
