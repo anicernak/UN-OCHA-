@@ -11,6 +11,7 @@ import type {
 import {
   getCategoryLabel,
   getDemographicLabel,
+  getTemporalModeLabel,
   getSelectionKey,
 } from "@/lib/gap-rankings-shared";
 import { AlertCircle, Info } from "lucide-react";
@@ -70,8 +71,8 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
   const [selectedDemographic, setSelectedDemographic] = useState(
     catalog.demographicCategories[0] ?? "ALL",
   );
-  const [includeTemporalFactor, setIncludeTemporalFactor] =
-    useState<GapRankingSelection["includeTemporalFactor"]>("Yes");
+  const [temporalMode, setTemporalMode] =
+    useState<GapRankingSelection["temporalMode"]>("CURRENT_WMI");
 
   const thresholdId = useId();
   const categoryId = useId();
@@ -81,7 +82,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
   const selectedRankings = useMemo(() => {
     const preferredSelection = getSelectionKey({
       crisisCategory: selectedCategory,
-      includeTemporalFactor,
+      temporalMode,
       demographicCategory: selectedDemographic,
     });
 
@@ -90,20 +91,27 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
       catalog.rankingsBySelection[
         getSelectionKey({
           crisisCategory: selectedCategory,
-          includeTemporalFactor: "No",
+          temporalMode: "CURRENT_WMI",
           demographicCategory: selectedDemographic,
         })
       ] ??
       catalog.rankingsBySelection[
         getSelectionKey({
           crisisCategory: selectedCategory,
-          includeTemporalFactor,
+          temporalMode,
+          demographicCategory: "ALL",
+        })
+      ] ??
+      catalog.rankingsBySelection[
+        getSelectionKey({
+          crisisCategory: selectedCategory,
+          temporalMode: "CURRENT_WMI",
           demographicCategory: "ALL",
         })
       ] ??
       []
     );
-  }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory, selectedDemographic]);
+  }, [catalog.rankingsBySelection, temporalMode, selectedCategory, selectedDemographic]);
 
   const maxWmi = useMemo(() => {
     return selectedRankings.reduce((max, row) => Math.max(max, row.gapScore), 0);
@@ -209,28 +217,29 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
             <div className="space-y-2">
               <div className="flex items-center">
                 <span className="text-sm font-semibold text-slate-300">
-                    Include temporal factor
+                    Temporal view
                 </span>
                 <FilterInfo 
-                    title="Temporal Weighting"
-                    description="Adjusts priority based on how long a crisis has been consistently underfunded."
-                    math="Score (Adj) = Base Gap * (1 + Trend Coefficient)"
-                    assumptions="Historical neglect is a leading indicator of current vulnerability and structural gaps."
+                    title="Temporal Ranking Modes"
+                    description="Lets you compare the current WMI, a blended score with historical neglect, or the historical-neglect signal on its own."
+                    math="Current WMI; Final WMI = Current WMI + α × Temporal Factor; Historical-only = α × Temporal Factor"
+                    assumptions="Because historical severity and need series are not available locally, the temporal factor uses current WMI as the base and historical underfunding persistence as the multiplier."
                     dataSource="Financial Tracking Service (FTS) multi-year data (2023-2026)."
                 />
               </div>
               <select
                 id={temporalId}
-                value={includeTemporalFactor}
+                value={temporalMode}
                 onChange={(event) =>
-                  setIncludeTemporalFactor(
-                    event.currentTarget.value as GapRankingSelection["includeTemporalFactor"],
+                  setTemporalMode(
+                    event.currentTarget.value as GapRankingSelection["temporalMode"],
                   )
                 }
                 className="w-full rounded-xl bg-slate-800 border border-slate-700 p-3 text-white outline-none focus:ring-2 ring-indigo-500 transition"
               >
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="CURRENT_WMI">{getTemporalModeLabel("CURRENT_WMI")}</option>
+                <option value="WMI_PLUS_HISTORICAL_NEGLECT">{getTemporalModeLabel("WMI_PLUS_HISTORICAL_NEGLECT")}</option>
+                <option value="HISTORICAL_NEGLECT_ONLY">{getTemporalModeLabel("HISTORICAL_NEGLECT_ONLY")}</option>
               </select>
             </div>
           </div>
@@ -273,7 +282,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
           rankings={filteredRankings}
           selectedCategory={selectedCategory}
           selectedDemographic={selectedDemographic}
-          includeTemporalFactor={includeTemporalFactor}
+          temporalMode={temporalMode}
         />
       </section>
 

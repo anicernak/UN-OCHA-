@@ -1,0 +1,40 @@
+[
+  {
+    "iso3": "NGA",
+    "country_name": "Nigeria",
+    "people_in_need": 780,
+    "requirements": 910246471.0,
+    "funding": 324189433.0,
+    "coverage_ratio": 0.35615566039365615,
+    "reach_ratio": 0.0,
+    "total_population": 0,
+    "need_density_pct": null,
+    "inform_severity_index": 3.5279166666666666,
+    "complexity_operating_environment": 3.6308333333333334,
+    "funding_gap_pct": 64.38443396063438,
+    "overlooked_score": 33.529913521523646,
+    "gap_score": 43.58888757798074,
+    "current_wmi": 33.529913521523646,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 67.05982704304729
+  },
+  {
+    "iso3": "YEM",
+    "country_name": "YEM",
+    "people_in_need": 520000,
+    "requirements": 2478772922.0,
+    "funding": 1384559671.0,
+    "coverage_ratio": 0.5585665627986879,
+    "reach_ratio": 0.0,
+    "total_population": 0,
+    "need_density_pct": null,
+    "inform_severity_index": 3.4805555555555556,
+    "complexity_operating_environment": 3.8652777777777776,
+    "funding_gap_pct": 44.14334372013121,
+    "overlooked_score": 27.549947560483808,
+    "gap_score": 31.68243969455638,
+    "current_wmi": 27.549947560483808,
+    "consecutive_years_underfunded": 0,
+    "temporal_factor_value": 27.549947560483808
+  }
+]

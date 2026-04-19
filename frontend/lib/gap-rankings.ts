@@ -203,26 +203,28 @@ function parseRankingFileName(fileName: string): GapRankingSelection | null {
     }
   }
 
-  if (nameWithoutDemographic.endsWith("_with_temporal")) {
-    return {
-      crisisCategory: nameWithoutDemographic
-        .slice("gap_rankings_".length, -"_with_temporal".length)
-        .trim()
-        .toUpperCase(),
-      includeTemporalFactor: "Yes",
-      demographicCategory,
-    };
-  }
+  const temporalPatterns: Array<{
+    suffix: string;
+    temporalMode: GapRankingSelection["temporalMode"];
+  }> = [
+    { suffix: "_wmi_plus_historical_neglect", temporalMode: "WMI_PLUS_HISTORICAL_NEGLECT" },
+    { suffix: "_historical_neglect_only", temporalMode: "HISTORICAL_NEGLECT_ONLY" },
+    { suffix: "_current_wmi", temporalMode: "CURRENT_WMI" },
+    { suffix: "_with_temporal", temporalMode: "WMI_PLUS_HISTORICAL_NEGLECT" },
+    { suffix: "_no_temporal", temporalMode: "CURRENT_WMI" },
+  ];
 
-  if (nameWithoutDemographic.endsWith("_no_temporal")) {
-    return {
-      crisisCategory: nameWithoutDemographic
-        .slice("gap_rankings_".length, -"_no_temporal".length)
-        .trim()
-        .toUpperCase(),
-      includeTemporalFactor: "No",
-      demographicCategory,
-    };
+  for (const pattern of temporalPatterns) {
+    if (nameWithoutDemographic.endsWith(pattern.suffix)) {
+      return {
+        crisisCategory: nameWithoutDemographic
+          .slice("gap_rankings_".length, -pattern.suffix.length)
+          .trim()
+          .toUpperCase(),
+        temporalMode: pattern.temporalMode,
+        demographicCategory,
+      };
+    }
   }
 
   return null;
@@ -379,13 +381,16 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
     categories: ["ALL"],
     demographicCategories: ["ALL"],
     selections: [
-      { crisisCategory: "ALL", includeTemporalFactor: "No", demographicCategory: "ALL" },
-      { crisisCategory: "ALL", includeTemporalFactor: "Yes", demographicCategory: "ALL" },
+      { crisisCategory: "ALL", temporalMode: "CURRENT_WMI", demographicCategory: "ALL" },
+      { crisisCategory: "ALL", temporalMode: "WMI_PLUS_HISTORICAL_NEGLECT", demographicCategory: "ALL" },
+      { crisisCategory: "ALL", temporalMode: "HISTORICAL_NEGLECT_ONLY", demographicCategory: "ALL" },
     ],
     rankingsBySelection: {
-      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "No", demographicCategory: "ALL" })]:
+      [getSelectionKey({ crisisCategory: "ALL", temporalMode: "CURRENT_WMI", demographicCategory: "ALL" })]:
         fallbackRankings,
-      [getSelectionKey({ crisisCategory: "ALL", includeTemporalFactor: "Yes", demographicCategory: "ALL" })]:
+      [getSelectionKey({ crisisCategory: "ALL", temporalMode: "WMI_PLUS_HISTORICAL_NEGLECT", demographicCategory: "ALL" })]:
+        fallbackRankings,
+      [getSelectionKey({ crisisCategory: "ALL", temporalMode: "HISTORICAL_NEGLECT_ONLY", demographicCategory: "ALL" })]:
         fallbackRankings,
     },
   };

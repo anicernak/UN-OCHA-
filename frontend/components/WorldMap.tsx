@@ -6,6 +6,7 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import {
   getCategoryLabel,
   getDemographicLabel,
+  getTemporalModeLabel,
   type GapRankingRecord,
   type GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
@@ -29,7 +30,7 @@ type WorldMapProps = {
   rankings: GapRankingRecord[];
   selectedCategory: string;
   selectedDemographic: string;
-  includeTemporalFactor: GapRankingSelection["includeTemporalFactor"];
+  temporalMode: GapRankingSelection["temporalMode"];
 };
 
 const alpha2ToIso3: Record<string, string> = {
@@ -65,7 +66,7 @@ export default function WorldMap({
   rankings,
   selectedCategory,
   selectedDemographic,
-  includeTemporalFactor,
+  temporalMode,
 }: WorldMapProps) {
   const [hoverData, setHoverData] = useState<GapRankingRecord | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -145,8 +146,8 @@ export default function WorldMap({
         <h3 className="text-lg font-bold text-white">Humanitarian WMI Heatmap</h3>
         <p className="mt-1 text-sm text-slate-300">
           Category <strong>{getCategoryLabel(selectedCategory)}</strong>, demographic{" "}
-          <strong>{getDemographicLabel(selectedDemographic)}</strong>, with temporal factor{" "}
-          <strong>{includeTemporalFactor}</strong>.
+          <strong>{getDemographicLabel(selectedDemographic)}</strong>, view{" "}
+          <strong>{getTemporalModeLabel(temporalMode)}</strong>.
         </p>
       </div>
 

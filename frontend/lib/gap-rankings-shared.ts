@@ -25,7 +25,7 @@ export type GapRankingRecord = {
 
 export type GapRankingSelection = {
   crisisCategory: string;
-  includeTemporalFactor: "Yes" | "No";
+  temporalMode: "CURRENT_WMI" | "WMI_PLUS_HISTORICAL_NEGLECT" | "HISTORICAL_NEGLECT_ONLY";
   demographicCategory: string;
 };
 
@@ -73,6 +73,12 @@ export const DEMOGRAPHIC_LABELS: Record<string, string> = {
   MEN: "Men",
 };
 
+export const TEMPORAL_MODE_LABELS: Record<GapRankingSelection["temporalMode"], string> = {
+  CURRENT_WMI: "Current WMI only",
+  WMI_PLUS_HISTORICAL_NEGLECT: "Current WMI + historical neglect",
+  HISTORICAL_NEGLECT_ONLY: "Historical neglect only",
+};
+
 function normalizeCategoryToken(value: string) {
   return value.trim().toUpperCase();
 }
@@ -80,7 +86,7 @@ function normalizeCategoryToken(value: string) {
 export function getSelectionKey(selection: GapRankingSelection) {
   return [
     normalizeCategoryToken(selection.crisisCategory),
-    selection.includeTemporalFactor,
+    selection.temporalMode,
     normalizeCategoryToken(selection.demographicCategory),
   ].join("::");
 }
@@ -91,4 +97,8 @@ export function getCategoryLabel(categoryCode: string) {
 
 export function getDemographicLabel(demographicCode: string) {
   return DEMOGRAPHIC_LABELS[normalizeCategoryToken(demographicCode)] ?? demographicCode;
+}
+
+export function getTemporalModeLabel(mode: GapRankingSelection["temporalMode"]) {
+  return TEMPORAL_MODE_LABELS[mode] ?? mode;
 }

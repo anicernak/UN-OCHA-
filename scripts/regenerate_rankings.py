@@ -29,8 +29,13 @@ CRISIS_CATEGORIES = [
     "WSH",
 ]
 
-TEMPORAL_OPTIONS = ["No", "Yes"]
+TEMPORAL_MODES = [
+    "CURRENT_WMI",
+    "WMI_PLUS_HISTORICAL_NEGLECT",
+    "HISTORICAL_NEGLECT_ONLY",
+]
 TEMPORAL_LAMBDA = 0.2
+TEMPORAL_ALPHA = 0.15
 
 
 def repo_root() -> Path:
@@ -185,21 +190,12 @@ def load_fts_temporal(data_dir: Path) -> pd.DataFrame:
         return pd.DataFrame(
             columns=[
                 "iso3",
-                "avg_gap",
                 "consecutive_years_underfunded",
-                "temporal_factor_value",
             ]
         )
 
     historical["coverage_ratio"] = (historical["funding"] / historical["requirements"]).clip(0, 1)
-    historical["gap_score_year"] = historical["requirements"] * (1 - historical["coverage_ratio"])
     historical["is_underfunded"] = (historical["coverage_ratio"] < 1.0).astype(int)
-
-    avg_gaps = (
-        historical.groupby("countryCode", as_index=False)["gap_score_year"]
-        .mean()
-        .rename(columns={"countryCode": "iso3", "gap_score_year": "avg_gap"})
-    )
 
     def count_consecutive_underfunded(group: pd.DataFrame) -> int:
         consecutive = 0
@@ -217,20 +213,16 @@ def load_fts_temporal(data_dir: Path) -> pd.DataFrame:
         .rename(columns={"countryCode": "iso3"})
     )
 
-    temporal = avg_gaps.merge(consecutive_years, on="iso3", how="left")
-    temporal["consecutive_years_underfunded"] = (
-        temporal["consecutive_years_underfunded"].fillna(0).astype(int)
-    )
-    temporal["temporal_factor_value"] = temporal["avg_gap"] * (
-        1 + TEMPORAL_LAMBDA * temporal["consecutive_years_underfunded"]
+    consecutive_years["consecutive_years_underfunded"] = (
+        consecutive_years["consecutive_years_underfunded"].fillna(0).astype(int)
     )
 
-    return temporal[["iso3", "avg_gap", "consecutive_years_underfunded", "temporal_factor_value"]]
+    return consecutive_years[["iso3", "consecutive_years_underfunded"]]
 
 
 def build_rankings_for_category(
     category: str,
-    include_temporal: bool,
+    temporal_mode: str,
     hno_by_cluster: pd.DataFrame,
     fts_current: pd.DataFrame,
     fts_temporal: pd.DataFrame,
@@ -256,36 +248,21 @@ def build_rankings_for_category(
                 "funding_gap_pct",
                 "overlooked_score",
                 "gap_score",
-                "avg_gap",
+                "current_wmi",
                 "consecutive_years_underfunded",
                 "temporal_factor_value",
             ]
         )
 
-    temporal = (
-        fts_temporal.copy()
-        if include_temporal
-        else pd.DataFrame(
-            {
-                "iso3": pd.Series(dtype="string"),
-                "avg_gap": pd.Series(dtype="float64"),
-                "consecutive_years_underfunded": pd.Series(dtype="int64"),
-                "temporal_factor_value": pd.Series(dtype="float64"),
-            }
-        )
-    )
-
     frame = hno.merge(fts_current, on="iso3", how="inner")
-    frame = frame.merge(temporal, on="iso3", how="left")
+    frame = frame.merge(fts_temporal, on="iso3", how="left")
     frame = frame.merge(predict_pin_metrics, on="iso3", how="left")
     frame = frame.merge(country_names, on="iso3", how="left")
 
     frame["country_name"] = frame["country_name"].fillna(frame["iso3"])
-    frame["avg_gap"] = frame["avg_gap"].fillna(0.0)
     frame["consecutive_years_underfunded"] = (
         frame["consecutive_years_underfunded"].fillna(0).astype(int)
     )
-    frame["temporal_factor_value"] = frame["temporal_factor_value"].fillna(0.0)
 
     frame = frame.loc[(frame["people_in_need"] > 0) & (frame["requirements"] > 0)].copy()
 
@@ -308,9 +285,21 @@ def build_rankings_for_category(
         + frame["funding_gap_component"]
         + frame["complexity_component"]
     )
-    frame["gap_score"] = frame["overlooked_score"]
+    frame["current_wmi"] = frame["overlooked_score"]
+    frame["temporal_factor_value"] = frame["current_wmi"] * (
+        1 + TEMPORAL_LAMBDA * frame["consecutive_years_underfunded"]
+    )
 
-    frame = frame.sort_values("overlooked_score", ascending=False).reset_index(drop=True)
+    if temporal_mode == "CURRENT_WMI":
+        frame["gap_score"] = frame["current_wmi"]
+    elif temporal_mode == "WMI_PLUS_HISTORICAL_NEGLECT":
+        frame["gap_score"] = frame["current_wmi"] + (TEMPORAL_ALPHA * frame["temporal_factor_value"])
+    elif temporal_mode == "HISTORICAL_NEGLECT_ONLY":
+        frame["gap_score"] = TEMPORAL_ALPHA * frame["temporal_factor_value"]
+    else:
+        raise ValueError(f"Unsupported temporal mode: {temporal_mode}")
+
+    frame = frame.sort_values("gap_score", ascending=False).reset_index(drop=True)
 
     final = frame[
         [
@@ -328,7 +317,7 @@ def build_rankings_for_category(
             "funding_gap_pct",
             "overlooked_score",
             "gap_score",
-            "avg_gap",
+            "current_wmi",
             "consecutive_years_underfunded",
             "temporal_factor_value",
         ]
@@ -359,23 +348,26 @@ def main() -> None:
     fts_temporal = load_fts_temporal(data_dir)
 
     for category in CRISIS_CATEGORIES:
-        for temporal_option in TEMPORAL_OPTIONS:
-            include_temporal = temporal_option == "Yes"
+        for temporal_mode in TEMPORAL_MODES:
             rankings = build_rankings_for_category(
                 category=category,
-                include_temporal=include_temporal,
+                temporal_mode=temporal_mode,
                 hno_by_cluster=hno_by_cluster,
                 fts_current=fts_current,
                 fts_temporal=fts_temporal,
                 predict_pin_metrics=predict_pin_metrics,
                 country_names=country_names,
             )
-            suffix = "with_temporal" if include_temporal else "no_temporal"
+            suffix = {
+                "CURRENT_WMI": "current_wmi",
+                "WMI_PLUS_HISTORICAL_NEGLECT": "wmi_plus_historical_neglect",
+                "HISTORICAL_NEGLECT_ONLY": "historical_neglect_only",
+            }[temporal_mode]
             write_json(rankings, output_dir / f"gap_rankings_{category.lower()}_{suffix}.json")
 
     fallback = build_rankings_for_category(
         category="ALL",
-        include_temporal=False,
+        temporal_mode="CURRENT_WMI",
         hno_by_cluster=hno_by_cluster,
         fts_current=fts_current,
         fts_temporal=fts_temporal,
@@ -384,7 +376,7 @@ def main() -> None:
     )
     write_json(fallback, fallback_path)
 
-    print(f"Generated {len(CRISIS_CATEGORIES) * len(TEMPORAL_OPTIONS)} ranking files in {output_dir}")
+    print(f"Generated {len(CRISIS_CATEGORIES) * len(TEMPORAL_MODES)} ranking files in {output_dir}")
     print(f"Generated fallback file at {fallback_path}")
 
 

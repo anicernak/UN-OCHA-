@@ -1,0 +1,21 @@
+[
+  {
+    "iso3": "SSD",
+    "country_name": "South Sudan",
+    "people_in_need": 12650,
+    "requirements": 1694778653.0,
+    "funding": 917826590.0,
+    "coverage_ratio": 0.5415613350895799,
+    "reach_ratio": 0.0,
+    "total_population": 0,
+    "need_density_pct": null,
+    "inform_severity_index": 4.229166666666667,
+    "complexity_operating_environment": 4.245833333333333,
+    "funding_gap_pct": 45.84386649104201,
+    "overlooked_score": 30.686493280645937,
+    "gap_score": 30.686493280645937,
+    "current_wmi": 30.686493280645937,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 61.372986561291874
+  }
+]
