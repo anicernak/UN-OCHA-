@@ -213,7 +213,12 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                     Temporal view
                 </span>
                 <div className="ml-2">
-                  <InfoPopover title="Temporal View" ariaLabel="Temporal view information" width="min(44rem, calc(100vw - 2rem))">
+                  <InfoPopover
+                    title="Temporal View"
+                    ariaLabel="Temporal view information"
+                    width="min(44rem, calc(100vw - 2rem))"
+                    align="end"
+                  >
                     <p>
                       This filter decides whether you rank countries by the current mismatch only,
                       by a score that also rewards persistent underfunding, or by the historical

@@ -120,9 +120,13 @@ export function RankingsTable({
         <div className="flex items-start gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/10 px-4 py-3">
           <AlertCircle className="mt-0.5 shrink-0 text-amber-300" size={18} />
           <p className="text-sm text-amber-100">
-            Warning: some underlying observations in this ranking pipeline were predicted by our
-            machine learning model. Those entries will be visually highlighted once you define the
-            prediction-marking rule.
+            <span className="font-semibold">Warning:</span> many{" "}
+            <span className="italic">people_in_need</span> and{" "}
+            <span className="italic">requirements</span> values are estimated by a prediction
+            model rather than taken directly from reported data. In many countries, both fields are
+            missing, which means the estimated requirements can depend on the estimated people in
+            need. This can compound uncertainty, so these results should be interpreted with extra
+            caution.
           </p>
         </div>
       </div>
@@ -140,8 +144,56 @@ export function RankingsTable({
                   <th className="px-6 py-4 font-bold border-b border-slate-800">Rank</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800">Country Name</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800">ISO3</th>
-                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">People In Need</th>
-                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Requirements</th>
+                  <th className="px-6 py-4 border-b border-slate-800 text-right font-bold">
+                    <span className="inline-flex items-center justify-end gap-2">
+                      <span>People In Need</span>
+                      <InfoPopover
+                        title="People In Need"
+                        ariaLabel="People in need column information"
+                        width="min(34rem, calc(100vw - 2rem))"
+                        side="bottom"
+                        align="end"
+                      >
+                        <p>
+                          This column shows the estimated number of people in need for the selected
+                          crisis category and demographic view.
+                        </p>
+                        <p>
+                          It is the demand-side population measure used to understand how many
+                          people require humanitarian assistance in that slice of the data.
+                        </p>
+                        <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                          <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                          Humanitarian Needs Overview data.
+                        </p>
+                      </InfoPopover>
+                    </span>
+                  </th>
+                  <th className="px-6 py-4 border-b border-slate-800 text-right font-bold">
+                    <span className="inline-flex items-center justify-end gap-2">
+                      <span>Requirements</span>
+                      <InfoPopover
+                        title="Requirements"
+                        ariaLabel="Requirements column information"
+                        width="min(34rem, calc(100vw - 2rem))"
+                        side="bottom"
+                        align="end"
+                      >
+                        <p>
+                          This column shows the total financial requirements associated with the
+                          current row.
+                        </p>
+                        <p>
+                          It is the requested funding envelope used alongside reported funding to
+                          calculate coverage and the wider mismatch signal.
+                        </p>
+                        <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                          <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                          Humanitarian Response Plan data; Global requirements and funding data.
+                        </p>
+                      </InfoPopover>
+                    </span>
+                  </th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Funding</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Reach Ratio</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Coverage</th>
@@ -175,17 +227,15 @@ export function RankingsTable({
                       {formatCurrency(row.funding)}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <span className="px-2 py-1 rounded text-xs font-bold bg-sky-900/30 text-sky-300">
-                        {formatOptionalPercent(row.reachRatio)}
-                      </span>
+                      {formatOptionalPercent(row.reachRatio)}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <span className={`px-2 py-1 rounded text-xs font-bold ${row.coverageRatio < 0.3 ? 'bg-red-900/30 text-red-400' : 'bg-emerald-900/30 text-emerald-400'}`}>
-                        {formatPercent(row.coverageRatio)}
-                      </span>
+                      {formatPercent(row.coverageRatio)}
                     </td>
-                    <td className="px-6 py-4 font-bold text-indigo-300 text-right">
-                      {formatCompactNumber(row.gapScore)}
+                    <td className="px-6 py-4 text-right">
+                      <span className="rounded px-2 py-1 text-xs font-bold text-sky-300 bg-sky-900/30">
+                        {formatCompactNumber(row.gapScore)}
+                      </span>
                     </td>
                   </tr>
                 ))}
