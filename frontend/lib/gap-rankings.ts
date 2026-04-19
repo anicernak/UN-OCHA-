@@ -281,14 +281,16 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
     // Try multiple paths for the tooltip file
     const tooltipPaths = [
         path.join(process.cwd(), "data", "country_tooltips.json"),
+        path.join(process.cwd(), "frontend", "data", "country_tooltips.json"),
         path.join(process.cwd(), "..", "data", "country_tooltips.json"),
+        path.join(process.cwd(), "..", "frontend", "data", "country_tooltips.json"),
         "data/country_tooltips.json"
     ];
     
     for (const p of tooltipPaths) {
         try {
             const data = await readFile(p, "utf8");
-            tooltips = JSON.parse(data) as Record<string, TooltipRecord>;
+            tooltips = JSON.parse(data.replace(/\bNaN\b/g, "null")) as Record<string, TooltipRecord>;
             console.log(`Loaded tooltips from ${p}`);
             break;
         } catch { continue; }

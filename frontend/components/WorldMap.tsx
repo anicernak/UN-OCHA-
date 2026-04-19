@@ -136,7 +136,7 @@ export default function WorldMap({
             {/* Gap Metric */}
             <div className="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
                 <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-bold uppercase text-red-400 tracking-widest">Uncovered Need</span>
+                    <span className="text-[10px] font-bold uppercase text-red-400 tracking-widest">Need Not Covered</span>
                     <span className="text-xs font-black text-red-500">{hoverData.details?.metrics.uncovered_pct}%</span>
                 </div>
                 <p className="text-xl font-black text-white mt-1">{formatCompactNumber(hoverData.details?.metrics.uncovered_num || 0)} <span className="text-xs font-normal text-slate-400 ml-1">People</span></p>
