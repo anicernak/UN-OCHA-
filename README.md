@@ -1,7 +1,7 @@
 # Technical Documentation: The Geo-Insight Humanitarian Gap Analyzer
 **Project Goal:** *Empowering Human Judgment through Transparent Analytics*
 
-LIVE DEMO: https://un-ocha-rosy.vercel.app
+LIVE DEMO: [https://un-ocha-rosy.vercel.app](https://un-ocha-rosy.vercel.app)
 
 ## 1. The Mission: Human Lives Behind the Data
 In the humanitarian sector, a "data point" isn't just a number; it represents a child in need, a displaced family, or a community without water. For a publicly funded organization like the UN, the stakes are twofold: a mistake in funding allocation isn't just an operational error—it is a human tragedy and a catastrophic risk to organizational reputation. 
