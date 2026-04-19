@@ -15,7 +15,7 @@ export default async function Home() {
             Humanitarian WMI <span className="text-indigo-500">Analyzer</span>
           </h1>
           <p className="max-w-3xl text-base font-medium text-indigo-200 sm:text-lg">
-            WMI, or Weighted Mismatch Index, is a single score showing where humanitarian needs are most out of balance with the response.
+            WMI, or Weighted Mismatch Index, is a single score showing where humanitarian needs are most out of balance with the funding response.
           </p>
           <p className="max-w-3xl text-lg text-slate-400 leading-relaxed">
             A real-time analytical engine surfacing the Weighted Mismatch Index
@@ -27,7 +27,7 @@ export default async function Home() {
         <RankingsDashboard catalog={catalog} />
         
         <footer className="mt-12 border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-          <p>© 2026 Datathon Geo-Insight Team. All calculations based on publicly available OCHA, FTS, and HNO datasets.</p>
+          <p>© 2026 Datathon Annelictorianmilian Team. All calculations based on publicly available OCHA, FTS, and HNO datasets.</p>
         </footer>
       </div>
     </main>

@@ -139,11 +139,6 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                       category you want to inspect. It answers: which countries rise to the top
                       when we only look at this response area?
                     </p>
-                    <p>
-                      <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
-                      show rows from the selected ranking file where{" "}
-                      <span className="font-mono">crisisCategory = selected category</span>.
-                    </p>
                     <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
                       <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
                       Humanitarian Needs Overview data; Humanitarian Response Plan data.
@@ -174,15 +169,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                   <InfoPopover title="Demographic Category" ariaLabel="Demographic category information">
                     <p>
                       This filter changes whether the ranking is based on all people or a specific
-                      demographic slice such as children, women, or men.
-                    </p>
-                    <p>
-                      <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
-                      show rows from the selected ranking file where{" "}
-                      <span className="font-mono">demographicCategory = selected demographic</span>.
-                    </p>
-                    <p>
-                      The intuition is that a country can rank differently for a subgroup than it
+                      demographic slice such as children, women, or men. A country can rank differently for a subgroup than it
                       does for the full population if need, targeting, or reach is unevenly
                       distributed.
                     </p>
@@ -221,30 +208,27 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                   >
                     <p>
                       This filter decides whether you rank countries by the current mismatch only,
-                      by a score that also rewards persistent underfunding, or by the historical
+                      by a score that also takes persistent underfunding into account, or by the historical
                       neglect signal on its own.
                     </p>
                     <p>
                       <span className="font-mono font-bold text-indigo-400">Current WMI:</span>{" "}
-                      <span className="font-mono">gapScore = current_wmi</span>.
+                      <span className="mt-1 block font-mono">current_wmi</span>
                     </p>
                     <p>
-                      <span className="font-mono font-bold text-indigo-400">Historical factor:</span>{" "}
-                      the ranking files expose{" "}
-                      <span className="font-mono">
-                        temporal_factor_value = base x (1 + consecutive_years_underfunded / 5)
+                      <span className="font-mono font-bold text-indigo-400">Historical neglect only:</span>
+                      <span className="mt-1 block font-mono">
+                        current_wmi x (0.15 + 0.03 x consecutive_years_underfunded)
                       </span>
-                      , where the base is the current WMI or the average funding gap, depending on
-                      the file.
                     </p>
                     <p>
-                      <span className="font-mono font-bold text-indigo-400">Blended / historical views:</span>{" "}
-                      the app reads the precomputed <span className="font-mono">gap_score</span>{" "}
-                      from the corresponding ranking files, which already combine or isolate the
-                      neglect contribution.
+                      <span className="font-mono font-bold text-indigo-400">Current WMI + historical neglect:</span>
+                      <span className="mt-1 block font-mono">
+                        current_wmi x (1.15 + 0.03 x consecutive_years_underfunded)
+                      </span>
                     </p>
                     <p>
-                      Intuition: use current WMI for present-day imbalance, the blended mode for
+                      Use current WMI for present-day imbalance, the blended mode for
                       crises that are severe now and repeatedly underfunded, and historical-only to
                       surface long-running neglect even when the current score is lower.
                     </p>
@@ -284,16 +268,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                     concentrate on the most acute mismatches.
                   </p>
                   <p>
-                    <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
-                    keep rows where <span className="font-mono">gapScore &gt;= threshold</span>.
-                  </p>
-                  <p>
-                    The WMI score itself is a precomputed mismatch measure derived from severity,
-                    need density, funding gap, and operating complexity, with optional historical
-                    neglect depending on the selected temporal view.
-                  </p>
-                  <p>
-                    Intuition: raising the slider does not change the formula, it only increases
+                    Raising the slider does not change the formula, it only increases
                     the bar for what counts as strategically important enough to remain visible.
                   </p>
                   <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
