@@ -29,7 +29,7 @@ We believe transparency requires stating our assumptions clearly so they can be 
 4.  **Reporting Lags:** We assume a 30-day reporting lag in FTS data and provide "Last Updated" timestamps to the user.
 
 ## 5. Methodology: Understanding vs. Deciding
-While our tool uses advanced modeling, we have strictly limited its scope to **Data Imputation** rather than **Decision Prediction**.
+While our tool uses advanced modeling, we have strictly limited its scope to **Data Imputation** rather than **Decision Prediction**. These Data Imputations were performed with the help of a Random Forest based on attributes like severinity, countries and crisis. By that we could gather much more data, and especially not give a disadvantage to the countires were little data is available.
 
 *   **What we model:** We use Random Forest imputation to fill in missing "People In Need" figures where data is historically thin or reports are delayed. This creates a more complete picture for the fund manager to analyze.
 *   **What we do NOT model:** We decidedly did not develop models that "predict" where aid should go. The tool surfaces the *gap*, but the human expert decides the *response*.
