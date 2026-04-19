@@ -18,6 +18,7 @@ type RawGapRankingRecord = {
   requirements?: unknown;
   funding?: unknown;
   coverage_ratio?: unknown;
+  reach_ratio?: unknown;
   gap_score?: unknown;
 };
 
@@ -27,6 +28,21 @@ type RawMapDataRecord = {
   overlooked_score?: unknown;
   severity?: unknown;
   population_in_need?: unknown;
+};
+
+type TooltipRecord = {
+  drivers?: string[];
+  clusters?: string[];
+  population_categories?: string[];
+  metrics?: {
+    total_population?: number;
+    targeted?: number;
+    affected?: number;
+    reached?: number;
+    reached_pct?: number;
+    uncovered_num?: number;
+    uncovered_pct?: number;
+  };
 };
 
 function toNumber(value: unknown) {
@@ -51,6 +67,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
   const requirements = toNumber(row.requirements);
   const funding = toNumber(row.funding);
   const coverageRatio = toNumber(row.coverage_ratio);
+  const reachRatio = toNumber(row.reach_ratio);
   const gapScore = toNumber(row.gap_score);
 
   if (
@@ -72,6 +89,7 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
     requirements,
     funding,
     coverageRatio,
+    reachRatio,
     gapScore,
   };
 }
@@ -115,15 +133,31 @@ function dedupeRankingRecords(records: GapRankingRecord[]) {
 
     const requirements = Math.max(existing.requirements, record.requirements);
     const funding = Math.max(existing.funding, record.funding);
+    const peopleInNeed = existing.peopleInNeed + record.peopleInNeed;
+    const weightedReachRatio = (() => {
+      const existingWeight = existing.reachRatio === null ? 0 : existing.peopleInNeed;
+      const recordWeight = record.reachRatio === null ? 0 : record.peopleInNeed;
+      const totalWeight = existingWeight + recordWeight;
+
+      if (totalWeight === 0) {
+        return null;
+      }
+
+      return (
+        ((existing.reachRatio ?? 0) * existingWeight) +
+        ((record.reachRatio ?? 0) * recordWeight)
+      ) / totalWeight;
+    })();
 
     recordsByIso3.set(record.iso3, {
       iso3: record.iso3,
       countryName: existing.countryName || record.countryName,
-      peopleInNeed: existing.peopleInNeed + record.peopleInNeed,
+      peopleInNeed,
       requirements,
       funding,
       coverageRatio:
         requirements > 0 ? Math.min(Math.max(funding / requirements, 0), 1) : 0,
+      reachRatio: weightedReachRatio,
       gapScore: existing.gapScore + record.gapScore,
     });
   }
@@ -169,7 +203,7 @@ async function readJsonFromCandidates<T>(fileNames: string[]) {
   for (const filePath of candidatePaths) {
     try {
       const fileContents = await readFile(filePath, "utf8");
-      return JSON.parse(fileContents) as T;
+      return JSON.parse(fileContents.replace(/\bNaN\b/g, "null")) as T;
     } catch {
       continue;
     }
@@ -207,7 +241,7 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
   ];
 
   // Load rich tooltip info
-  let tooltips: Record<string, any> = {};
+  let tooltips: Record<string, TooltipRecord> = {};
   try {
     // Try multiple paths for the tooltip file
     const tooltipPaths = [
@@ -219,7 +253,7 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
     for (const p of tooltipPaths) {
         try {
             const data = await readFile(p, "utf8");
-            tooltips = JSON.parse(data);
+            tooltips = JSON.parse(data) as Record<string, TooltipRecord>;
             console.log(`Loaded tooltips from ${p}`);
             break;
         } catch { continue; }
@@ -244,7 +278,9 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
         }
 
         const filePath = path.join(directoryPath, fileName);
-        const parsed = JSON.parse(await readFile(filePath, "utf8")) as unknown;
+        const parsed = JSON.parse(
+          (await readFile(filePath, "utf8")).replace(/\bNaN\b/g, "null"),
+        ) as unknown;
 
         if (!Array.isArray(parsed)) {
           continue;

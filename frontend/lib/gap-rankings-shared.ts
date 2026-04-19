@@ -5,6 +5,7 @@ export type GapRankingRecord = {
   requirements: number;
   funding: number;
   coverageRatio: number;
+  reachRatio: number | null;
   gapScore: number;
   details?: {
     drivers: string[];

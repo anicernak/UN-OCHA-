@@ -30,7 +30,7 @@ function formatPercent(value: number) {
   }).format(value);
 }
 
-function formatOptionalPercent(value?: number) {
+function formatOptionalPercent(value?: number | null) {
   if (typeof value !== "number" || !Number.isFinite(value)) {
     return "—";
   }
@@ -118,7 +118,7 @@ export function RankingsTable({
                     </td>
                     <td className="px-6 py-4 text-right">
                       <span className="px-2 py-1 rounded text-xs font-bold bg-sky-900/30 text-sky-300">
-                        {formatOptionalPercent(row.details?.metrics.reached_pct)}
+                        {formatOptionalPercent(row.reachRatio)}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
