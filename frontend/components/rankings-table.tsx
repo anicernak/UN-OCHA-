@@ -30,6 +30,14 @@ function formatPercent(value: number) {
   }).format(value);
 }
 
+function formatOptionalPercent(value?: number) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return "—";
+  }
+
+  return formatPercent(value);
+}
+
 function getRankingRowKey(
   iso3: string,
   countryName: string,
@@ -77,6 +85,7 @@ export function RankingsTable({
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">People In Need</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Requirements</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Funding</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Reach Ratio</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Coverage</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Uncovered</th>
                 </tr>
@@ -106,6 +115,11 @@ export function RankingsTable({
                     </td>
                     <td className="px-6 py-4 text-right">
                       {formatCurrency(row.funding)}
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <span className="px-2 py-1 rounded text-xs font-bold bg-sky-900/30 text-sky-300">
+                        {formatOptionalPercent(row.details?.metrics.reached_pct)}
+                      </span>
                     </td>
                     <td className="px-6 py-4 text-right">
                       <span className={`px-2 py-1 rounded text-xs font-bold ${row.coverageRatio < 0.3 ? 'bg-red-900/30 text-red-400' : 'bg-emerald-900/30 text-emerald-400'}`}>
