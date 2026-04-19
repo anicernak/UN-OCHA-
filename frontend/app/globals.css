@@ -3,6 +3,10 @@
 :root {
   --background: #f3eadc;
   --foreground: #1f1914;
+  --font-geist-sans:
+    "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  --font-geist-mono:
+    "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 @theme inline {

@@ -1,26 +1,14 @@
-import { readFile, readdir } from "node:fs/promises";
-import path from "node:path";
+import "server-only";
 
-export type GapRankingRecord = {
-  iso3: string;
-  countryName: string;
-  peopleInNeed: number;
-  requirements: number;
-  funding: number;
-  coverageRatio: number;
-  gapScore: number;
-};
+import { readFile, readdir } from "fs/promises";
+import path from "path";
 
-export type GapRankingSelection = {
-  crisisCategory: string;
-  includeTemporalFactor: "Yes" | "No";
-};
-
-export type GapRankingCatalog = {
-  categories: string[];
-  selections: GapRankingSelection[];
-  rankingsBySelection: Record<string, GapRankingRecord[]>;
-};
+import {
+  type GapRankingCatalog,
+  type GapRankingRecord,
+  type GapRankingSelection,
+  getSelectionKey,
+} from "@/lib/gap-rankings-shared";
 
 export type MapDataRecord = {
   iso3: string;
@@ -121,14 +109,6 @@ function normalizeMapRow(row: RawMapDataRecord): MapDataRecord | null {
   };
 }
 
-function normalizeCategoryToken(value: string) {
-  return value.trim().toUpperCase();
-}
-
-function getSelectionKey(selection: GapRankingSelection) {
-  return `${normalizeCategoryToken(selection.crisisCategory)}::${selection.includeTemporalFactor}`;
-}
-
 function parseRankingFileName(fileName: string): GapRankingSelection | null {
   if (!fileName.startsWith("gap_rankings_") || !fileName.endsWith(".json")) {
     return null;
@@ -137,19 +117,21 @@ function parseRankingFileName(fileName: string): GapRankingSelection | null {
   const baseName = fileName.slice(0, -".json".length);
 
   if (baseName.endsWith("_with_temporal")) {
-    return {
-      crisisCategory: normalizeCategoryToken(
-        baseName.slice("gap_rankings_".length, -"_with_temporal".length),
-      ),
+      return {
+      crisisCategory: baseName
+        .slice("gap_rankings_".length, -"_with_temporal".length)
+        .trim()
+        .toUpperCase(),
       includeTemporalFactor: "Yes",
     };
   }
 
   if (baseName.endsWith("_no_temporal")) {
     return {
-      crisisCategory: normalizeCategoryToken(
-        baseName.slice("gap_rankings_".length, -"_no_temporal".length),
-      ),
+      crisisCategory: baseName
+        .slice("gap_rankings_".length, -"_no_temporal".length)
+        .trim()
+        .toUpperCase(),
       includeTemporalFactor: "No",
     };
   }
@@ -261,7 +243,7 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
   };
 }
 
-export { getSelectionKey };
+export type { GapRankingCatalog, GapRankingRecord, GapRankingSelection };
 
 export async function loadMapData() {
   try {

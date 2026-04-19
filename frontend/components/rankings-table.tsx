@@ -5,8 +5,8 @@ import { useId, useMemo, useState } from "react";
 import type {
   GapRankingCatalog,
   GapRankingSelection,
-} from "@/lib/gap-rankings";
-import { getSelectionKey } from "@/lib/gap-rankings";
+} from "@/lib/gap-rankings-shared";
+import { getSelectionKey } from "@/lib/gap-rankings-shared";
 
 const DEFAULT_THRESHOLD = 5_000_000;
 
