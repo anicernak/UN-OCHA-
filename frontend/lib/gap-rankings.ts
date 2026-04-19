@@ -45,6 +45,18 @@ type TooltipRecord = {
   };
 };
 
+function normalizeTooltipMetrics(metrics?: TooltipRecord["metrics"]) {
+  return {
+    total_population: metrics?.total_population ?? 0,
+    targeted: metrics?.targeted ?? 0,
+    affected: metrics?.affected ?? 0,
+    reached: metrics?.reached ?? 0,
+    reached_pct: metrics?.reached_pct ?? 0,
+    uncovered_num: metrics?.uncovered_num ?? 0,
+    uncovered_pct: metrics?.uncovered_pct ?? 0,
+  };
+}
+
 function toNumber(value: unknown) {
   if (typeof value === "number" && Number.isFinite(value)) {
     return value;
@@ -300,15 +312,7 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
                     drivers: extra.drivers || [],
                     clusters: extra.clusters || [],
                     categories: extra.population_categories || [],
-                    metrics: extra.metrics || {
-                        total_population: 0,
-                        targeted: 0,
-                        affected: 0,
-                        reached: 0,
-                        reached_pct: 0,
-                        uncovered_num: 0,
-                        uncovered_pct: 0
-                    }
+                    metrics: normalizeTooltipMetrics(extra.metrics),
                 };
             }
         });

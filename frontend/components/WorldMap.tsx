@@ -135,7 +135,7 @@ export default function WorldMap({ rankings, selectedCategory, includeTemporalFa
       )}
 
       <div className="absolute left-4 top-4 z-10 rounded-2xl border border-slate-700 bg-slate-900/85 px-4 py-3 backdrop-blur-xl">
-        <h3 className="text-lg font-bold text-white">Humanitarian Heatmap</h3>
+        <h3 className="text-lg font-bold text-white">Humanitarian WMI Heatmap</h3>
         <p className="mt-1 text-sm text-slate-300">
           Category <strong>{getCategoryLabel(selectedCategory)}</strong> with temporal factor{" "}
           <strong>{includeTemporalFactor}</strong>.

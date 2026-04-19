@@ -12,12 +12,15 @@ export default async function Home() {
             UN-OCHA Geo-Insight
           </p>
           <h1 className="text-4xl font-black tracking-tighter sm:text-6xl text-white">
-            Humanitarian Gap <span className="text-indigo-500">Analyzer</span>
+            Humanitarian WMI <span className="text-indigo-500">Analyzer</span>
           </h1>
+          <p className="max-w-3xl text-base font-medium text-indigo-200 sm:text-lg">
+            WMI, or Weighted Mismatch Index, is a single score showing where humanitarian needs are most out of balance with the response.
+          </p>
           <p className="max-w-3xl text-lg text-slate-400 leading-relaxed">
-            A real-time analytical engine surfacing mismatches between 
-            humanitarian need and financial coverage. Use the filters below 
-            to identify structural neglect across active crises.
+            A real-time analytical engine surfacing the Weighted Mismatch Index
+            across active crises. Use the filters below to identify where
+            severity, need density, funding gaps, and complexity align most sharply.
           </p>
         </header>
 

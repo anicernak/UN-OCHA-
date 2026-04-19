@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "UNOCHA Funding Gap Rankings",
-  description: "Interactive rankings for 2025 humanitarian funding gaps.",
+  title: "UNOCHA WMI Rankings",
+  description: "Interactive 2025 humanitarian WMI rankings.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useId } from "react";
+import { useEffect, useMemo, useState, useId } from "react";
 
 import { RankingsTable } from "@/components/rankings-table";
 import WorldMap from "@/components/WorldMap";
@@ -11,7 +11,7 @@ import type {
 import { getCategoryLabel, getSelectionKey } from "@/lib/gap-rankings-shared";
 import { AlertCircle, Info } from "lucide-react";
 
-const DEFAULT_THRESHOLD = 5_000_000;
+const DEFAULT_THRESHOLD = 0;
 
 function formatCompactNumber(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -87,6 +87,32 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
       []
     );
   }, [catalog.rankingsBySelection, includeTemporalFactor, selectedCategory]);
+
+  const maxWmi = useMemo(() => {
+    return selectedRankings.reduce((max, row) => Math.max(max, row.gapScore), 0);
+  }, [selectedRankings]);
+
+  const sliderStep = useMemo(() => {
+    if (maxWmi <= 100) {
+      return 0.1;
+    }
+
+    if (maxWmi <= 1_000) {
+      return 1;
+    }
+
+    if (maxWmi <= 100_000) {
+      return 100;
+    }
+
+    return 10_000;
+  }, [maxWmi]);
+
+  useEffect(() => {
+    if (threshold > maxWmi) {
+      setThreshold(0);
+    }
+  }, [maxWmi, threshold]);
 
   const filteredRankings = useMemo(() => {
     return selectedRankings
@@ -168,28 +194,32 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="text-sm font-semibold text-slate-300">
-                Minimum uncovered people: <strong className="text-indigo-400">{formatCompactNumber(threshold)}</strong>
+                Minimum WMI: <strong className="text-indigo-400">{formatCompactNumber(threshold)}</strong>
               </span>
               <FilterInfo 
-                    title="Materiality Threshold"
-                    description="Sets a floor for the scale of population need to prioritize high-impact strategic responses."
-                    math="Result = { Crisis | PIN - Reached >= Slider Value }"
-                    assumptions="Focuses analysis on crises where the sheer volume of uncovered people requires immediate global intervention."
-                    dataSource="Humanitarian Needs Overview (HNO) 2025 Targets."
+                    title="WMI Threshold"
+                    description="Sets a minimum Weighted Mismatch Index score for inclusion in the results."
+                    math="Result = { Crisis | WMI >= Slider Value }"
+                    assumptions="Higher WMI values indicate stronger overlap between severity, need density, funding gap, and complexity."
+                    dataSource="Derived from HNO, FTS, INFORM, and complexity inputs."
                 />
             </div>
             <input
               id={thresholdId}
               type="range"
               min={0}
-              max={25000000}
-              step={100000}
+              max={Math.max(maxWmi, sliderStep)}
+              step={sliderStep}
               value={threshold}
               onChange={(event) =>
                 setThreshold(Number(event.currentTarget.value) || 0)
               }
               className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
             />
+            <p className="text-sm text-slate-400">
+              Currently showing crises with a WMI of at least{" "}
+              <strong>{formatCompactNumber(threshold)}</strong>.
+            </p>
           </div>
         </div>
       </section>

@@ -62,7 +62,7 @@ export function RankingsTable({
           Analysis Results
         </p>
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-white">
-          Detailed Ranking Table
+          Detailed WMI Ranking Table
         </h2>
         <p className="text-sm text-slate-400">
           Showing <strong>{rankings.length}</strong> crises based on your current strategy.
@@ -87,7 +87,7 @@ export function RankingsTable({
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Funding</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Reach Ratio</th>
                   <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Coverage</th>
-                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Uncovered</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">WMI</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800">
