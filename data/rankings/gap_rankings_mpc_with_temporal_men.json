@@ -1,0 +1,38 @@
+[
+  {
+    "iso3":"SSD",
+    "country_name":"South Sudan",
+    "people_in_need":1308941,
+    "requirements":1694778653.0,
+    "funding":917826590,
+    "coverage_ratio":0.5415613351,
+    "cumulative_historical_gap":1974078184.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":1800207.4934595302
+  },
+  {
+    "iso3":"CAF",
+    "country_name":"Central African Republic",
+    "people_in_need":17221,
+    "requirements":326056578.0,
+    "funding":154783670,
+    "coverage_ratio":0.4747141461,
+    "cumulative_historical_gap":360562800.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":27137.8430709164
+  },
+  {
+    "iso3":"NGA",
+    "country_name":"Nigeria",
+    "people_in_need":10110,
+    "requirements":910246471.0,
+    "funding":324189433,
+    "coverage_ratio":0.3561556604,
+    "cumulative_historical_gap":1693078611.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":19527.7988202604
+  }
+]

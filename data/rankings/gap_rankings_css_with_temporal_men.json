@@ -1,0 +1,26 @@
+[
+  {
+    "iso3":"YEM",
+    "country_name":"Yemen",
+    "people_in_need":260000,
+    "requirements":2478772922.0,
+    "funding":1384559671,
+    "coverage_ratio":0.5585665628,
+    "cumulative_historical_gap":3658826694.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":344318.0810170234
+  },
+  {
+    "iso3":"NGA",
+    "country_name":"Nigeria",
+    "people_in_need":185,
+    "requirements":910246471.0,
+    "funding":324189433,
+    "coverage_ratio":0.3561556604,
+    "cumulative_historical_gap":1693078611.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":357.3336084815
+  }
+]

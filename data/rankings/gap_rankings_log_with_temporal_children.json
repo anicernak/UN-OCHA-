@@ -1,0 +1,14 @@
+[
+  {
+    "iso3":"SSD",
+    "country_name":"South Sudan",
+    "people_in_need":4707,
+    "requirements":1694778653.0,
+    "funding":917826590,
+    "coverage_ratio":0.5415613351,
+    "cumulative_historical_gap":1974078184.0,
+    "years_with_data":5,
+    "temporal_multiplier":3.0,
+    "gap_score":6473.6123872
+  }
+]
