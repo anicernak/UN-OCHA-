@@ -1,0 +1,132 @@
+crisis,crisis_id,country,iso3,drivers,regions,inform_severity_index,inform_severity_category,trend_last_3_months,reliability,impact_of_the_crisis,geographical,human,conditions_of_people_affected,people_in_need,concentration_of_conditions,complexity_of_the_crisis,society_and_safety,operating_environment
+Complex crisis in Afghanistan,AFG001,Afghanistan,AFG,"Conflict/ Violence,Political/economic crisis,Floods,Drought/drier conditions",Asia,4.5,5,Stable,Very High,4.7,4.9,4.6,4.5,5,4,4.2,3.9,4.5
+Drought in South-West Angola,AGO002,Angola,AGO,Drought/drier conditions,Africa,3.1,4,Increasing,High,2.2,2.1,2.2,3.85,3.7,4,2.3,3.3,1.0
+Complex crisis in Burundi,BDI001,Burundi,BDI,"Floods,Political/economic crisis",Africa,3.2,4,Stable,Very High,3.3,3.8,3.0,3.25,3.5,3,3.1,3.1,3.0
+Displacement from Eastern DRC,BDI004,Burundi,BDI,International Displacement,Africa,1.9,2,-,Very High,2.2,1.6,2.5,1.25,1.5,1,2.6,3.1,2.0
+Conflict in northern region of Benin,BEN002,Benin,BEN,Conflict/ Violence,Africa,2.3,3,Stable,High,2.2,1.8,2.4,2.45,1.9,3,2.2,2.4,2.0
+Conflict and Climatic Shocks in Burkina Faso,BFA002,Burkina Faso,BFA,"Conflict/ Violence,Drought/drier conditions,Floods",Africa,4.1,5,Stable,Very High,4.3,4.7,4.1,4.3,4.6,4,3.7,3.4,4.0
+Displacement of Rohingyas to Bangladesh,BGD002,Bangladesh,BGD,International Displacement,Asia,3.1,4,Increasing,Very High,2.8,0.2,3.6,3.85,3.7,4,2.2,2.4,2.0
+Climatic shocks and political/economic crisis in Bangladesh,BGD012,Bangladesh,BGD,"Cyclone,Floods,Political/economic crisis",Asia,3.3,4,Increasing,High,3.7,3.6,3.8,4,5,3,1.8,2.4,1.0
+Displacement from Ukraine to Belarus,BLR002,Belarus,BLR,International Displacement,Europe,1.7,2,Decreasing,Very High,2.6,4.3,1.3,1,1,1,1.9,2.3,1.5
+Floods in Bolivia,BOL002,Bolivia,BOL,Floods,Americas,2.9,3,-,High,3.6,3.7,3.5,3.15,3.3,3,1.8,2.5,1.0
+Displacement from Venezuela to Brazil,BRA002,Brazil,BRA,International Displacement,Americas,2.5,3,Increasing,High,3.7,4.1,3.4,1.95,2.9,1,2.2,2.4,2.0
+Conflict and Climatic Shocks in CAR,CAF001,CAR,CAF,"Conflict/ Violence,Floods",Africa,4,4,Stable,Very High,4.4,4.4,4.4,4,4,4,3.8,3.6,4.0
+Displacement from Venezuela to Chile,CHL002,Chile,CHL,International Displacement,Americas,2.5,3,Decreasing,Very High,2.7,3.5,2.3,3.05,3.1,3,1.6,1.2,2.0
+Displacement from Burkina Faso to northern Côte d’Ivoire,CIV002,Côte d'Ivoire,CIV,International Displacement,Africa,2.1,3,-,Medium,2,0.6,2.6,2.2,1.4,3,2.1,2.9,1.0
+Conflict in Far North region of Cameroon,CMR002,Cameroon,CMR,Conflict/ Violence,Africa,3.5,4,Stable,Very High,3.4,1.6,4.0,3.3,3.6,3,3.8,3.6,4.0
+Anglophone Crisis in Cameroon,CMR003,Cameroon,CMR,Conflict/ Violence,Africa,3.5,4,Decreasing,Very High,3.6,3,3.9,3.35,3.7,3,3.8,3.6,4.0
+Displacement from CAR to Cameroon,CMR004,Cameroon,CMR,International Displacement,Africa,2.8,3,Decreasing,Very High,2.7,1.9,3.1,2.7,2.4,3,2.9,3.6,2.0
+Complex crisis in DRC,COD001,DRC,COD,"Conflict/ Violence,Floods,Political/economic crisis",Africa,4.3,5,Stable,Very High,4.6,5,4.3,4,5,3,4.4,4.3,4.5
+Conflict and Climatic Shocks in Colombia,COL001,Colombia,COL,"Conflict/ Violence,Drought/drier conditions,Floods",Americas,4,4,Increasing,Very High,4.5,5,4.1,3.95,4.9,3,3.5,3.0,4.0
+Displacement from Venezuela to Colombia,COL002,Colombia,COL,International Displacement,Americas,3.3,4,Stable,High,3.4,4.3,2.8,3.6,4.2,3,2.8,3.0,2.5
+Displacement from Nicaragua to Costa Rica,CRI002,Costa Rica,CRI,International Displacement,Americas,2.2,3,Increasing,Medium,2.8,2.5,2.9,2.6,2.2,3,1.0,0.9,1.0
+International Displacement to Djibouti,DJI002,Djibouti,DJI,International Displacement,Africa,1.4,2,Stable,High,2,1.7,2.2,0.95,0.9,1,1.7,2.3,1.0
+Drought in Djibouti,DJI003,Djibouti,DJI,Drought/drier conditions,Africa,2.5,3,Decreasing,High,2.1,3.1,1.5,2.65,2.3,3,2.7,2.3,3.0
+Displacement from Venezuela to Dominican Republic,DOM002,Dominican Republic,DOM,International Displacement,Americas,1.9,2,Stable,Medium,3.2,4.1,2.6,1.35,1.7,1,1.4,1.3,1.5
+International displacement to Algeria,DZA002,Algeria,DZA,International Displacement,Africa,2.5,3,Stable,Very High,3.9,5,3.1,1.7,2.4,1,2.3,2.9,1.5
+Displacement of Sahrawi refugees to Tindouf,DZA003,Algeria,DZA,International Displacement,Africa,2.4,3,Stable,High,2.2,1.1,2.7,2.55,2.1,3,2.3,2.9,1.5
+Displacement from Venezuela to Ecuador,ECU002,Ecuador,ECU,International Displacement,Americas,3,3,Increasing,High,3.2,2.9,3.4,3.05,3.1,3,2.7,2.9,2.5
+Conflict and Violence in Ecuador,ECU003,Ecuador,ECU,Conflict/ Violence,Americas,3.3,4,Decreasing,High,3.3,3.7,3.1,3.55,4.1,3,3.0,2.9,3.0
+Floods in Ecuador,ECU004,Ecuador,ECU,Floods,Americas,1.9,2,-,Very High,2.2,2.2,2.2,1.1,1.2,1,3.0,2.9,3.0
+International displacement to Egypt,EGY004,Egypt,EGY,International Displacement,Africa,2.2,3,Stable,Very High,2.2,2,2.3,2.15,3.3,1,2.2,2.3,2.0
+Complex crisis in Eritrea,ERI001,Eritrea,ERI,"International Displacement,Political/economic crisis",Africa,3,3,Stable,High,3,3.9,2.5,3.2,3.4,3,2.6,3.2,2.0
+International displacement to Spain,ESP002,Spain,ESP,International Displacement,Europe,1.5,2,Stable,Very High,2.5,2.3,2.6,1.25,1.5,1,1.1,1.7,0.5
+International Displacement to Ethiopia,ETH003,Ethiopia,ETH,International Displacement,Africa,3.1,4,Stable,High,3.9,4.6,3.5,2.2,3.4,1,3.6,3.6,3.5
+"Conflict, Climatic and Economic shocks in Ethiopia",ETH006,Ethiopia,ETH,"Conflict/ Violence,Floods,Drought/drier conditions,Political/economic crisis",Africa,4.1,5,-,High,4.6,5,4.3,4,5,3,3.8,3.6,4.0
+International Displacement to Greece,GRC002,Greece,GRC,International Displacement,Europe,2.3,3,Stable,High,2.2,0.6,2.8,2.65,2.3,3,1.7,1.8,1.5
+Climatic Shocks and Violence in Guatemala,GTM001,Guatemala,GTM,"Conflict/ Violence,Drought/drier conditions",Americas,3.3,4,Decreasing,High,3.5,4.4,2.9,3.45,3.9,3,2.8,3.0,2.5
+Climatic Shocks and Conflict and Violence in Honduras,HND001,Honduras,HND,"Drought/drier conditions,Conflict/ Violence",Americas,3.4,4,Stable,High,3.9,4.2,3.8,3.35,3.7,3,3.2,2.8,3.5
+Complex crisis in Haiti,HTI001,Haiti,HTI,"Conflict/ Violence,Political/economic crisis,Floods,Drought/drier conditions",Americas,4.4,5,Stable,Very High,4.5,4,4.7,4.8,4.6,5,3.8,3.6,4.0
+Conflict in Papua,IDN002,Indonesia,IDN,Conflict/ Violence,Asia,2.5,3,Stable,Very High,3,2.1,3.4,1.85,1.7,2,3.1,2.6,3.5
+Conflict in Jammu and Kashmir,IND002,India,IND,Conflict/ Violence,Asia,x,x,-,High,2.2,2.1,2.3,x,x,x,2.9,2.7,3.0
+2025 Monsoon Floods in India,IND007,India,IND,Floods,Asia,2.3,3,-,Very High,2.8,2.2,3.0,1.7,2.4,1,2.6,2.7,2.5
+Displacement from Afghanistan to Iran,IRN004,Iran,IRN,International Displacement,Middle east,3.9,4,Increasing,Medium,3.7,2.7,4.1,4.3,4.6,4,3.4,3.3,3.5
+Internal displacement in Iraq,IRQ002,Iraq,IRQ,"Conflict/ Violence,Political/economic crisis",Middle east,3.4,4,Increasing,High,3.7,4.7,2.9,3.55,4.1,3,2.8,2.5,3.0
+International Displacement to Italy,ITA002,Italy,ITA,International Displacement,Europe,1.7,2,Stable,Very High,2.7,2.4,2.8,1.35,1.7,1,1.5,1.4,1.5
+International displacement from Syria to Jordan,JOR002,Jordan,JOR,International Displacement,Middle east,3,3,Increasing,High,2.9,3.1,2.8,3.5,4,3,2.3,2.5,2.0
+International displacement to Kenya,KEN002,Kenya,KEN,International Displacement,Africa,2.9,3,Increasing,Very High,2.9,1.1,3.6,3.1,3.2,3,2.6,3.5,1.5
+Drought in ASAL areas of Kenya,KEN003,Kenya,KEN,Drought/drier conditions,Africa,3.4,4,Increasing,Medium,3.6,3.8,3.45,3.55,4.1,3,3.0,3.5,2.5
+International displacement from Syria to Lebanon,LBN002,Lebanon,LBN,International Displacement,Middle east,3.2,4,Stable,Very High,3.2,3.6,3.0,3.25,3.5,3,3.0,2.9,3.0
+Complex crisis in Lebanon,LBN006,Lebanon,LBN,"Conflict/ Violence,Political/economic crisis",Middle east,3.8,4,Decreasing,Very High,3.9,3.6,4.1,3.7,4.4,3,3.8,2.9,4.5
+International displacement to Libya,LBY002,Libya,LBY,International Displacement,Africa,3.1,4,Decreasing,Very High,3.8,4.6,3.3,3,3,3,2.7,3.3,2.0
+Displacement from Sudan to Libya,LBY004,Libya,LBY,International Displacement,Africa,3,3,Stable,Very High,2.4,2.9,2.1,3.3,2.6,4,2.9,3.3,2.5
+Drought in Lesotho,LSO004,Lesotho,LSO,Drought/drier conditions,Africa,2.2,3,Increasing,Medium,2.8,2.9,2.75,2.75,2.5,3,1.0,1.4,0.5
+International displacement to Morocco,MAR002,Morocco,MAR,International Displacement,Africa,1.5,2,Decreasing,Very High,1.9,0.9,2.3,0.85,0.7,1,2.3,3.0,1.5
+Displacement from Ukraine to Moldova,MDA002,Moldova,MDA,International Displacement,Europe,2.2,3,Increasing,Very High,2.3,3.5,1.6,2.45,1.9,3,1.7,1.8,1.5
+Drought in Southern Madagascar,MDG002,Madagascar,MDG,Drought/drier conditions,Africa,2.7,3,Increasing,Medium,2.3,2.5,2.2,3.2,3.4,3,2.2,1.9,2.5
+International Displacement to Mexico,MEX003,Mexico,MEX,International Displacement,Americas,2.8,3,Increasing,High,2.7,2.5,2.8,3.25,3.5,3,2.3,2.6,2.0
+Complex crisis in Mali,MLI001,Mali,MLI,"Conflict/ Violence,Drought/drier conditions,Political/economic crisis",Africa,4.3,5,Stable,Very High,4.6,4.9,4.5,4.3,4.6,4,4.0,3.4,4.5
+Conflict in Rakhine,MMR002,Myanmar,MMR,Conflict/ Violence,Asia,4.1,5,Stable,Very High,3.7,1.3,4.4,3.9,3.8,4,4.6,4.1,5.0
+Conflict in Kachin and Shan,MMR003,Myanmar,MMR,Conflict/ Violence,Asia,3.9,4,Stable,Very High,3.4,1.9,4.0,3.9,3.8,4,4.3,4.1,4.5
+Post-coup conflict in Myanmar,MMR004,Myanmar,MMR,Conflict/ Violence,Asia,4.5,5,Decreasing,Very High,4.5,3.4,4.9,4.5,5,4,4.6,4.1,5.0
+2025 Earthquake in Myanmar,MMR007,Myanmar,MMR,Earthquake,Asia,4.3,5,Stable,Very High,4,2.9,4.4,4.35,4.7,4,4.3,4.1,4.5
+Conflict in Cabo Delgado,MOZ004,Mozambique,MOZ,Conflict/ Violence,Africa,3.3,4,Stable,Very High,3,2.2,3.4,3.25,3.5,3,3.6,3.2,4.0
+Drought in Mozambique,MOZ012,Mozambique,MOZ,Drought/drier conditions,Africa,3.3,4,Stable,High,2.1,2.2,2.1,3.9,3.8,4,3.1,3.2,3.0
+2025 Cyclone season in Mozambique,MOZ013,Mozambique,MOZ,Cyclone,Africa,2.8,3,Decreasing,High,1.8,2.6,1.4,3.1,3.2,3,3.1,3.2,3.0
+Displacement from Mali to Mauritania,MRT002,Mauritania,MRT,International Displacement,Africa,2.4,3,Increasing,Very High,2,2.1,2.0,2.8,2.6,3,2.2,2.3,2.0
+Climatic shocks in Mauritania,MRT003,Mauritania,MRT,"Drought/drier conditions,Floods",Africa,2.5,3,Stable,High,2.7,4.4,1.3,3,3,3,1.7,2.3,1.0
+Climatic shocks in Malawi,MWI002,Malawi,MWI,"Drought/drier conditions,Cyclone,Floods,Political/economic crisis",Africa,3.4,4,Stable,High,3.5,4.5,2.8,3.95,4.9,3,2.6,1.5,3.5
+International Displacement to Malaysia,MYS001,Malaysia,MYS,International Displacement,Asia,1.7,2,Stable,Very High,1.8,1.8,1.8,1.6,2.2,1,1.8,1.6,2.0
+Drought in Namibia,NAM002,Namibia,NAM,Drought/drier conditions,Africa,2.5,3,Decreasing,Medium,2.8,4.3,1.7,3.05,3.1,3,1.5,1.5,1.5
+International displacement from Nigeria to Niger,NER004,Niger,NER,International Displacement,Africa,2.3,3,Decreasing,Very High,3.1,3.4,3.0,1.7,2.4,1,2.5,3.0,2.0
+Complex crisis in Niger,NER006,Niger,NER,"Conflict/ Violence,Drought/drier conditions,Floods",Africa,3.6,4,Stable,Very High,4.5,5,4.2,3.55,4.1,3,3.0,3.0,3.0
+Complex crisis in Nigeria,NGA001,Nigeria,NGA,"Conflict/ Violence,Floods,Political/economic crisis",Africa,4.2,5,Increasing,High,4.1,4.8,3.7,4,5,3,4.5,3.7,5.0
+Conflict in the BAY states,NGA004,Nigeria,NGA,Conflict/ Violence,Africa,4.4,5,Increasing,Very High,4.2,2.2,4.8,4.4,4.8,4,4.5,3.7,5.0
+Conflict in North West Nigeria,NGA007,Nigeria,NGA,Conflict/ Violence,Africa,3.8,4,Increasing,Very High,3.5,2.8,3.8,3.95,4.9,3,3.9,3.7,4.0
+International displacement from Cameroon to Nigeria,NGA008,Nigeria,NGA,International Displacement,Africa,2.2,3,Increasing,High,2.5,2,2.7,1.4,1.8,1,3.2,3.7,2.5
+Conflict in Azad Jammu & Kashmir,PAK004,Pakistan,PAK,Conflict/ Violence,Asia,x,x,-,High,1.7,1,2.0,x,x,x,2.8,3.1,2.5
+Floods and political and economic crisis ,PAK006,Pakistan,PAK,"Floods,Political/economic crisis",Asia,3.8,4,-,High,3.5,3.4,3.6,4,5,3,3.6,3.1,4.0
+Displacement from Afghanistan to Pakistan,PAK007,Pakistan,PAK,International Displacement,Asia,3.6,4,-,High,3.7,3.4,3.9,3.7,4.4,3,3.3,3.1,3.5
+Displacement from Venezuela to Panama,PAN002,Panama,PAN,International Displacement,Americas,2.5,3,Stable,Very High,2.8,3.8,2.1,2.85,2.7,3,1.7,1.4,2.0
+Displacement from Venezuela to Peru,PER002,Peru,PER,International Displacement,Americas,3.2,4,Decreasing,High,3.8,3.9,3.8,3.45,3.9,3,2.4,2.7,2.0
+Conflict in Mindanao,PHL003,Philippines,PHL,Conflict/ Violence,Asia,2.2,3,Increasing,Very High,2.7,2.7,2.7,1.4,1.8,1,2.8,2.5,3.0
+Conflict in Highlands,PNG003,Papua New Guinea,PNG,Conflict/ Violence,Pacific,1.8,2,Decreasing,High,1.7,2,1.5,1,0,2,3.0,2.3,3.5
+Complex crisis in DPRK,PRK001,DPRK,PRK,"Drought/drier conditions,Political/economic crisis,Floods",Asia,3.7,4,Decreasing,High,4,4.6,3.7,4,5,3,3.1,3.2,3.0
+Conflict in the West Bank,PSE003,Palestine,PSE,Conflict/ Violence,Middle east,3.6,4,Stable,High,3.8,2.7,4.2,3.25,3.5,3,4.1,2.5,5.0
+Conflict in Gaza,PSE004,Palestine,PSE,Conflict/ Violence,Middle east,4.2,5,Stable,High,3.8,0.8,4.6,4.45,3.9,5,4.1,2.5,5.0
+Displacement from Ukraine to Russia,RUS002,Russia,RUS,International Displacement,Europe,x,x,Decreasing,High,x,x,0.0,x,x,x,2.3,2.5,2.0
+International displacement to Rwanda,RWA002,Rwanda,RWA,International Displacement,Africa,2.5,3,Increasing,Medium,2.6,2.2,2.8,2.45,1.9,3,2.5,2.9,2.0
+Complex crisis in Sudan,SDN001,Sudan,SDN,"International Displacement,Conflict/ Violence,Political/economic crisis",Africa,4.7,5,Stable,High,5,5,5.0,4.5,5,4,4.7,4.3,5.0
+Climatic shocks and economic vulnerability in Senegal,SEN002,Senegal,SEN,"Floods,Drought/drier conditions,Political/economic crisis",Africa,3,3,Increasing,Medium,3.4,4.5,2.6,3.25,3.5,3,2.2,2.4,2.0
+Political and Economic crisis in El Salvador,SLV001,El Salvador,SLV,Political/economic crisis,Americas,2.9,3,Stable,Very High,3.3,3.7,3.1,3.1,3.2,3,2.3,2.1,2.5
+Complex crisis in Somalia,SOM001,Somalia,SOM,"Conflict/ Violence,International Displacement,Floods,Drought/drier conditions",Africa,4.3,5,Decreasing,High,4.5,4.8,4.3,4.3,4.6,4,4.3,4.0,4.5
+International displacement to Somalia,SOM002,Somalia,SOM,International Displacement,Africa,2.1,3,Increasing,Very High,2.1,1.6,2.3,1.05,1.1,1,3.8,4.0,3.5
+Complex crisis in South Sudan,SSD001,South Sudan,SSD,"Conflict/ Violence,Floods,Political/economic crisis",Africa,4.4,5,Decreasing,High,4.6,4.6,4.6,4.45,4.9,4,4.2,3.9,4.5
+Displacement from Sudan to South Sudan,SSD004,South Sudan,SSD,International Displacement,Africa,3.6,4,-,High,3.9,4.6,3.5,3.25,3.5,3,4.0,3.9,4.0
+Drought in Eswatini,SWZ001,Eswatini,SWZ,Drought/drier conditions,Africa,2.4,3,Increasing,Medium,2.2,3.1,1.6,2.75,2.5,3,2.1,2.6,1.5
+Complex crisis in Syria,SYR003,Syria,SYR,"Conflict/ Violence,Political/economic crisis,Drought/drier conditions",Middle east,4.5,5,Decreasing,High,4.9,4.6,5.0,4.5,5,4,4.1,4.1,4.0
+Complex crisis in Chad,TCD001,Chad,TCD,"Conflict/ Violence,Floods",Africa,4,4,Decreasing,Very High,4.5,4.9,4.2,3.8,4.6,3,3.9,3.7,4.0
+Conflict in Lac province,TCD003,Chad,TCD,Conflict/ Violence,Africa,3.3,4,Stable,Very High,2.6,0.6,3.3,3.5,3,4,3.6,3.7,3.5
+Displacement from CAR to Chad,TCD004,Chad,TCD,International Displacement,Africa,2.5,3,Decreasing,High,2.6,1.8,2.9,1.95,1.9,2,3.2,3.7,2.5
+Displacement from Sudan to Chad,TCD005,Chad,TCD,International Displacement,Africa,3.3,4,Decreasing,High,3.4,1.7,4.0,3.3,3.6,3,3.2,3.7,2.5
+Conflict in Savanes region,TGO002,Togo,TGO,Conflict/ Violence,Africa,2.3,3,Decreasing,High,1.3,0.8,1.6,2.65,2.3,3,2.4,2.3,2.5
+Displacement from Myanmar to Thailand,THA003,Thailand,THA,International Displacement,Asia,2.1,3,Decreasing,Very High,1.5,0.5,1.9,2.4,1.8,3,2.0,2.0,2.0
+Displacement from Venezuela to Trinidad and Tobago,TTO002,Trinidad and Tobago,TTO,International Displacement,Americas,1.4,2,Stable,Very High,2.1,3,1.6,0.85,0.7,1,1.5,1.5,1.5
+International displacement to Tunisia,TUN002,Tunisia,TUN,International Displacement,Africa,1.7,2,Stable,Very High,2.3,1.6,2.6,0.95,0.9,1,2.3,2.5,2.0
+Displacement from Syria to Türkiye,TUR002,Türkiye,TUR,International Displacement,Middle east,3.5,4,Increasing,Very High,3.1,3.1,3.1,4,5,3,2.8,2.5,3.0
+International Displacement to Türkiye,TUR003,Türkiye,TUR,International Displacement,Middle east,2,2,Increasing,High,2.1,2.4,2.0,1.85,2.7,1,2.3,2.5,2.0
+International Displacement to Tanzania,TZA002,Tanzania,TZA,International Displacement,Africa,2,2,Decreasing,High,2.7,2.4,2.9,1.65,2.3,1,1.8,2.0,1.5
+Drought and floods in Tanzania,TZA003,Tanzania,TZA,"Drought/drier conditions,Floods",Africa,2.3,3,Stable,High,2.1,1.8,2.2,2.65,2.3,3,2.0,2.0,2.0
+International Displacement to Uganda,UGA005,Uganda,UGA,International Displacement,Africa,3.3,4,Stable,High,3.3,1.7,3.9,3.4,3.8,3,3.0,3.7,2.0
+Conflict in Ukraine,UKR002,Ukraine,UKR,Conflict/ Violence,Europe,4.3,5,Decreasing,Very High,4.4,4.9,4.0,4.5,5,4,4.0,2.2,5.0
+Political and Economic crisis in Venezuela,VEN001,Venezuela,VEN,"Political/economic crisis,Conflict/ Violence",Americas,3.8,4,Decreasing,High,4.4,4.9,4.0,3.9,4.8,3,3.2,3.3,3.0
+Complex crisis in Yemen,YEM001,Yemen,YEM,"Conflict/ Violence,Drought/drier conditions,Political/economic crisis",Middle east,4.6,5,Increasing,Very High,4.8,4.9,4.7,4.5,5,4,4.5,3.9,5.0
+International Displacement to Yemen,YEM002,Yemen,YEM,International Displacement,Middle east,2.4,3,Increasing,High,2.5,1.9,2.8,1.55,2.1,1,3.5,3.9,3.0
+Drought in Zambia,ZMB002,Zambia,ZMB,Drought/drier conditions,Africa,3.3,4,Stable,Medium,3.7,4.5,3.2,3.8,4.6,3,2.1,1.7,2.5
+Drought and political economic crisis in Zimbabwe,ZWE001,Zimbabwe,ZWE,Drought/drier conditions,Africa,3.6,4,Decreasing,High,3.9,4.6,3.5,3.9,4.8,3,2.9,2.8,3.0
+Multiple crises in Bangladesh,BGD001,Bangladesh,BGD,"International Displacement,Floods,Cyclone,Political/economic crisis",Asia,3.4,4,Decreasing,Very High,3.2,3.6,2.9,4,5,3,2.5,2.4,2.5
+Multiple crises in Cameroon,CMR001,Cameroon,CMR,"Conflict/ Violence,Floods,International Displacement",Africa,3.8,4,Decreasing,High,4,4.1,4.0,3.6,4.2,3,3.8,3.6,4.0
+Multiple crises in Djibouti,DJI001,Djibouti,DJI,"International Displacement,Drought/drier conditions",Africa,2.7,3,Decreasing,High,2.6,3.1,2.3,2.65,2.3,3,2.7,2.3,3.0
+Multiple crises in Algeria,DZA004,Algeria,DZA,International Displacement,Africa,2.8,3,Stable,High,4,5,3.2,1.85,2.7,1,3.0,2.9,3.0
+Multiple crises in Ecuador,ECU001,Ecuador,ECU,"International Displacement,Conflict/ Violence,Floods",Americas,3.5,4,Stable,High,3.9,4,3.9,3.6,4.2,3,3.0,2.9,3.0
+Multiple crises in Ethiopia,ETH001,Ethiopia,ETH,"International Displacement,Conflict/ Violence,Drought/drier conditions,Floods,Political/economic crisis",Africa,4.2,5,Decreasing,High,4.6,5,4.3,4,5,3,4.1,3.6,4.5
+Multiple Crises in India,IND001,India,IND,"Conflict/ Violence,Floods",Asia,2.4,3,-,High,2.9,2.5,3.1,1.7,2.4,1,2.9,2.7,3.0
+Multiple crises in Kenya,KEN001,Kenya,KEN,"Drought/drier conditions,International Displacement",Africa,3.5,4,Stable,Medium,3.7,3.8,3.6,3.65,4.3,3,3.0,3.5,2.5
+Multiple crises in Libya,LBY005,Libya,LBY,International Displacement,Africa,3.3,4,Stable,Very High,3.9,4.6,3.5,3.15,3.3,3,2.9,3.3,2.5
+Multiple crises in Myanmar,MMR001,Myanmar,MMR,"Conflict/ Violence,Earthquake",Asia,4.6,5,Stable,Very High,4.8,4.9,4.8,4.5,5,4,4.6,4.1,5.0
+Multiple Crises in Mozambique,MOZ001,Mozambique,MOZ,"Conflict/ Violence,Cyclone,Drought/drier conditions",Africa,3.6,4,Decreasing,High,3.5,3.7,3.4,3.65,4.3,3,3.6,3.2,4.0
+Multiple crises in Mauritania,MRT004,Mauritania,MRT,"Drought/drier conditions,Floods,ine",Africa,2.9,3,-,High,3.1,4.5,2.1,3.15,3.3,3,2.4,2.3,2.5
+Multiple crises in Pakistan,PAK008,Pakistan,PAK,"Floods,International Displacement,Political/economic crisis,Conflict/ Violence",Asia,3.8,4,-,High,3.5,3.6,3.5,4,5,3,3.6,3.1,4.0
+Multiple crises in Palestine,PSE002,Palestine,PSE,Conflict/ Violence,Middle east,4.4,5,Stable,High,4.4,3.4,4.7,4.6,4.2,5,4.1,2.5,5.0
+Multiple Crises in Türkiye,TUR001,Türkiye,TUR,"International Displacement,Earthquake",Middle east,3.5,4,Stable,High,3.3,3.6,3.1,4,5,3,2.8,2.5,3.0
+Multiple Crises in Tanzania,TZA001,Tanzania,TZA,"International Displacement,Drought/drier conditions,Floods",Africa,2.5,3,Stable,High,3.1,3,3.2,2.4,2.8,2,2.0,2.0,2.0

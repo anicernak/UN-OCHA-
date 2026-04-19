@@ -1,0 +1,152 @@
+crisis,crisis_id,country,iso3,drivers,regions,inform_severity_index,inform_severity_category,trend_last_3_months,reliability,impact_of_the_crisis,geographical,human,conditions_of_people_affected,people_in_need,concentration_of_conditions,complexity_of_the_crisis,society_and_safety,operating_environment
+Complex crisis in Afghanistan,AFG001,Afghanistan,AFG,"Conflict,Violence,Displacement,Drought,Earthquake,Socio-political",Asia,4.5,5,Increasing,High,4.7,4.9,4.6,4.5,5,4,4.2,3.8,4.5
+Drought in South-West Angola,AGO002,Angola,AGO,Drought,Africa,2.8,3,Increasing,High,1.8,2.5,1.4,3.55,4.1,3,2.1,3.0,1.0
+Refugees from Nagorno-Karabakh in Armenia,ARM003,Armenia,ARM,"Displacement,Socio-political",Middle east,2.1,3,Stable,Very High,1.9,2.1,1.8,2.6,2.2,3,1.4,1.7,1.0
+Complex in Burundi,BDI001,Burundi,BDI,"Displacement,Violence,Floods,Food Security",Africa,3.3,4,Stable,Very High,3.4,4.0,3.0,3.25,3.5,3,3.2,2.9,3.5
+Conflict in northern region,BEN002,Benin,BEN,"Conflict,Displacement,Violence",Africa,2.5,3,Increasing,Very High,2.4,1.7,2.7,2.6,2.2,3,2.3,2.5,2.0
+Conflict in Burkina Faso,BFA002,Burkina Faso,BFA,"Conflict,Displacement,Violence",Africa,3.9,4,Decreasing,Very High,4.4,4.7,4.3,3.8,4.6,3,3.7,3.4,4.0
+Rohingya refugee crisis,BGD002,Bangladesh,BGD,"Conflict,Violence,Displacement",Asia,3,3,Decreasing,Very High,2.8,0.2,3.7,3.35,3.7,3,2.5,2.5,2.5
+Food Security Crisis in Bangladesh,BGD012,Bangladesh,BGD,Food Security,Asia,3.2,4,Decreasing,Very High,2.9,3.6,2.5,4,5,3,2.0,2.5,1.5
+Displacement from Russia-Ukraine conflict in Bulgaria,BGR002,Bulgaria,BGR,Displacement,Europe,1.6,2,Decreasing,Very High,2.6,4.1,1.5,1.25,1.5,1,1.1,1.2,1.0
+Displacement from Russia-Ukraine conflict in Belarus,BLR002,Belarus,BLR,Displacement,Europe,1.9,2,Stable,Very High,2.6,4.3,1.3,1.05,1.1,1,2.4,2.3,2.5
+Venezuela displacement in Brazil,BRA002,Brazil,BRA,Displacement,Americas,2.5,3,Stable,Very High,3.7,4.1,3.5,1.95,2.9,1,2.2,2.4,2.0
+Drought in the Amazonas,BRA004,Brazil,BRA,Drought,Americas,2.3,3,Decreasing,Very High,1.6,2.2,1.2,2.75,2.5,3,2.2,2.4,2.0
+Floods in Rio Grande do Sul,BRA005,Brazil,BRA,Floods,Americas,1.4,2,Decreasing,High,1.7,2.0,1.5,1,0,2,1.8,2.4,1.0
+Complex crisis in CAR,CAF001,CAR,CAF,"Conflict,Displacement",Africa,4,4,Decreasing,Very High,4.3,4.4,4.2,4,4,4,3.9,3.8,4.0
+Venezuela displacement in Chile,CHL002,Chile,CHL,Displacement,Americas,2.8,3,Increasing,High,3.4,3.5,3.4,3.05,3.1,3,1.9,1.7,2.0
+Lake Chad basin crisis in Cameroon,CMR002,Cameroon,CMR,Conflict,Africa,3.4,4,Stable,Very High,3.5,1.6,4.1,3.3,3.6,3,3.6,3.7,3.5
+Anglophone Crisis in Cameroon,CMR003,Cameroon,CMR,Conflict,Africa,3.6,4,Increasing,Very High,3.8,3.1,4.1,3.35,3.7,3,3.9,3.7,4.0
+CAR refugees in Cameroon,CMR004,Cameroon,CMR,"Conflict,Displacement",Africa,2.9,3,Increasing,Very High,2.7,1.9,3.0,2.7,2.4,3,3.2,3.7,2.5
+Complex crisis in DRC,COD001,DRC,COD,"Conflict,Displacement,Socio-political",Africa,4.3,5,Decreasing,Very High,4.6,5.0,4.4,4,5,3,4.4,4.3,4.5
+Complex crisis in Colombia,COL001,Colombia,COL,"Conflict,Violence,Floods,Displacement",Americas,3.9,4,Decreasing,Very High,4.4,5.0,4.0,3.95,4.9,3,3.5,3.0,4.0
+Venezuela displacement in Colombia,COL002,Colombia,COL,Displacement,Americas,3.3,4,Stable,Very High,3.5,4.3,2.9,3.6,4.2,3,2.8,3.0,2.5
+Nicaraguan refugees in Costa Rica,CRI002,Costa Rica,CRI,Displacement,Americas,2.1,3,Decreasing,Medium,2.4,1.0,2.9,2.6,2.2,3,1.2,0.9,1.5
+Displacement from Russia-Ukraine conflict in Czechia,CZE002,Czech Republic,CZE,Displacement,Europe,1.9,2,Stable,Very High,2.9,4.2,2.0,1.85,2.7,1,1.1,0.6,1.5
+Mixed migration in Djibouti,DJI002,Djibouti,DJI,Displacement,Africa,1.5,2,Stable,High,2.1,1.7,2.3,0.95,0.9,1,1.8,2.5,1.0
+Drought in Djibouti,DJI003,Djibouti,DJI,Drought,Africa,2.6,3,Stable,High,2.2,3.2,1.6,2.7,2.4,3,2.8,2.5,3.0
+Venezuela displacement in Dominican Republic,DOM002,Dominican Republic,DOM,Displacement,Americas,1.8,2,Stable,High,3.2,4.1,2.7,1.25,1.5,1,1.2,1.3,1.0
+Mixed migration flows in Algeria,DZA002,Algeria,DZA,Displacement,Africa,2.6,3,Stable,High,3.9,5.0,3.1,1.7,2.4,1,2.7,2.9,2.5
+Sahrawi refugees in Algeria,DZA003,Algeria,DZA,Displacement,Africa,2.5,3,Stable,High,2.2,1.1,2.7,2.55,2.1,3,2.5,2.9,2.0
+Venezuela displacement in Ecuador,ECU002,Ecuador,ECU,Displacement,Americas,2.9,3,Increasing,Very High,3.1,2.7,3.3,3.05,3.1,3,2.6,2.6,2.5
+Criminal violence in Ecuador,ECU003,Ecuador,ECU,"Violence,Displacement",Americas,3.3,4,-,Very High,2.8,3.7,2.2,3.55,4.1,3,3.1,2.6,3.5
+Refugees in Egypt,EGY004,Egypt,EGY,Displacement,Africa,2.2,3,Stable,Very High,2.2,2.0,2.3,2.15,3.3,1,2.2,2.3,2.0
+Complex crisis in Eritrea,ERI001,Eritrea,ERI,"Socio-political,Displacement",Africa,3,3,Decreasing,High,3.1,3.9,2.6,3.2,3.4,3,2.6,3.1,2.0
+Mixed migration flows in Spain,ESP002,Spain,ESP,Displacement,Europe,1.6,2,Decreasing,Very High,2.6,2.3,2.7,1.2,1.4,1,1.4,1.7,1.0
+Displacement from Russia-Ukraine conflict in Estonia,EST002,Estonia,EST,Displacement,Europe,1.2,2,Stable,Very High,2.1,3.4,1.3,1.05,1.1,1,0.8,0.6,1.0
+Complex crisis in Ethiopia,ETH001,Ethiopia,ETH,"Displacement,Floods,Conflict,Drought",Africa,4.3,5,Stable,High,4.6,5.0,4.3,4.5,5,4,3.8,3.6,4.0
+International Displacement,ETH003,Ethiopia,ETH,Displacement,Africa,3.1,4,Decreasing,High,4.0,4.7,3.5,2.2,3.4,1,3.6,3.6,3.5
+Northern Ethiopia Conflict,ETH004,Ethiopia,ETH,"Conflict,Displacement",Africa,4.3,5,Decreasing,High,4.5,2.9,5.0,4.45,4.9,4,3.8,3.6,4.0
+Drought in Ethiopia,ETH005,Ethiopia,ETH,Drought,Africa,4.1,5,Stable,Very High,4.1,4.5,3.9,4.5,5,4,3.3,3.6,3.0
+Mixed migration flows in Greece,GRC002,Greece,GRC,Displacement,Europe,2.3,3,Increasing,High,2.3,0.6,3.0,2.65,2.3,3,1.7,1.9,1.5
+Complex crisis in Guatemala,GTM001,Guatemala,GTM,"Violence,Socio-political,Other seasonal event",Americas,3.5,4,Stable,Very High,4.0,4.4,3.7,3.45,3.9,3,3.1,3.1,3.0
+Complex crisis in Honduras,HND001,Honduras,HND,"Violence,Socio-political,Other seasonal event",Americas,3.4,4,Stable,Very High,3.9,4.2,3.7,3.35,3.7,3,3.2,2.8,3.5
+Complex crisis in Haiti,HTI001,Haiti,HTI,"Violence,Socio-political,Other seasonal event",Americas,4.4,5,Increasing,High,4.2,4.0,4.3,4.8,4.6,5,3.8,3.5,4.0
+Displacement from Russia-Ukraine conflict in Hungary,HUN002,Hungary,HUN,Displacement,Europe,1.5,2,Stable,Very High,2.6,4.2,1.4,1.15,1.3,1,1.1,1.2,1.0
+Papua Conflict,IDN002,Indonesia,IDN,"Socio-political,Violence,Conflict",Asia,2.5,3,Stable,High,2.9,2.1,3.3,1.85,1.7,2,3.1,2.6,3.5
+Afghan Refugees in Iran,IRN004,Iran,IRN,Displacement,Middle east,3.8,4,Increasing,Medium,3.6,2.7,4.0,4.3,4.6,4,3.2,3.3,3.0
+Conflict  in Iraq,IRQ002,Iraq,IRQ,"Conflict,Socio-political,Violence",Middle east,2.7,3,Decreasing,Very High,4.0,4.7,3.6,1.8,1.6,2,2.8,3.1,2.5
+Syrian and Palestinian refugees in iraq,IRQ003,Iraq,IRQ,Displacement,Middle east,2.1,3,Decreasing,High,2.8,1.6,3.3,1.45,0.9,2,2.6,3.1,2.0
+Mixed migration flows in Italy,ITA002,Italy,ITA,Displacement,Europe,1.7,2,Decreasing,Very High,2.7,2.4,2.8,1.2,1.4,1,1.5,1.5,1.5
+Syrian refugees in Jordan,JOR002,Jordan,JOR,Displacement,Middle east,2.8,3,Stable,High,2.8,3.1,2.6,3.25,3.5,3,2.0,2.5,1.5
+Refugee situation in Kenya,KEN002,Kenya,KEN,Displacement,Africa,2.8,3,Stable,High,2.3,0.9,2.9,3.1,3.2,3,2.7,3.3,2.0
+Drought in Kenya,KEN003,Kenya,KEN,Drought,Africa,3.3,4,Stable,Very High,3.8,4.2,3.6,3.35,3.7,3,2.9,3.3,2.5
+Syrian refugees in Lebanon,LBN002,Lebanon,LBN,Displacement,Middle east,3.2,4,Decreasing,Very High,3.3,3.6,3.2,3.3,3.6,3,3.1,3.2,3.0
+Complex crisis in Lebanon,LBN006,Lebanon,LBN,"Socio-political,Displacement,Conflict,Food Security",Middle east,4.2,5,Increasing,Very High,4.4,3.6,4.7,4.2,4.4,4,3.9,3.2,4.5
+Mixed migration flows in Libya,LBY002,Libya,LBY,Displacement,Africa,3.3,4,Decreasing,Very High,3.9,4.6,3.4,3,3,3,3.2,3.3,3.0
+Refugees from Sudan in Libya,LBY004,Libya,LBY,Displacement,Africa,3.1,4,Increasing,Very High,2.2,2.8,1.8,3.35,2.7,4,3.2,3.3,3.0
+Food security crisis in Lesotho,LSO004,Lesotho,LSO,Food Security,Africa,2.1,3,Decreasing,High,2.1,2.9,1.7,2.75,2.5,3,1.0,1.4,0.5
+Displacement from Russia-Ukraine conflict in Lithuania,LTU002,Lithuania,LTU,Displacement,Europe,1.3,2,Stable,Very High,2.3,3.7,1.3,1.1,1.2,1,0.9,0.8,1.0
+Displacement from Russia-Ukraine conflict in Latvia,LVA002,Latvia,LVA,Displacement,Europe,1.3,2,Stable,Very High,2.2,3.5,1.4,1.1,1.2,1,1.0,1.0,1.0
+Mixed migration flows in Morocco,MAR002,Morocco,MAR,Displacement,Africa,1.7,2,Decreasing,Very High,2.0,0.9,2.4,0.85,0.7,1,2.8,3.0,2.5
+DIsplacement from Russia-Ukraine conflict in Moldova,MDA002,Moldova,MDA,Displacement,Europe,1.6,2,Increasing,Very High,2.3,3.5,1.6,1.4,1.8,1,1.4,1.8,1.0
+Drought in Madagascar,MDG002,Madagascar,MDG,Drought,Africa,2.6,3,Increasing,High,2.4,2.5,2.4,3.4,3.8,3,1.5,2.0,1.0
+Mixed Migration in Mexico,MEX003,Mexico,MEX,Displacement,Americas,2.6,3,Increasing,High,3.1,3.8,2.6,2.15,3.3,1,2.8,3.0,2.5
+Complex crisis in Mali,MLI001,Mali,MLI,"Conflict,Displacement",Africa,4.3,5,Increasing,Very High,4.6,4.9,4.5,4.3,4.6,4,4.0,3.4,4.5
+Rakhine Conflict,MMR002,Myanmar,MMR,Conflict,Asia,4.1,5,Stable,Very High,3.8,1.3,4.5,3.9,3.8,4,4.6,4.1,5.0
+Kachin and Shan Conflict,MMR003,Myanmar,MMR,Conflict,Asia,4,4,Increasing,Very High,3.4,1.9,3.9,3.9,3.8,4,4.6,4.1,5.0
+Post-coup conflict in Myanmar,MMR004,Myanmar,MMR,"Violence,Socio-political,Conflict",Asia,4.6,5,Stable,Very High,4.8,4.9,4.7,4.5,5,4,4.6,4.1,5.0
+Cabo Delgado Islamist Insurgency,MOZ004,Mozambique,MOZ,"Conflict,Displacement",Africa,3.3,4,Decreasing,Very High,3.7,2.8,4.0,3.25,3.5,3,3.2,3.3,3.0
+Drought in Mozambique,MOZ012,Mozambique,MOZ,Drought,Africa,3.3,4,Decreasing,Very High,2.9,3.9,2.2,3.75,4.5,3,2.9,3.3,2.5
+2025 Cyclone season ,MOZ013,Mozambique,MOZ,Cyclone,Africa,3.4,4,-,Very High,3.6,4.3,3.1,3.3,3.6,3,3.4,3.3,3.5
+Refugees from Mali in Mauritania,MRT002,Mauritania,MRT,Displacement,Africa,2.4,3,Increasing,Very High,2.0,2.0,2.0,2.8,2.6,3,2.0,2.4,1.5
+Food Security in Mauritania,MRT003,Mauritania,MRT,Drought,Africa,2.6,3,Stable,Very High,2.6,4.3,1.2,2.8,2.6,3,2.2,2.4,2.0
+Complex crisis in Malawi,MWI002,Malawi,MWI,"Drought,Socio-political,Cyclone",Africa,3.4,4,Stable,Very High,3.9,4.5,3.5,3.95,4.9,3,2.2,2.3,2.0
+International Refugees in Malaysia,MYS001,Malaysia,MYS,Displacement,Asia,1.7,2,Decreasing,Very High,1.8,1.8,1.8,1.55,2.1,1,1.9,1.7,2.0
+Food Security Crisis in Namibia,NAM002,Namibia,NAM,Drought,Africa,2.6,3,Stable,Medium,2.9,4.3,1.9,3.25,3.5,3,1.3,1.5,1.0
+Lake Chad basin crisis in Niger,NER002,Niger,NER,Conflict,Africa,3.3,4,Stable,Very High,2.9,1.2,3.5,3.6,3.2,4,3.0,2.9,3.0
+Mali/Burkina Faso conflict,NER003,Niger,NER,Conflict,Africa,3.3,4,Decreasing,Very High,3.5,2.4,3.9,3.4,3.8,3,3.0,2.9,3.0
+Nigerian Refugees,NER004,Niger,NER,Displacement,Africa,2.8,3,Decreasing,Very High,1.7,1.6,1.8,3.15,3.3,3,3.0,2.9,3.0
+Complex crisis in Niger,NER006,Niger,NER,"Conflict,Displacement,Drought,Floods,Food Security,Violence",Africa,3.6,4,Stable,High,4.1,4.9,3.5,3.7,4.4,3,3.2,2.9,3.5
+Complex crisis in Nigeria,NGA001,Nigeria,NGA,"Conflict,Displacement,Violence,Floods",Africa,4.1,5,Increasing,High,4.1,4.8,3.7,4,5,3,4.1,3.5,4.5
+Lake Chad basin crisis in Nigeria,NGA004,Nigeria,NGA,"Conflict,Displacement",Africa,4.2,5,Stable,Very High,4.1,2.2,4.7,4.4,4.8,4,3.8,3.5,4.0
+Northwest Banditry,NGA007,Nigeria,NGA,"Violence,Displacement",Africa,3.5,4,Stable,High,3.4,2.8,3.7,3.9,4.8,3,3.0,3.5,2.5
+Cameroonian Refugees in Nigeria,NGA008,Nigeria,NGA,Displacement,Africa,2.1,3,Increasing,High,2.4,2.0,2.6,1.35,1.7,1,3.0,3.5,2.5
+Socioeconomic crisis in Nicaragua,NIC001,Nicaragua,NIC,Socio-political,Americas,x,x,-,High,3.2,4.0,2.7,x,x,x,1.9,2.7,1.0
+Complex crisis in Pakistan,PAK001,Pakistan,PAK,"Displacement,Conflict",Asia,4,4,Increasing,Very High,3.9,5.0,3.1,4,5,3,4.1,3.5,4.5
+Kashmir conflict in Pakistan,PAK004,Pakistan,PAK,Conflict,Asia,x,x,-,Low,0.4,1.0,0.0,x,x,x,3.0,3.5,2.5
+Venezuela displacement in Panama,PAN002,Panama,PAN,Displacement,Americas,2.6,3,Increasing,High,3.4,3.8,3.2,2.85,2.7,3,1.7,1.4,2.0
+Venezuela displacement in Peru,PER002,Peru,PER,Displacement,Americas,3.3,4,Increasing,High,3.9,4.0,3.8,3.45,3.9,3,2.6,2.7,2.5
+Mindanao conflict,PHL003,Philippines,PHL,"Conflict,Violence",Asia,2,2,Decreasing,Very High,2.6,2.7,2.6,1.35,1.7,1,2.6,2.7,2.5
+Highlands Violence,PNG003,Papua New Guinea,PNG,Violence,Pacific,2.1,3,Stable,High,2.2,1.9,2.3,1.35,0.7,2,3.0,2.5,3.5
+Displacement from Russia-Ukraine conflict in Poland,POL002,Poland,POL,Displacement,Europe,2.2,3,Stable,Very High,3.4,4.8,2.3,2.15,3.3,1,1.2,0.8,1.5
+Complex crisis in DPRK,PRK001,DPRK,PRK,"Socio-political,Floods,Other seasonal event,Food Security",Asia,3.9,4,Stable,High,4.0,4.6,3.6,4.5,5,4,2.9,2.7,3.0
+Conflict in West Bank,PSE003,Palestine,PSE,Conflict,Middle east,3.6,4,Increasing,High,4.0,2.7,4.5,3.25,3.5,3,3.7,2.5,4.5
+Conflict in Gaza,PSE004,Palestine,PSE,Conflict,Middle east,4.2,5,Stable,High,3.8,0.8,4.6,4.45,3.9,5,4.1,2.5,5.0
+Lake Chad basin regional crisis,REG001,"Nigeria,Niger,Chad,Cameroon","NGA,NER,TCD,CMR",0,"Africa,Africa,Africa,Africa",,,,High,,,4.4,4.5,5,4,,,4.0
+Venezuela Regional Crisis,REG002,"Venezuela,Brazil,Colombia,Ecuador,Peru,Trinidad and Tobago,Chile,Dominican Republic,Panama","VEN,BRA,COL,ECU,PER,TTO,CHL,DOM,PAN",0,"Americas,Americas,Americas,Americas,Americas,Americas,Americas,Americas,Americas",,,,Medium,,,3.7,4,5,3,,,4.0
+Syrian Regional Crisis,REG004,"Syria,Türkiye,Iraq,Egypt,Jordan,Lebanon","SYR,TUR,IRQ,EGY,JOR,LBN",0,"Middle east,Middle east,Middle east,Africa,Middle east,Middle east",,,,Medium,,,4.1,4,5,3,,,4.5
+Eastern Mediterranean Route ,REG006,"Türkiye,Greece","TUR,GRC",0,"Middle east,Europe",,,,Medium,,,2.4,2.35,2.7,2,,,3.0
+Central Mediterranean Route,REG007,"Algeria,Tunisia,Libya,Italy","DZA,TUN,LBY,ITA",0,"Africa,Africa,Africa,Europe",,,,High,,,3.5,2.3,3.6,1,,,3.5
+Western Mediterranean Route,REG008,"Algeria,Morocco,Spain","DZA,MAR,ESP",0,"Africa,Africa,Europe",,,,High,,,2.9,1.8,2.6,1,,,2.5
+Rohingya Regional Crisis,REG011,"Bangladesh,Myanmar","BGD,MMR",0,"Asia,Asia",,,,High,,,4.6,4.1,4.2,4,,,5.0
+Southern Africa Regional Food Security Crisis,REG012,"Madagascar,Malawi,Namibia,Eswatini,Zambia,Zimbabwe,Tanzania","MDG,MWI,NAM,SWZ,ZMB,ZWE,TZA",Drought,"Africa,Africa,Africa,Africa,Africa,Africa,Africa",,,,High,,,3.6,4,5,3,,,4.0
+Nagorno-Karabakh Conflict,REG013,"Armenia,Azerbaijan","ARM,AZE",0,"Middle east,Middle east",,,,Medium,,,2.2,2.5,2,3,,,2.0
+Eastern Africa Regional Drought Crisis,REG014,"Ethiopia,Somalia,Kenya","ETH,SOM,KEN",Drought,"Africa,Africa,Africa",,,,High,,,3.9,4.5,5,4,,,5.0
+Turkiye / Syria earthquake,REG015,"Türkiye,Syria","TUR,SYR",Earthquake,"Middle east,Middle east",,,,Medium,,,3.7,3.6,4.2,3,,,4.5
+Displacement from Russia-Ukraine conflict in Romania,ROU002,Romania,ROU,Displacement,Europe,1.9,2,Stable,Very High,3.0,4.6,1.7,1.55,2.1,1,1.3,1.0,1.5
+Displacement from Russia-Ukraine conflict in Russia,RUS002,Russia,RUS,"Conflict,Displacement",Europe,2.8,3,Stable,High,3.6,5.0,2.3,2.25,3.5,1,3.0,3.4,2.5
+Burundi and DRC refugees in Rwanda,RWA002,Rwanda,RWA,Displacement,Africa,2.4,3,Stable,Medium,2.5,2.2,2.7,2.45,1.9,3,2.3,3.0,1.5
+Complex crisis in Sudan,SDN001,Sudan,SDN,"Displacement,Violence,Floods,Conflict,Socio-political",Africa,4.7,5,Decreasing,Very High,5.0,5.0,5.0,4.5,5,4,4.6,4.2,5.0
+Refugees in Sudan,SDN005,Sudan,SDN,"Displacement,Conflict",Africa,3.2,4,Increasing,Very High,3.7,5.0,2.6,2.6,3.2,2,3.5,4.2,2.5
+Food security crisis in Senegal,SEN002,Senegal,SEN,Socio-political,Africa,2.6,3,Increasing,High,2.7,4.5,1.3,2.65,3.3,2,2.5,2.0,3.0
+Complex crisis in El Salvador,SLV001,El Salvador,SLV,"Displacement,Violence,Floods,Drought",Americas,2.9,3,Decreasing,Very High,3.3,3.7,3.1,3.1,3.2,3,2.3,2.1,2.5
+Complex crisis in Somalia,SOM001,Somalia,SOM,"Conflict,Displacement,Floods,Drought",Africa,4.4,5,Decreasing,Very High,4.5,4.8,4.3,4.3,4.6,4,4.5,3.8,5.0
+Mixed Migration Flows in Somalia,SOM002,Somalia,SOM,Displacement,Africa,2,2,Stable,Very High,2.0,1.5,2.3,1,1,1,3.4,3.8,3.0
+Complex crisis in South Sudan,SSD001,South Sudan,SSD,"Conflict,Floods,Displacement",Africa,4.5,5,Increasing,High,4.4,4.6,4.3,4.45,4.9,4,4.5,3.8,5.0
+Displacement from Russia-Ukraine conflict in Slovakia,SVK002,Slovakia,SVK,Displacement,Europe,1.7,2,Stable,Very High,2.5,3.8,1.6,1.45,1.9,1,1.3,1.0,1.5
+Food Security Crisis in Eswatini,SWZ001,Eswatini,SWZ,Drought,Africa,2.3,3,Stable,Very High,2.2,3.1,1.6,2.75,2.5,3,1.7,2.3,1.0
+Socioeconomic and Conflict Crisis in Syria,SYR003,Syria,SYR,"Conflict,Socio-political,Violence,Displacement,Food Security",Middle east,4.6,5,Stable,Very High,4.9,4.6,5.0,4.5,5,4,4.4,4.2,4.5
+Complex crisis in Chad,TCD001,Chad,TCD,"Conflict,Displacement,Floods",Africa,4,4,Increasing,Very High,4.5,4.9,4.2,3.8,4.6,3,3.7,3.8,3.5
+Lake Chad basin crisis,TCD003,Chad,TCD,Conflict,Africa,3.4,4,Decreasing,Very High,3.1,0.6,3.9,3.5,3,4,3.4,3.8,3.0
+CAR refugees in Chad,TCD004,Chad,TCD,Displacement,Africa,2.2,3,Decreasing,High,2.5,1.8,2.8,1.45,1.9,1,3.2,3.8,2.5
+Darfur refugees in Chad,TCD005,Chad,TCD,Displacement,Africa,3.3,4,Stable,Very High,3.3,1.8,3.8,3.25,3.5,3,3.4,3.8,3.0
+Myanmar refugees in Thailand,THA003,Thailand,THA,Conflict,Asia,2.2,3,Decreasing,Very High,1.6,0.5,2.1,2.4,1.8,3,2.4,2.2,2.5
+Food Security Crisis in Timor-Leste,TLS003,Timor Leste,TLS,Food Security,Asia,2,2,Stable,Very High,2.2,3.1,1.6,2.8,2.6,3,0.7,0.9,0.5
+Venezuelan refugees in Trinidad and Tobago,TTO002,Trinidad and Tobago,TTO,Displacement,Americas,1.5,2,Decreasing,High,2.5,3.0,2.2,0.8,0.6,1,1.5,1.4,1.5
+Mixed migration flows in Tunisia,TUN002,Tunisia,TUN,Displacement,Africa,1.8,2,Decreasing,Very High,2.4,1.6,2.7,0.95,0.9,1,2.5,2.5,2.5
+Syrian Refugees in Türkiye,TUR002,Türkiye,TUR,Displacement,Middle east,2.9,3,Decreasing,Very High,3.1,3.2,3.0,2.95,3.9,2,2.7,2.8,2.5
+Mixed Migration Flows in Türkiye,TUR003,Türkiye,TUR,Displacement,Middle east,2.1,3,Decreasing,High,2.4,2.4,2.4,1.6,2.2,1,2.7,2.8,2.5
+Türkiye / Syria earthquake in Türkiye,TUR005,Türkiye,TUR,Earthquake,Middle east,3.2,4,Stable,High,2.6,2.2,2.8,3.85,4.7,3,2.4,2.8,2.0
+International Displacement in Tanzania,TZA002,Tanzania,TZA,Displacement,Africa,2.4,3,Stable,High,3.2,2.4,3.5,2.15,2.3,2,2.0,1.9,2.0
+Food Security Crisis in North-East Tanzania,TZA003,Tanzania,TZA,Drought,Africa,2.3,3,Stable,High,1.7,2.5,1.3,2.8,2.6,3,2.0,1.9,2.0
+International Displacement in Uganda,UGA005,Uganda,UGA,Displacement,Africa,3.3,4,Stable,High,3.3,1.7,3.9,3.4,3.8,3,3.2,3.7,2.5
+Russia-Ukraine conflict,UKR002,Ukraine,UKR,"Conflict,Displacement",Europe,4.4,5,Decreasing,Very High,4.4,4.9,4.0,4.5,5,4,4.1,2.4,5.0
+Complex crisis in Venezuela,VEN001,Venezuela,VEN,"Socio-political,Violence,Floods",Americas,4,4,Stable,Very High,4.4,4.9,4.0,3.9,4.8,3,3.7,3.3,4.0
+Conflict in Yemen,YEM001,Yemen,YEM,"Conflict,Displacement",Middle east,4.5,5,Decreasing,Very High,4.7,4.9,4.6,4.5,5,4,4.5,3.8,5.0
+Mixed migration flows in Yemen,YEM002,Yemen,YEM,Displacement,Middle east,2.3,3,Decreasing,Very High,2.5,1.9,2.7,1.55,2.1,1,3.4,3.8,3.0
+Drought in Zambia,ZMB002,Zambia,ZMB,"Drought,Food Security",Africa,3.2,4,Decreasing,Very High,3.8,4.6,3.2,3.8,4.6,3,1.9,1.7,2.0
+Complex crisis in Zimbabwe,ZWE001,Zimbabwe,ZWE,"Socio-political,Drought,Food Security",Africa,3.8,4,Stable,Very High,4.2,4.6,3.9,3.9,4.8,3,3.2,3.3,3.0
+Mutliple crises in Bangladesh,BGD001,Bangladesh,BGD,"Conflict,Violence,Displacement,Floods",Asia,3.5,4,Decreasing,Very High,3.3,3.6,3.1,4,5,3,2.8,2.5,3.0
+Country level Brazil,BRA001,Brazil,BRA,"Displacement,Floods,Drought",Americas,2.7,3,Increasing,Very High,3.7,4.1,3.5,2.15,3.3,1,2.5,2.4,2.5
+Multiple crises in Cameroon,CMR001,Cameroon,CMR,"Conflict,Displacement",Africa,3.9,4,Increasing,High,4.2,4.2,4.2,3.6,4.2,3,4.1,3.7,4.5
+Multiple crises in Djibouti,DJI001,Djibouti,DJI,"Displacement,Drought",Africa,2.8,3,Stable,High,2.8,3.2,2.6,2.75,2.5,3,2.8,2.5,3.0
+Multiple crises in Algeria,DZA004,Algeria,DZA,Displacement,Africa,2.8,3,Increasing,High,4.0,5.0,3.3,1.85,2.7,1,3.0,2.9,3.0
+Multiple crises in Ecuador,ECU001,Ecuador,ECU,"Violence,Displacement",Americas,3.4,4,-,Very High,3.4,4.0,3.1,3.6,4.2,3,3.1,2.6,3.5
+Multiple crises in Iraq,IRQ001,Iraq,IRQ,"Violence,Displacement,Socio-political,Conflict",Middle east,2.9,3,Decreasing,Very High,4.0,4.7,3.6,1.9,1.8,2,3.3,3.1,3.5
+Multiple crises in Kenya,KEN001,Kenya,KEN,"Drought,Displacement,Floods",Africa,3.5,4,Stable,High,4.2,4.3,4.1,3.5,4,3,2.9,3.3,2.5
+Multiple crises in Libya,LBY005,Libya,LBY,Displacement,Africa,3.4,4,-,Very High,3.9,4.6,3.5,3.2,3.4,3,3.2,3.3,3.0
+Multiple crises in Myanmar,MMR001,Myanmar,MMR,"Socio-political,Conflict,Violence",Asia,4.6,5,Stable,Very High,4.8,4.9,4.8,4.5,5,4,4.6,4.1,5.0
+Multiple Crises in Mozambique,MOZ001,Mozambique,MOZ,"Conflict,Displacement,Cyclone,Drought",Africa,3.9,4,Stable,Very High,4.5,5.0,4.1,3.9,4.8,3,3.4,3.3,3.5
+Conflict in Palestine,PSE002,Palestine,PSE,Conflict,Middle east,4.4,5,Increasing,High,4.4,3.4,4.7,4.6,4.2,5,4.1,2.5,5.0
+Multiple Crises in Turkey,TUR001,Türkiye,TUR,"Displacement,Conflict",Middle east,3.6,4,Stable,High,3.5,3.7,3.4,3.95,4.9,3,3.2,2.8,3.5
+Multiple Crises in Tanzania,TZA001,Tanzania,TZA,"Displacement,Drought",Africa,2.5,3,Stable,High,3.1,3.2,3.0,2.5,3,2,2.0,1.9,2.0
