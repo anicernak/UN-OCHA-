@@ -20,6 +20,7 @@ type RawGapRankingRecord = {
   coverage_ratio?: unknown;
   reach_ratio?: unknown;
   gap_score?: unknown;
+  overlooked_score?: unknown;
 };
 
 type RawMapDataRecord = {
@@ -39,9 +40,9 @@ type TooltipRecord = {
     targeted?: number;
     affected?: number;
     reached?: number;
-    reached_pct?: number;
+    reached_pct_of_target?: number;
     uncovered_num?: number;
-    uncovered_pct?: number;
+    uncovered_pct_of_need?: number;
   };
 };
 
@@ -49,11 +50,10 @@ function normalizeTooltipMetrics(metrics?: TooltipRecord["metrics"]) {
   return {
     total_population: metrics?.total_population ?? 0,
     targeted: metrics?.targeted ?? 0,
-    affected: metrics?.affected ?? 0,
     reached: metrics?.reached ?? 0,
-    reached_pct: metrics?.reached_pct ?? 0,
+    reached_pct_of_target: metrics?.reached_pct_of_target ?? 0,
     uncovered_num: metrics?.uncovered_num ?? 0,
-    uncovered_pct: metrics?.uncovered_pct ?? 0,
+    uncovered_pct_of_need: metrics?.uncovered_pct_of_need ?? 0,
   };
 }
 
@@ -75,22 +75,16 @@ function toNumber(value: unknown) {
 function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
   const iso3 = typeof row.iso3 === "string" ? row.iso3.trim().toUpperCase() : "";
   const countryName = typeof row.country_name === "string" ? row.country_name.trim() : "";
-  const peopleInNeed = toNumber(row.people_in_need);
-  const requirements = toNumber(row.requirements);
-  const funding = toNumber(row.funding);
-  const coverageRatio = toNumber(row.coverage_ratio);
+  const peopleInNeed = toNumber(row.people_in_need) ?? 0;
+  const requirements = toNumber(row.requirements) ?? 0;
+  const funding = toNumber(row.funding) ?? 0;
+  const coverageRatio = toNumber(row.coverage_ratio) ?? 0;
   const reachRatio = toNumber(row.reach_ratio);
-  const gapScore = toNumber(row.gap_score);
+  
+  // Mapping prediction model priority score
+  const gapScore = toNumber(row.overlooked_score) ?? toNumber(row.gap_score) ?? 0;
 
-  if (
-    !iso3 ||
-    !countryName ||
-    peopleInNeed === null ||
-    requirements === null ||
-    funding === null ||
-    coverageRatio === null ||
-    gapScore === null
-  ) {
+  if (!iso3 || !countryName) {
     return null;
   }
 
@@ -109,17 +103,11 @@ function normalizeRow(row: RawGapRankingRecord): GapRankingRecord | null {
 function normalizeMapRow(row: RawMapDataRecord): MapDataRecord | null {
   const iso3 = typeof row.iso3 === "string" ? row.iso3.trim().toUpperCase() : "";
   const country = typeof row.country === "string" ? row.country.trim() : "";
-  const overlookedScore = toNumber(row.overlooked_score);
-  const severity = toNumber(row.severity);
-  const populationInNeed = toNumber(row.population_in_need);
+  const overlookedScore = toNumber(row.overlooked_score) ?? 0;
+  const severity = toNumber(row.severity) ?? 0;
+  const populationInNeed = toNumber(row.population_in_need) ?? 0;
 
-  if (
-    !iso3 ||
-    !country ||
-    overlookedScore === null ||
-    severity === null ||
-    populationInNeed === null
-  ) {
+  if (!iso3 || !country) {
     return null;
   }
 
@@ -152,7 +140,7 @@ function dedupeRankingRecords(records: GapRankingRecord[]) {
       const totalWeight = existingWeight + recordWeight;
 
       if (totalWeight === 0) {
-        return null;
+        return existing.reachRatio ?? record.reachRatio;
       }
 
       return (
@@ -185,7 +173,7 @@ function scoreRecords(records: GapRankingRecord[]) {
 }
 
 function parseRankingFileName(fileName: string): GapRankingSelection | null {
-  if (!fileName.startsWith("gap_rankings_") || !fileName.endsWith(".json")) {
+  if (!fileName.endsWith(".json")) {
     return null;
   }
 
@@ -203,6 +191,16 @@ function parseRankingFileName(fileName: string): GapRankingSelection | null {
     }
   }
 
+  // Handle prediction model files like ALL_No.json or FSC_Yes.json
+  const parts = nameWithoutDemographic.split("_");
+  if (parts.length === 2 && (parts[1] === "Yes" || parts[1] === "No")) {
+      return {
+          crisisCategory: parts[0].toUpperCase(),
+          temporalMode: parts[1] === "Yes" ? "WMI_PLUS_HISTORICAL_NEGLECT" : "CURRENT_WMI",
+          demographicCategory
+      };
+  }
+
   const temporalPatterns: Array<{
     suffix: string;
     temporalMode: GapRankingSelection["temporalMode"];
@@ -214,16 +212,18 @@ function parseRankingFileName(fileName: string): GapRankingSelection | null {
     { suffix: "_no_temporal", temporalMode: "CURRENT_WMI" },
   ];
 
-  for (const pattern of temporalPatterns) {
-    if (nameWithoutDemographic.endsWith(pattern.suffix)) {
-      return {
-        crisisCategory: nameWithoutDemographic
-          .slice("gap_rankings_".length, -pattern.suffix.length)
-          .trim()
-          .toUpperCase(),
-        temporalMode: pattern.temporalMode,
-        demographicCategory,
-      };
+  if (baseName.startsWith("gap_rankings_")) {
+    for (const pattern of temporalPatterns) {
+        if (nameWithoutDemographic.endsWith(pattern.suffix)) {
+        return {
+            crisisCategory: nameWithoutDemographic
+            .slice("gap_rankings_".length, -pattern.suffix.length)
+            .trim()
+            .toUpperCase(),
+            temporalMode: pattern.temporalMode,
+            demographicCategory,
+        };
+        }
     }
   }
 

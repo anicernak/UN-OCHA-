@@ -300,7 +300,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
 
       <section className="w-full">
         <WorldMap
-          rankings={selectedRankings}
+          rankings={filteredRankings}
           selectedCategory={selectedCategory}
           selectedDemographic={selectedDemographic}
           temporalMode={temporalMode}
