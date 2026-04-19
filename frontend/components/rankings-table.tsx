@@ -1,8 +1,10 @@
 "use client";
 
+import { InfoPopover } from "@/components/info-popover";
 import type {
   GapRankingRecord,
 } from "@/lib/gap-rankings-shared";
+import { AlertCircle } from "lucide-react";
 
 function formatCompactNumber(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -56,17 +58,73 @@ export function RankingsTable({
   rankings,
 }: RankingsTableProps) {
   return (
-    <section className="bg-slate-900 border border-slate-800 rounded-[2rem] p-8 shadow-2xl overflow-hidden">
-      <div className="flex flex-col gap-2 border-b border-slate-800 pb-6 mb-6">
+    <section className="overflow-visible rounded-[2rem] border border-slate-800 bg-slate-900 p-8 shadow-2xl">
+      <div className="flex flex-col gap-4 border-b border-slate-800 pb-6 mb-6">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-500">
           Analysis Results
         </p>
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-white">
-          Detailed WMI Ranking Table
-        </h2>
+        <div className="flex items-center gap-2">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-white">
+            Detailed WMI Ranking Table
+          </h2>
+          <InfoPopover
+            title="How To Read This Table"
+            ariaLabel="Ranking table information"
+            width="min(44rem, calc(100vw - 2rem))"
+            side="bottom"
+          >
+            <p>
+              This table is the ranked output of your current filters. Countries are sorted by
+              descending <span className="font-mono">gapScore</span>, which is the WMI value used
+              in the selected temporal mode.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">Rank:</span> position after
+              filtering and sorting by highest WMI first.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">People In Need:</span> the
+              number of people in need for the selected category and demographic slice.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">Requirements / Funding:</span>{" "}
+              total requested funding and reported funding for that row.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">Coverage:</span>{" "}
+              <span className="font-mono">funding / requirements</span>, capped between 0 and 1.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">Reach Ratio:</span>{" "}
+              <span className="font-mono">reached / targeted</span> when that field is available;
+              otherwise it is left blank.
+            </p>
+            <p>
+              <span className="font-mono font-bold text-indigo-400">WMI:</span> the final score
+              used to rank the row. In current mode it matches the current WMI; in historical views
+              it comes from the precomputed temporal ranking files.
+            </p>
+            <p>
+              Intuition: the table is helping you move from raw humanitarian inputs to a prioritized
+              shortlist of crises where need, undercoverage, and structural neglect align.
+            </p>
+            <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+              <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+              Humanitarian Needs Overview data; Humanitarian Response Plan data; Global requirements and funding data; Global common operational datasets for population.
+            </p>
+          </InfoPopover>
+        </div>
         <p className="text-sm text-slate-400">
           Showing <strong>{rankings.length}</strong> crises based on your current strategy.
         </p>
+        <div className="flex items-start gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/10 px-4 py-3">
+          <AlertCircle className="mt-0.5 shrink-0 text-amber-300" size={18} />
+          <p className="text-sm text-amber-100">
+            Warning: some underlying observations in this ranking pipeline were predicted by our
+            machine learning model. Those entries will be visually highlighted once you define the
+            prediction-marking rule.
+          </p>
+        </div>
       </div>
 
       {rankings.length === 0 ? (

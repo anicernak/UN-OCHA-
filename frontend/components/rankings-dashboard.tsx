@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState, useId } from "react";
+import { useMemo, useState, useId } from "react";
 
+import { InfoPopover } from "@/components/info-popover";
 import { RankingsTable } from "@/components/rankings-table";
 import WorldMap from "@/components/WorldMap";
 import type {
@@ -14,7 +15,7 @@ import {
   getTemporalModeLabel,
   getSelectionKey,
 } from "@/lib/gap-rankings-shared";
-import { AlertCircle, Info } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 const DEFAULT_THRESHOLD = 0;
 
@@ -25,39 +26,6 @@ function formatCompactNumber(value: number) {
     minimumFractionDigits: 0,
   }).format(value);
 }
-
-const FilterInfo = ({ title, description, math, assumptions, dataSource }: { 
-    title: string; 
-    description: string;
-    math: string; 
-    assumptions: string;
-    dataSource: string;
-}) => {
-    const [open, setOpen] = useState(false);
-    return (
-        <div className="relative inline-block ml-2">
-            <button 
-                onMouseEnter={() => setOpen(true)} 
-                onMouseLeave={() => setOpen(false)} 
-                className="text-slate-500 hover:text-indigo-400 transition-colors"
-                aria-label="Filter information"
-            >
-                <Info size={14} />
-            </button>
-            {open && (
-                <div className="absolute left-0 bottom-full mb-3 z-50 w-80 p-5 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl text-xs text-slate-200 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200">
-                    <p className="font-bold text-white mb-3 text-sm border-b border-slate-700 pb-2">{title}</p>
-                    <div className="space-y-3">
-                        <p>{description}</p>
-                        <p><span className="text-indigo-400 font-mono font-bold">Logic:</span> {math}</p>
-                        <p><span className="text-amber-400 font-bold">Assumption:</span> {assumptions}</p>
-                        <p className="pt-2 text-[10px] text-slate-500 italic">Source: {dataSource}</p>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-};
 
 type RankingsDashboardProps = {
   catalog: GapRankingCatalog;
@@ -133,17 +101,16 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
     return 10_000;
   }, [maxWmi]);
 
-  useEffect(() => {
-    if (threshold > maxWmi) {
-      setThreshold(0);
-    }
-  }, [maxWmi, threshold]);
+  const effectiveThreshold = useMemo(
+    () => Math.min(threshold, Math.max(maxWmi, 0)),
+    [maxWmi, threshold],
+  );
 
   const filteredRankings = useMemo(() => {
     return selectedRankings
-      .filter((row) => row.gapScore >= threshold)
+      .filter((row) => row.gapScore >= effectiveThreshold)
       .sort((a, b) => b.gapScore - a.gapScore);
-  }, [selectedRankings, threshold]);
+  }, [effectiveThreshold, selectedRankings]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -165,13 +132,24 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                 <span className="text-sm font-semibold text-slate-300">
                     Crisis category
                 </span>
-                <FilterInfo 
-                    title="Crisis Category Logic"
-                    description="Filters the dataset to focus on specific types of humanitarian emergencies."
-                    math="Display = { Crisis | Type == Selection }"
-                    assumptions="Each crisis is assigned one primary category based on OCHA reporting, though many are multi-faceted."
-                    dataSource="OCHA Situation Reports and INFORM Severity Index."
-                />
+                <div className="ml-2">
+                  <InfoPopover title="Crisis Category" ariaLabel="Crisis category information">
+                    <p>
+                      This filter switches the ranking to the humanitarian cluster or crisis
+                      category you want to inspect. It answers: which countries rise to the top
+                      when we only look at this response area?
+                    </p>
+                    <p>
+                      <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
+                      show rows from the selected ranking file where{" "}
+                      <span className="font-mono">crisisCategory = selected category</span>.
+                    </p>
+                    <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                      <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                      Humanitarian Needs Overview data; Humanitarian Response Plan data.
+                    </p>
+                  </InfoPopover>
+                </div>
               </div>
               <select
                 id={categoryId}
@@ -192,13 +170,28 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                 <span className="text-sm font-semibold text-slate-300">
                     Demographic category
                 </span>
-                <FilterInfo 
-                    title="Demographic Category Logic"
-                    description="Switches the ranking between overall population and demographic-specific humanitarian need."
-                    math="Display = { Crisis rows | Demographic == Selection }"
-                    assumptions="Demographic splits depend on the available HNO structure and may differ from overall totals."
-                    dataSource="HNO demographic disaggregation exported to ranking files."
-                />
+                <div className="ml-2">
+                  <InfoPopover title="Demographic Category" ariaLabel="Demographic category information">
+                    <p>
+                      This filter changes whether the ranking is based on all people or a specific
+                      demographic slice such as children, women, or men.
+                    </p>
+                    <p>
+                      <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
+                      show rows from the selected ranking file where{" "}
+                      <span className="font-mono">demographicCategory = selected demographic</span>.
+                    </p>
+                    <p>
+                      The intuition is that a country can rank differently for a subgroup than it
+                      does for the full population if need, targeting, or reach is unevenly
+                      distributed.
+                    </p>
+                    <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                      <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                      Humanitarian Needs Overview data.
+                    </p>
+                  </InfoPopover>
+                </div>
               </div>
               <select
                 id={demographicId}
@@ -219,13 +212,43 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
                 <span className="text-sm font-semibold text-slate-300">
                     Temporal view
                 </span>
-                <FilterInfo 
-                    title="Temporal Ranking Modes"
-                    description="Lets you compare the current WMI, a blended score with historical neglect, or the historical-neglect signal on its own."
-                    math="Current WMI; Final WMI = Current WMI + α × Temporal Factor; Historical-only = α × Temporal Factor"
-                    assumptions="Because historical severity and need series are not available locally, the temporal factor uses current WMI as the base and historical underfunding persistence as the multiplier."
-                    dataSource="Financial Tracking Service (FTS) multi-year data (2023-2026)."
-                />
+                <div className="ml-2">
+                  <InfoPopover title="Temporal View" ariaLabel="Temporal view information" width="min(44rem, calc(100vw - 2rem))">
+                    <p>
+                      This filter decides whether you rank countries by the current mismatch only,
+                      by a score that also rewards persistent underfunding, or by the historical
+                      neglect signal on its own.
+                    </p>
+                    <p>
+                      <span className="font-mono font-bold text-indigo-400">Current WMI:</span>{" "}
+                      <span className="font-mono">gapScore = current_wmi</span>.
+                    </p>
+                    <p>
+                      <span className="font-mono font-bold text-indigo-400">Historical factor:</span>{" "}
+                      the ranking files expose{" "}
+                      <span className="font-mono">
+                        temporal_factor_value = base x (1 + consecutive_years_underfunded / 5)
+                      </span>
+                      , where the base is the current WMI or the average funding gap, depending on
+                      the file.
+                    </p>
+                    <p>
+                      <span className="font-mono font-bold text-indigo-400">Blended / historical views:</span>{" "}
+                      the app reads the precomputed <span className="font-mono">gap_score</span>{" "}
+                      from the corresponding ranking files, which already combine or isolate the
+                      neglect contribution.
+                    </p>
+                    <p>
+                      Intuition: use current WMI for present-day imbalance, the blended mode for
+                      crises that are severe now and repeatedly underfunded, and historical-only to
+                      surface long-running neglect even when the current score is lower.
+                    </p>
+                    <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                      <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                      Humanitarian Needs Overview data; Global requirements and funding data.
+                    </p>
+                  </InfoPopover>
+                </div>
               </div>
               <select
                 id={temporalId}
@@ -247,15 +270,33 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="text-sm font-semibold text-slate-300">
-                Minimum WMI: <strong className="text-indigo-400">{formatCompactNumber(threshold)}</strong>
+                Minimum WMI: <strong className="text-indigo-400">{formatCompactNumber(effectiveThreshold)}</strong>
               </span>
-              <FilterInfo 
-                    title="WMI Threshold"
-                    description="Sets a minimum Weighted Mismatch Index score for inclusion in the results."
-                    math="Result = { Crisis | WMI >= Slider Value }"
-                    assumptions="Higher WMI values indicate stronger overlap between severity, need density, funding gap, and complexity."
-                    dataSource="Derived from HNO, FTS, INFORM, and complexity inputs."
-                />
+              <div className="ml-2">
+                <InfoPopover title="Minimum WMI Threshold" ariaLabel="Minimum WMI threshold information" width="min(40rem, calc(100vw - 2rem))">
+                  <p>
+                    This slider removes lower-scoring countries from the map and table so you can
+                    concentrate on the most acute mismatches.
+                  </p>
+                  <p>
+                    <span className="font-mono font-bold text-indigo-400">Filter logic:</span>{" "}
+                    keep rows where <span className="font-mono">gapScore &gt;= threshold</span>.
+                  </p>
+                  <p>
+                    The WMI score itself is a precomputed mismatch measure derived from severity,
+                    need density, funding gap, and operating complexity, with optional historical
+                    neglect depending on the selected temporal view.
+                  </p>
+                  <p>
+                    Intuition: raising the slider does not change the formula, it only increases
+                    the bar for what counts as strategically important enough to remain visible.
+                  </p>
+                  <p className="font-serif text-xs uppercase italic tracking-[0.18em] text-slate-400">
+                    <span className="font-semibold uppercase tracking-[0.22em] text-amber-400 not-italic">Source:</span>{" "}
+                    Humanitarian Needs Overview data; Humanitarian Response Plan data; Global requirements and funding data.
+                  </p>
+                </InfoPopover>
+              </div>
             </div>
             <input
               id={thresholdId}
@@ -263,7 +304,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
               min={0}
               max={Math.max(maxWmi, sliderStep)}
               step={sliderStep}
-              value={threshold}
+              value={effectiveThreshold}
               onChange={(event) =>
                 setThreshold(Number(event.currentTarget.value) || 0)
               }
@@ -271,7 +312,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
             />
             <p className="text-sm text-slate-400">
               Currently showing crises with a WMI of at least{" "}
-              <strong>{formatCompactNumber(threshold)}</strong>.
+              <strong>{formatCompactNumber(effectiveThreshold)}</strong>.
             </p>
           </div>
         </div>
@@ -283,7 +324,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
           selectedCategory={selectedCategory}
           selectedDemographic={selectedDemographic}
           temporalMode={temporalMode}
-          threshold={threshold}
+          threshold={effectiveThreshold}
         />
       </section>
 
