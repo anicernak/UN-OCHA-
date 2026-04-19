@@ -279,10 +279,11 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
 
       <section className="w-full">
         <WorldMap
-          rankings={filteredRankings}
+          rankings={selectedRankings}
           selectedCategory={selectedCategory}
           selectedDemographic={selectedDemographic}
           temporalMode={temporalMode}
+          threshold={threshold}
         />
       </section>
 

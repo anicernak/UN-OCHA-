@@ -31,6 +31,7 @@ type WorldMapProps = {
   selectedCategory: string;
   selectedDemographic: string;
   temporalMode: GapRankingSelection["temporalMode"];
+  threshold: number;
 };
 
 const alpha2ToIso3: Record<string, string> = {
@@ -67,14 +68,28 @@ export default function WorldMap({
   selectedCategory,
   selectedDemographic,
   temporalMode,
+  threshold,
 }: WorldMapProps) {
   const [hoverData, setHoverData] = useState<GapRankingRecord | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const rankingsByIso3 = useMemo(() => new Map(rankings.map((row) => [row.iso3, row])), [rankings]);
-  const maxGapScore = useMemo(() => rankings.reduce((max, row) => Math.max(max, row.gapScore), 0), [rankings]);
-  
-  const heatScale = useMemo(() => scaleLinear<string>().domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)]).range(["#312e81", "#991b1b", "#ef4444"]), [maxGapScore]);
+  const highlightedRankings = useMemo(
+    () => rankings.filter((row) => row.gapScore >= threshold),
+    [rankings, threshold],
+  );
+  const maxGapScore = useMemo(
+    () => highlightedRankings.reduce((max, row) => Math.max(max, row.gapScore), 0),
+    [highlightedRankings],
+  );
+
+  const heatScale = useMemo(
+    () =>
+      scaleLinear<string>()
+        .domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)])
+        .range(["#fca5a5", "#ef4444", "#991b1b"]),
+    [maxGapScore],
+  );
 
   return (
     <div className="relative h-[650px] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl"
@@ -149,6 +164,24 @@ export default function WorldMap({
           <strong>{getDemographicLabel(selectedDemographic)}</strong>, view{" "}
           <strong>{getTemporalModeLabel(temporalMode)}</strong>.
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-300">
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-sky-400" />
+            <span>Under threshold</span>
+          </span>
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-rose-300" />
+            <span>Lower WMI</span>
+          </span>
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-red-500" />
+            <span>Higher WMI</span>
+          </span>
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-red-800" />
+            <span>Highest WMI</span>
+          </span>
+        </div>
       </div>
 
       <ComposableMap projectionConfig={{ scale: 145 }}>
@@ -158,7 +191,11 @@ export default function WorldMap({
               geographies.map((geo) => {
                 const iso3 = getRankingIso3(geo.properties);
                 const countryRanking = rankingsByIso3.get(iso3);
-                const fill = countryRanking ? heatScale(countryRanking.gapScore) : "#1e293b";
+                const fill = !countryRanking
+                  ? "#1e293b"
+                  : countryRanking.gapScore < threshold
+                    ? "#38bdf8"
+                    : heatScale(countryRanking.gapScore);
 
                 return (
                   <Geography
