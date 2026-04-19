@@ -1,26 +1,28 @@
 [
   {
-    "iso3":"YEM",
-    "country_name":"Yemen",
-    "people_in_need":260000,
-    "requirements":2478772922.0,
-    "funding":1384559671,
-    "coverage_ratio":0.5585665628,
-    "cumulative_historical_gap":3658826694.0,
-    "years_with_data":5,
-    "temporal_multiplier":3.0,
-    "gap_score":344318.0810170234
+    "iso3": "YEM",
+    "country_name": "Yemen",
+    "people_in_need": 260000,
+    "requirements": 2478772922.0,
+    "funding": 1384559671,
+    "coverage_ratio": 0.5585665627986879,
+    "avg_gap": 731765338.8,
+    "consecutive_years_underfunded": 0,
+    "temporal_factor_value": 731765338.8,
+    "temporal_factor_normalized": 76755.31162995333,
+    "gap_score": 191528.00530229448
   },
   {
-    "iso3":"NGA",
-    "country_name":"Nigeria",
-    "people_in_need":813,
-    "requirements":910246471.0,
-    "funding":324189433,
-    "coverage_ratio":0.3561556604,
-    "cumulative_historical_gap":1693078611.0,
-    "years_with_data":5,
-    "temporal_multiplier":3.0,
-    "gap_score":1570.3363442999
+    "iso3": "NGA",
+    "country_name": "Nigeria",
+    "people_in_need": 813,
+    "requirements": 910246471.0,
+    "funding": 324189433,
+    "coverage_ratio": 0.35615566039365615,
+    "avg_gap": 338615722.2,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 677231444.4,
+    "temporal_factor_normalized": 604.8792078175494,
+    "gap_score": 1128.3246559175068
   }
 ]

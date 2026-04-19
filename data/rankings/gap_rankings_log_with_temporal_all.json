@@ -1,14 +1,15 @@
 [
   {
-    "iso3":"SSD",
-    "country_name":"South Sudan",
-    "people_in_need":12650.0,
-    "requirements":1694778653.0,
-    "funding":917826590,
-    "coverage_ratio":0.5415613351,
-    "cumulative_historical_gap":1974078184.0,
-    "years_with_data":5,
-    "temporal_multiplier":3.0,
-    "gap_score":17397.7473333504
+    "iso3": "SSD",
+    "country_name": "South Sudan",
+    "people_in_need": 12650,
+    "requirements": 1694778653.0,
+    "funding": 917826590,
+    "coverage_ratio": 0.5415613350895799,
+    "avg_gap": 394815636.8,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 789631273.6,
+    "temporal_factor_normalized": 5893.888026827773,
+    "gap_score": 11693.137137944586
   }
 ]

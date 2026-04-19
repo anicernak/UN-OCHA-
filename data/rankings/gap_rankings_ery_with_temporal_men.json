@@ -1,26 +1,28 @@
 [
   {
-    "iso3":"COL",
-    "country_name":"Colombia",
-    "people_in_need":1441124,
-    "requirements":809539590.0,
-    "funding":231936658,
-    "coverage_ratio":0.2865044043,
-    "cumulative_historical_gap":1903251829.0,
-    "years_with_data":5,
-    "temporal_multiplier":3.0,
-    "gap_score":3084706.88052045
+    "iso3": "COL",
+    "country_name": "Colombia",
+    "people_in_need": 1441124,
+    "requirements": 809539590.0,
+    "funding": 231936658,
+    "coverage_ratio": 0.28650440431208557,
+    "avg_gap": 380650365.8,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 761300731.6,
+    "temporal_factor_normalized": 1355250.2793919176,
+    "gap_score": 2383485.9062320674
   },
   {
-    "iso3":"NGA",
-    "country_name":"Nigeria",
-    "people_in_need":417668,
-    "requirements":910246471.0,
-    "funding":324189433,
-    "coverage_ratio":0.3561556604,
-    "cumulative_historical_gap":1693078611.0,
-    "years_with_data":5,
-    "temporal_multiplier":3.0,
-    "gap_score":806739.5329041072
+    "iso3": "NGA",
+    "country_name": "Nigeria",
+    "people_in_need": 417668,
+    "requirements": 910246471.0,
+    "funding": 324189433,
+    "coverage_ratio": 0.35615566039365615,
+    "avg_gap": 338615722.2,
+    "consecutive_years_underfunded": 5,
+    "temporal_factor_value": 677231444.4,
+    "temporal_factor_normalized": 310748.6949209597,
+    "gap_score": 579661.8725556622
   }
 ]
