@@ -102,6 +102,35 @@ function normalizeMapRow(row: RawMapDataRecord): MapDataRecord | null {
   };
 }
 
+function dedupeRankingRecords(records: GapRankingRecord[]) {
+  const recordsByIso3 = new Map<string, GapRankingRecord>();
+
+  for (const record of records) {
+    const existing = recordsByIso3.get(record.iso3);
+
+    if (!existing) {
+      recordsByIso3.set(record.iso3, record);
+      continue;
+    }
+
+    const requirements = Math.max(existing.requirements, record.requirements);
+    const funding = Math.max(existing.funding, record.funding);
+
+    recordsByIso3.set(record.iso3, {
+      iso3: record.iso3,
+      countryName: existing.countryName || record.countryName,
+      peopleInNeed: existing.peopleInNeed + record.peopleInNeed,
+      requirements,
+      funding,
+      coverageRatio:
+        requirements > 0 ? Math.min(Math.max(funding / requirements, 0), 1) : 0,
+      gapScore: existing.gapScore + record.gapScore,
+    });
+  }
+
+  return Array.from(recordsByIso3.values());
+}
+
 function parseRankingFileName(fileName: string): GapRankingSelection | null {
   if (!fileName.startsWith("gap_rankings_") || !fileName.endsWith(".json")) {
     return null;
@@ -160,9 +189,11 @@ export async function loadGapRankings() {
       return [];
     }
 
-    return parsed
-      .map((row) => normalizeRow(row as RawGapRankingRecord))
-      .filter((row): row is GapRankingRecord => row !== null);
+    return dedupeRankingRecords(
+      parsed
+        .map((row) => normalizeRow(row as RawGapRankingRecord))
+        .filter((row): row is GapRankingRecord => row !== null),
+    );
   } catch {
     return [];
   }
@@ -196,9 +227,11 @@ export async function loadGapRankingsCatalog(): Promise<GapRankingCatalog> {
           continue;
         }
 
-        const records = parsed
+        const records = dedupeRankingRecords(
+          parsed
           .map((row) => normalizeRow(row as RawGapRankingRecord))
-          .filter((row): row is GapRankingRecord => row !== null);
+          .filter((row): row is GapRankingRecord => row !== null),
+        );
 
         categories.add(selection.crisisCategory);
         selections.push(selection);
