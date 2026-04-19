@@ -15,6 +15,7 @@ import type { GapRankingRecord, GapRankingSelection } from "@/lib/gap-rankings-s
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";
 
 type GeographyProperties = {
+  "Alpha-2"?: string;
   ISO_A3?: string;
   ISO_A3_EH?: string;
   NAME?: string;
@@ -32,6 +33,58 @@ type WorldMapProps = {
   includeTemporalFactor: GapRankingSelection["includeTemporalFactor"];
 };
 
+const alpha2ToIso3: Record<string, string> = {
+  AF: "AFG",
+  BF: "BFA",
+  CF: "CAF",
+  CM: "CMR",
+  CO: "COL",
+  GT: "GTM",
+  HN: "HND",
+  HT: "HTI",
+  ML: "MLI",
+  MM: "MMR",
+  MZ: "MOZ",
+  NE: "NER",
+  NG: "NGA",
+  SD: "SDN",
+  SV: "SLV",
+  SO: "SOM",
+  SS: "SSD",
+  TD: "TCD",
+  UA: "UKR",
+  VE: "VEN",
+  YE: "YEM",
+  CD: "COD",
+};
+
+const countryNameToIso3: Record<string, string> = {
+  afghanistan: "AFG",
+  "burkina faso": "BFA",
+  cameroon: "CMR",
+  chad: "TCD",
+  colombia: "COL",
+  "central african republic": "CAF",
+  "democratic republic of the congo": "COD",
+  "dem. rep. congo": "COD",
+  "dr congo": "COD",
+  "el salvador": "SLV",
+  guatemala: "GTM",
+  haiti: "HTI",
+  honduras: "HND",
+  mali: "MLI",
+  myanmar: "MMR",
+  mozambique: "MOZ",
+  niger: "NER",
+  nigeria: "NGA",
+  somalia: "SOM",
+  "south sudan": "SSD",
+  sudan: "SDN",
+  ukraine: "UKR",
+  venezuela: "VEN",
+  yemen: "YEM",
+};
+
 function formatCompactNumber(value: number) {
   return new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -44,6 +97,32 @@ function createHeatScale(maxGapScore: number) {
   return scaleLinear<string>()
     .domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)])
     .range(["#fee2e2", "#f87171", "#7f1d1d"]);
+}
+
+function normalizeCountryName(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function getRankingIso3(properties: GeographyProperties) {
+  const alpha2 = properties["Alpha-2"]?.trim().toUpperCase();
+
+  if (alpha2 && alpha2ToIso3[alpha2]) {
+    return alpha2ToIso3[alpha2];
+  }
+
+  const iso3 = properties.ISO_A3?.trim().toUpperCase() ?? properties.ISO_A3_EH?.trim().toUpperCase();
+
+  if (iso3) {
+    return iso3;
+  }
+
+  const countryName = properties.NAME ?? properties.name;
+
+  if (countryName) {
+    return countryNameToIso3[normalizeCountryName(countryName)] ?? "";
+  }
+
+  return "";
 }
 
 export default function WorldMap({
@@ -95,7 +174,7 @@ export default function WorldMap({
           <Geographies geography={geoUrl}>
             {({ geographies }: { geographies: GeographyFeature[] }) =>
               geographies.map((geo) => {
-                const iso3 = geo.properties.ISO_A3 ?? geo.properties.ISO_A3_EH ?? "";
+                const iso3 = getRankingIso3(geo.properties);
                 const countryRanking = rankingsByIso3.get(iso3);
                 const fill = countryRanking ? heatScale(countryRanking.gapScore) : "#2a1c1c";
 
