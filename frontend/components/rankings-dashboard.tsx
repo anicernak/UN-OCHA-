@@ -8,7 +8,7 @@ import type {
   GapRankingCatalog,
   GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
-import { getSelectionKey } from "@/lib/gap-rankings-shared";
+import { getCategoryLabel, getSelectionKey } from "@/lib/gap-rankings-shared";
 import { AlertCircle, Info } from "lucide-react";
 
 const DEFAULT_THRESHOLD = 5_000_000;
@@ -130,7 +130,7 @@ export function RankingsDashboard({ catalog }: RankingsDashboardProps) {
               >
                 {catalog.categories.map((category) => (
                   <option key={category} value={category}>
-                    {category}
+                    {getCategoryLabel(category)}
                   </option>
                 ))}
               </select>

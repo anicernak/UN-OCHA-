@@ -3,7 +3,11 @@
 import { useMemo, useState } from "react";
 import { scaleLinear } from "d3-scale";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
-import type { GapRankingRecord, GapRankingSelection } from "@/lib/gap-rankings-shared";
+import {
+  getCategoryLabel,
+  type GapRankingRecord,
+  type GapRankingSelection,
+} from "@/lib/gap-rankings-shared";
 
 const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/master/world.json";
 
@@ -129,6 +133,14 @@ export default function WorldMap({ rankings, selectedCategory, includeTemporalFa
           </div>
         </div>
       )}
+
+      <div className="absolute left-4 top-4 z-10 rounded-2xl border border-slate-700 bg-slate-900/85 px-4 py-3 backdrop-blur-xl">
+        <h3 className="text-lg font-bold text-white">Humanitarian Heatmap</h3>
+        <p className="mt-1 text-sm text-slate-300">
+          Category <strong>{getCategoryLabel(selectedCategory)}</strong> with temporal factor{" "}
+          <strong>{includeTemporalFactor}</strong>.
+        </p>
+      </div>
 
       <ComposableMap projectionConfig={{ scale: 145 }}>
         <ZoomableGroup center={[20, 0]} zoom={1}>
