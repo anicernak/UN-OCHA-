@@ -96,7 +96,7 @@ function formatCompactNumber(value: number) {
 function createHeatScale(maxGapScore: number) {
   return scaleLinear<string>()
     .domain([0, Math.max(maxGapScore * 0.35, 1), Math.max(maxGapScore, 1)])
-    .range(["#fee2e2", "#f87171", "#7f1d1d"]);
+    .range(["#312e81", "#991b1b", "#ef4444"]);
 }
 
 function normalizeCountryName(value: string) {
@@ -143,28 +143,28 @@ export default function WorldMap({
   const heatScale = useMemo(() => createHeatScale(maxGapScore), [maxGapScore]);
 
   return (
-    <div className="relative h-[600px] w-full overflow-hidden rounded-2xl border border-stone-900/10 bg-[#170f0f] shadow-[0_24px_80px_rgba(72,50,22,0.18)]">
-      <div className="absolute left-4 top-4 z-10 rounded-xl border border-red-950/40 bg-stone-950/80 p-4 backdrop-blur-md">
-        <h3 className="text-lg font-bold text-stone-50">Humanitarian Heatmap</h3>
-        <p className="mt-1 max-w-sm text-sm text-stone-300">
+    <div className="relative h-[600px] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl">
+      <div className="absolute left-4 top-4 z-10 rounded-xl border border-slate-700 bg-slate-900/80 p-4 backdrop-blur-md">
+        <h3 className="text-lg font-bold text-white">Humanitarian Heatmap</h3>
+        <p className="mt-1 max-w-sm text-sm text-slate-300">
           Category <strong>{selectedCategory}</strong> with temporal factor{" "}
           <strong>{includeTemporalFactor}</strong>.
         </p>
-        <p className="mt-1 text-sm text-stone-400">
-          Darker red marks higher uncovered need in the current table results.
+        <p className="mt-1 text-sm text-slate-400">
+          Red marks higher uncovered need in the current table results.
         </p>
         <div className="mt-3 flex items-center gap-2 text-xs text-stone-300">
-          <div className="h-3 w-3 rounded-full bg-[#fee2e2]" />
+          <div className="h-3 w-3 rounded-full bg-[#312e81]" />
           <span>Lower</span>
-          <div className="ml-2 h-3 w-3 rounded-full bg-[#f87171]" />
+          <div className="ml-2 h-3 w-3 rounded-full bg-[#991b1b]" />
           <span>Higher</span>
-          <div className="ml-2 h-3 w-3 rounded-full bg-[#7f1d1d]" />
+          <div className="ml-2 h-3 w-3 rounded-full bg-[#ef4444]" />
           <span>Highest</span>
         </div>
       </div>
 
       {tooltip && (
-        <div className="absolute bottom-4 right-4 z-10 max-w-xs rounded-md bg-red-700 px-4 py-3 text-sm font-medium text-white shadow-lg">
+        <div className="absolute bottom-4 right-4 z-10 max-w-xs rounded-md bg-indigo-600 px-4 py-3 text-sm font-medium text-white shadow-lg">
           {tooltip}
         </div>
       )}
@@ -176,7 +176,7 @@ export default function WorldMap({
               geographies.map((geo) => {
                 const iso3 = getRankingIso3(geo.properties);
                 const countryRanking = rankingsByIso3.get(iso3);
-                const fill = countryRanking ? heatScale(countryRanking.gapScore) : "#2a1c1c";
+                const fill = countryRanking ? heatScale(countryRanking.gapScore) : "#1e293b";
 
                 return (
                   <Geography
@@ -194,12 +194,12 @@ export default function WorldMap({
                     }}
                     onMouseLeave={() => setTooltip(null)}
                     fill={fill}
-                    stroke="#120c0c"
+                    stroke="#0f172a"
                     strokeWidth={0.6}
                     style={{
                       default: { outline: "none" },
                       hover: {
-                        fill: countryRanking ? "#991b1b" : "#3b2a2a",
+                        fill: countryRanking ? "#4f46e5" : "#334155",
                         outline: "none",
                         cursor: "pointer",
                         strokeWidth: 1,

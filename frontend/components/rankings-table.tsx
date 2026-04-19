@@ -1,10 +1,7 @@
 "use client";
 
-import { useId } from "react";
-
 import type {
   GapRankingRecord,
-  GapRankingSelection,
 } from "@/lib/gap-rankings-shared";
 
 function formatCompactNumber(value: number) {
@@ -44,141 +41,47 @@ function getRankingRowKey(
 }
 
 type RankingsTableProps = {
-  categories: string[];
-  selectedCategory: string;
-  onSelectedCategoryChange: (value: string) => void;
-  includeTemporalFactor: GapRankingSelection["includeTemporalFactor"];
-  onIncludeTemporalFactorChange: (
-    value: GapRankingSelection["includeTemporalFactor"],
-  ) => void;
-  threshold: number;
-  onThresholdChange: (value: number) => void;
   rankings: GapRankingRecord[];
 };
 
 export function RankingsTable({
-  categories,
-  selectedCategory,
-  onSelectedCategoryChange,
-  includeTemporalFactor,
-  onIncludeTemporalFactorChange,
-  threshold,
-  onThresholdChange,
   rankings,
 }: RankingsTableProps) {
-  const thresholdId = useId();
-  const categoryId = useId();
-  const temporalId = useId();
-
   return (
-    <section className="rounded-[2rem] border border-stone-900/10 bg-stone-50/90 p-6 shadow-[0_24px_80px_rgba(72,50,22,0.08)] backdrop-blur sm:p-8">
-      <div className="flex flex-col gap-6 border-b border-stone-900/10 pb-6">
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-900/70">
-            MVP filter
-          </p>
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Show only countries above your chosen uncovered-people threshold
-          </h2>
-          <p className="max-w-2xl text-sm leading-6 text-stone-700 sm:text-base">
-            This keeps the table focused on countries with the highest estimated
-            number of people left uncovered instead of rendering every country.
-          </p>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-800">
-              Crisis category
-            </span>
-            <select
-              id={categoryId}
-              value={selectedCategory}
-              onChange={(event) => onSelectedCategoryChange(event.currentTarget.value)}
-              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <span className="text-sm text-stone-600">
-              Showing rankings for <strong>{selectedCategory}</strong>.
-            </span>
-          </label>
-
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-800">
-              Include temporal factor
-            </span>
-            <select
-              id={temporalId}
-              value={includeTemporalFactor}
-              onChange={(event) =>
-                onIncludeTemporalFactorChange(
-                  event.currentTarget.value as GapRankingSelection["includeTemporalFactor"],
-                )
-              }
-              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
-            >
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-            <span className="text-sm text-stone-600">
-              Temporal adjustment is currently <strong>{includeTemporalFactor}</strong>.
-            </span>
-          </label>
-        </div>
-
-        <div className="grid gap-4">
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-800">
-              Minimum uncovered people
-            </span>
-            <input
-              id={thresholdId}
-              type="number"
-              min={0}
-              step={100000}
-              value={threshold}
-              onChange={(event) =>
-                onThresholdChange(Number(event.currentTarget.value) || 0)
-              }
-              className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none transition focus:border-stone-950"
-            />
-            <span className="text-sm text-stone-600">
-              Currently showing countries with an estimated uncovered population
-              of at least <strong>{formatCompactNumber(threshold)}</strong>.
-            </span>
-          </label>
-        </div>
-        <p className="text-sm text-stone-600">
-          Filtered result count: <strong>{rankings.length}</strong>
+    <section className="bg-slate-900 border border-slate-800 rounded-[2rem] p-8 shadow-2xl overflow-hidden">
+      <div className="flex flex-col gap-2 border-b border-slate-800 pb-6 mb-6">
+        <p className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-500">
+          Analysis Results
+        </p>
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-white">
+          Detailed Ranking Table
+        </h2>
+        <p className="text-sm text-slate-400">
+          Showing <strong>{rankings.length}</strong> crises based on your current strategy.
         </p>
       </div>
 
       {rankings.length === 0 ? (
-        <div className="py-12 text-center text-stone-600">
-          No countries match the current category, temporal setting, and threshold.
+        <div className="py-12 text-center text-slate-500">
+          No countries match the current criteria.
         </div>
       ) : (
-        <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-stone-900/10">
+        <div className="overflow-hidden rounded-xl border border-slate-800">
           <div className="overflow-x-auto">
-            <table className="min-w-full border-collapse bg-white text-left">
-              <thead className="bg-stone-900 text-xs uppercase tracking-[0.2em] text-stone-200">
+            <table className="min-w-full border-collapse bg-slate-900/50 text-left">
+              <thead className="bg-slate-950 text-xs uppercase tracking-[0.2em] text-indigo-300">
                 <tr>
-                  <th className="px-4 py-4 font-medium">Rank</th>
-                  <th className="px-4 py-4 font-medium">Country Name</th>
-                  <th className="px-4 py-4 font-medium">ISO3</th>
-                  <th className="px-4 py-4 font-medium">People In Need</th>
-                  <th className="px-4 py-4 font-medium">Requirements</th>
-                  <th className="px-4 py-4 font-medium">Funding</th>
-                  <th className="px-4 py-4 font-medium">Coverage</th>
-                  <th className="px-4 py-4 font-medium">Uncovered People</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800">Rank</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800">Country Name</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800">ISO3</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">People In Need</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Requirements</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Funding</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Coverage</th>
+                  <th className="px-6 py-4 font-bold border-b border-slate-800 text-right">Uncovered</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-slate-800">
                 {rankings.map((row, index) => (
                   <tr
                     key={getRankingRowKey(
@@ -188,26 +91,28 @@ export function RankingsTable({
                       row.gapScore,
                       index,
                     )}
-                    className="border-t border-stone-200 text-sm text-stone-800"
+                    className="hover:bg-slate-800/50 transition-colors text-sm text-slate-300"
                   >
-                    <td className="px-4 py-4 font-medium text-stone-500">
+                    <td className="px-6 py-4 font-medium text-slate-500">
                       {index + 1}
                     </td>
-                    <td className="px-4 py-4 font-medium">{row.countryName}</td>
-                    <td className="px-4 py-4 font-semibold">{row.iso3}</td>
-                    <td className="px-4 py-4">
+                    <td className="px-6 py-4 font-semibold text-white">{row.countryName}</td>
+                    <td className="px-6 py-4 font-mono text-indigo-400">{row.iso3}</td>
+                    <td className="px-6 py-4 text-right">
                       {formatCompactNumber(row.peopleInNeed)}
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-6 py-4 text-right">
                       {formatCurrency(row.requirements)}
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-6 py-4 text-right">
                       {formatCurrency(row.funding)}
                     </td>
-                    <td className="px-4 py-4">
-                      {formatPercent(row.coverageRatio)}
+                    <td className="px-6 py-4 text-right">
+                      <span className={`px-2 py-1 rounded text-xs font-bold ${row.coverageRatio < 0.3 ? 'bg-red-900/30 text-red-400' : 'bg-emerald-900/30 text-emerald-400'}`}>
+                        {formatPercent(row.coverageRatio)}
+                      </span>
                     </td>
-                    <td className="px-4 py-4 font-semibold text-amber-900">
+                    <td className="px-6 py-4 font-bold text-indigo-300 text-right">
                       {formatCompactNumber(row.gapScore)}
                     </td>
                   </tr>
